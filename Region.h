@@ -5,8 +5,23 @@
 #ifndef SMALL_WORLD_REGION_H
 #define SMALL_WORLD_REGION_H
 
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
 
 class Region {
+
+private:
+
+    string name;
+    bool occupied;
+    bool border;
+    vector<string> connectedRegion;
+
+
+
 
 };
 

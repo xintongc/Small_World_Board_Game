@@ -51,3 +51,10 @@ void Map::addEdge(int origin, int destin) {
     }
 }
 
+bool Map::connected(int origin, int destin) {
+    if(adjacencyMatrix[origin][destin] == 1){
+        return true;
+    }
+    cout << "Region " << origin << " and region " << destin <<" are not connected." << endl;
+    return false;
+}
