@@ -3,6 +3,8 @@
 #ifndef PILLAGING_H
 #define PILLAGING_H
 
+#include "Power.h"
+
 class Pillaging: public Power {
 public:
     Pillaging();

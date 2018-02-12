@@ -3,6 +3,8 @@
 #ifndef BERSERK_H
 #define BERSERK_H
 
+#include "Power.h"
+
 class Berserk: public Power {
 public:
     Berserk();

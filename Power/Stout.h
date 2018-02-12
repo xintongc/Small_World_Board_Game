@@ -14,6 +14,8 @@
 #ifndef STOUT_H
 #define STOUT_H
 
+#include "Power.h"
+
 class Stout: public Power {
 public:
     Stout();

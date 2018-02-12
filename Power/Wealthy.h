@@ -14,6 +14,8 @@
 #ifndef WEALTHY_H
 #define WEALTHY_H
 
+#include "Power.h"
+
 class Wealthy: public Power {
 public:
     Wealthy();

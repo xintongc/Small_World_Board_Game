@@ -3,7 +3,9 @@
 #ifndef FORTIFIED_H
 #define FORTIFIED_H
 
-class Fortified {
+#include "Power.h"
+
+class Fortified : public Power {
 public:
     Fortified();
     Fortified(const Fortified& orig);

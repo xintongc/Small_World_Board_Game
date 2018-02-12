@@ -6,7 +6,9 @@
 #define SMALL_WORLD_SWAMP_H
 
 
-class Swamp {
+#include "Power.h"
+
+class Swamp : public Power{
 
 };
 

@@ -6,9 +6,9 @@
 #define SMALL_WORLD_PLAYER_H
 
 
-#include "Race.h"
 #include "Power/Power.h"
 #include "Region.h"
+#include "Race/Race.h"
 #include <vector>
 
 class Player {

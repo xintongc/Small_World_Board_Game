@@ -3,6 +3,8 @@
 #ifndef BIVOUACKING_H
 #define BIVOUACKING_H
 
+#include "Power.h"
+
 class Bivouacking: public Power {
 public:
     Bivouacking();

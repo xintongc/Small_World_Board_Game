@@ -3,6 +3,8 @@
 #ifndef DRAGONMASTER_H
 #define DRAGONMASTER_H
 
+#include "Power.h"
+
 class DragonMaster: public Power {
 public:
     DragonMaster();

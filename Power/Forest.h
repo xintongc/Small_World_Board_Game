@@ -3,7 +3,9 @@
 #ifndef FOREST_H
 #define FOREST_H
 
-class Forest {
+#include "Power.h"
+
+class Forest : public Power {
 public:
     Forest();
     Forest(const Forest& orig);
