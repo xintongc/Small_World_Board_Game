@@ -52,9 +52,6 @@ void Map::display(){
                 cout << adjacencyMatrix[i][j] <<" ";
             }
 
-
-
-
         }
         cout << endl;
     }

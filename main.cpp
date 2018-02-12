@@ -13,7 +13,6 @@ int main() {
     map.addEdge(2,6);
     map.addEdge(2,7);
 
-
     map.display();
 
 
