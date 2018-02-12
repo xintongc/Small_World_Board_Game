@@ -12,6 +12,7 @@ int main() {
 
     map.display();
     cout << map.connected(1,4);
+    /////
 
     return 0;
 }
