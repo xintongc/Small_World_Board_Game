@@ -12,7 +12,7 @@ public:
     ~Race() ;
 
     int getTokens();
-    void raceSkill();
+    virtual void raceSkill() = 0; //Pure virtual function makes this class Abstract class.
 
     int tokens;
 };

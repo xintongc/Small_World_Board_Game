@@ -13,6 +13,4 @@ int Race::getTokens() {
     return tokens;
 }
 
-void Race::raceSkill() {
-
-}
+void Race::raceSkill();
