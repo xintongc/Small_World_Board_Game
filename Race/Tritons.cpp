@@ -14,5 +14,5 @@ Tritons::Tritons() {
 Tritons::~Tritons() {}
 
 void Tritons::raceSkill() {
-    cout<<"Conquer all coastal regions and cost 1 less token"
+    cout<<"Conquer all coastal regions and cost 1 less token"<<endl;
 }
