@@ -11,5 +11,5 @@ Elves::Elves() {
 Elves::~Elves() {}
 
 void Elves::raceSkill() {
-    
+
 }
