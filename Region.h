@@ -15,13 +15,10 @@ class Region {
 
 private:
 
-    string name;
+    int id;
     bool occupied;
     bool border;
     vector<string> connectedRegion;
-
-
-
 
 };
 
