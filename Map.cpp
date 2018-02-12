@@ -35,7 +35,26 @@ void Map::display(){
 
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n; j++){
-            cout << adjacencyMatrix[i][j] <<"  ";
+
+
+            if(j == 0){
+                if(i < 10)
+                    cout << "0";
+            }
+            if (i == 0){
+                if(j < 10 && j != 0)
+                    cout << "0";
+            }
+
+            if(i > 0){
+                cout << adjacencyMatrix[i][j] <<"  ";
+            } else {
+                cout << adjacencyMatrix[i][j] <<" ";
+            }
+
+
+
+
         }
         cout << endl;
     }
