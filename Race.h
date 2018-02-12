@@ -14,7 +14,7 @@ public:
     int getTokens();
     virtual void raceSkill() = 0; //Pure virtual function makes this class Abstract class.
 
-    int tokens;
+int tokens;
 };
 
 
