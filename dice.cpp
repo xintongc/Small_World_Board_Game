@@ -15,18 +15,14 @@ Dice::~Dice()
 
 void Dice::rollingDice(){
     std::srand(time(0));
-    diceNum=std::rand() % 4;     //no value outside of the 0-3 range is ever returned
+    int x=(rand() % 6)+1;     //no value outside of the 0-3 range is ever returned
+    if (x==1||x==2||x==3)
+        diceNum=x;
+    else
+        diceNum=0;
 }
 
 int Dice::getDiceNum() {
     return diceNum;
 }
 
-int main() {
-    Dice dice;
-    dice.rollingDice();     //one can request a dice being rolled
-    cout<<"The dice is being rolled. The number is: "<<dice.getDiceNum()<<endl;   // the container returns the right number of values
-
-
-    return 0;
-}
