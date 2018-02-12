@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
 
-    Map map = Map(5);
+    Map map = Map(23);
     map.addEdge(1,2);
     map.addEdge(3,4);
 
