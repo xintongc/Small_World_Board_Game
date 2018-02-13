@@ -13,7 +13,8 @@ int main() {
     mapLoader.openFile("/Users/zncu/CLionProjects/small world/twoPlayer.map");
     mapLoader.readFile();
     mapLoader.closeInput();
-    mapLoader.displayMap();
+//    mapLoader.displayMap();
+    mapLoader.buildMap();
 
 
 

@@ -59,3 +59,11 @@ void MapLoader::displayMap(){
         cout << endl;
     }
 }
+
+Map MapLoader::buildMap() {
+
+    Map map = Map(numbers.size()+1);
+    map.display();
+
+}
+

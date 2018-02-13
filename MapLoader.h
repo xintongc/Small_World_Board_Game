@@ -10,6 +10,7 @@
 #include<string>
 #include <vector>
 #include <sstream>
+#include "Map.h"
 
 using namespace std;
 
@@ -23,6 +24,7 @@ public:
     void closeInput();
     void readFile();
     void displayMap();
+    Map buildMap();
 
 private:
 
