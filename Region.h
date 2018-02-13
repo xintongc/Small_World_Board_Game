@@ -18,7 +18,7 @@ private:
     int id;
     bool occupied;
     bool border;
-    vector<string> connectedRegion;
+    vector<int> connectedRegion;
 
 };
 
