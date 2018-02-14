@@ -19,10 +19,15 @@ public:
     Race activeRace;
     Race lostTribe;
     Power power;
-    int victoryCoin;
+
     vector<Region> occupiedRegions;
+    void picks_race();
+    void conquers();
+    void scores();
+    int reinforcementDie();
 
-
+    int victoryCoins;
+    int totalTokens;
 };
 
 
