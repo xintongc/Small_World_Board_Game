@@ -12,10 +12,12 @@
 #include <vector>
 
 class Player {
+
 public:
     Player();
     ~Player();
 
+private:
     Race activeRace;
     Race lostTribe;
     Power power;

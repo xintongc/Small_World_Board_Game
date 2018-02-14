@@ -23,8 +23,8 @@ public:
     void openFile(string path);
     void closeInput();
     void readFile();
-    void displayMap();
     Map buildMap();
+
 
 private:
 

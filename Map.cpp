@@ -33,6 +33,8 @@ Map::~Map() {
 
 void Map::display(){
 
+    cout << endl;
+
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n; j++){
 
@@ -62,8 +64,16 @@ void Map::addEdge(int origin, int destin) {
     if(origin > n || destin > n || origin < 0 || destin < 0){
         cout<<"Invalid edge!\n";
     } else {
-        adjacencyMatrix[origin][destin] = 1;
-        adjacencyMatrix[destin][origin] = 1;
+
+        try {
+            adjacencyMatrix[origin][destin] = 1;
+            adjacencyMatrix[destin][origin] = 1;
+        } catch (const std::invalid_argument& e) {
+            cout << "Invalid map file";
+        }
+
+
+
     }
 }
 

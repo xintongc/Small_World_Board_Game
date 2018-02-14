@@ -3,6 +3,7 @@
 //
 
 #include <sstream>
+#include<string>
 #include "MapLoader.h"
 MapLoader::MapLoader(void) {
 
@@ -27,42 +28,41 @@ void MapLoader::closeInput()
 void MapLoader::readFile()
 {
     string temp;
-    int checkInt;
 
     while (getline(inFile, temp)) {
 
         istringstream buffer(temp);
 
-//        buffer >> checkInt;
-//        if (buffer.eof() == false){
-//            cout << "Invalid map file";
-//            exit(1);
-//
-//        }
+//        char *y = temp.c_str();
+//        cout << (int)temp;
 
-        vector<int> line((istream_iterator<int>(buffer)),
-                                 istream_iterator<int>());
-
+        vector<int> line((istream_iterator<int>(buffer)), istream_iterator<int>());
         numbers.push_back(line);
 
     }
 
 }
 
-void MapLoader::displayMap(){
-    for ( vector<vector<int>>::size_type i = 0; i < numbers.size(); i++ )
-    {
-        for ( vector<int>::size_type j = 0; j < numbers[i].size(); j++ )
-        {
-            cout << numbers[i][j] << ' ';
-        }
-        cout << endl;
-    }
-}
+
 
 Map MapLoader::buildMap() {
 
     Map map = Map(numbers.size()+1);
+
+    for ( vector<vector<int>>::size_type i = 0; i < numbers.size(); i++ )
+    {
+        for ( vector<int>::size_type j = 1; j < numbers[i].size(); j++ )
+        {
+            try {
+                map.addEdge(numbers[i][0],numbers[i][j]);
+
+            }catch (const std::invalid_argument& e) {
+                cout << "Invalid map file";
+            }
+
+        }
+    }
+
     map.display();
 
 }
