@@ -3,10 +3,12 @@
 //
 
 #include "Player.h"
+#include "dice.h"
 
 Player::Player() {
     totalTokens = 0;
     victoryCoins = 5;
+
     cout << "create a player"<<endl;
 }
 
@@ -23,7 +25,6 @@ void Player::scores(){
 }
 
 int Player::reinforcementDie() {
-    //int x = rand() % 4;
     Dice dice;
     dice.rollingDice();
     return dice.getDiceNum();

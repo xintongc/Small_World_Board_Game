@@ -25,6 +25,8 @@ public:
     void conquers();
     void scores();
     int reinforcementDie();
+    int getTokens();
+    int getCoins();
 
     int victoryCoins;
     int totalTokens;
