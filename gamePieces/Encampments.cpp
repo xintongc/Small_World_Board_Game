@@ -3,3 +3,12 @@
 //
 
 #include "Encampments.h"
+
+#include <iostream>
+using namespace std;
+
+Encampments::Encampments() {
+    cout<<"Encampment is created."<<endl;
+}
+
+Encampments::~Encampments() {}

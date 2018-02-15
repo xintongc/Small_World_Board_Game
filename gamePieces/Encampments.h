@@ -7,7 +7,9 @@
 
 
 class Encampments {
-
+public:
+    Encampments();
+    ~Encampments();
 };
 
 

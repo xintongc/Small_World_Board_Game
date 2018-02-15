@@ -3,3 +3,12 @@
 //
 
 #include "Dragon.h"
+#include <iostream>
+using namespace std;
+
+
+Dragon::Dragon() {
+    cout<<"Dragon is created"<<endl;
+}
+
+Dragon::~Dragon() {}

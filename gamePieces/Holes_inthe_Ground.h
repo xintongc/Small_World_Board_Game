@@ -7,7 +7,9 @@
 
 
 class Holes_inthe_Ground {
-
+public:
+    Holes_inthe_Ground();
+    ~Holes_inthe_Ground();
 };
 
 

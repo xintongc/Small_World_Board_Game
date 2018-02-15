@@ -7,7 +7,9 @@
 
 
 class Heroes {
-
+public:
+    Heroes();
+    ~Heroes();
 };
 
 

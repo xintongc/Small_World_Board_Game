@@ -3,3 +3,11 @@
 //
 
 #include "Mountains.h"
+#include <iostream>
+using namespace std;
+
+Mountains::Mountains() {
+    cout<<"Mountains is created."<<endl;
+}
+
+Mountains::~Mountains() {}

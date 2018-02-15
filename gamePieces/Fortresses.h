@@ -7,7 +7,9 @@
 
 
 class Fortresses {
-
+public:
+    Fortresses();
+    ~Fortresses();
 };
 
 

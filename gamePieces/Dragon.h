@@ -7,7 +7,9 @@
 
 
 class Dragon {
-
+public:
+    Dragon();
+    ~Dragon();
 };
 
 

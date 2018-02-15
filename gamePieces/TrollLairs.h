@@ -7,7 +7,9 @@
 
 
 class TrollLairs {
-
+public:
+    TrollLairs();
+    ~TrollLairs();
 };
 
 

@@ -3,3 +3,11 @@
 //
 
 #include "TrollLairs.h"
+#include <iostream>
+using namespace std;
+
+TrollLairs::TrollLairs() {
+    cout<<"TrollLairs is created."<<endl;
+}
+
+TrollLairs::~TrollLairs() {}
