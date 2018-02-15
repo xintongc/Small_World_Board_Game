@@ -9,7 +9,7 @@ Player::Player() {
     totalTokens = 0;
     victoryCoins = 5;
 
-    cout << "create a player"<<endl;
+    cout << "Player is created"<<endl;
 }
 
 Player::~Player() {
@@ -17,7 +17,7 @@ Player::~Player() {
 
 
 void Player::conquers(){
-
+    cout<<"conquers is called"<<endl;
 }
 
 void Player::scores(){
@@ -25,7 +25,6 @@ void Player::scores(){
 }
 
 int Player::reinforcementDie() {
-    Dice dice;
     dice.rollingDice();
     return dice.getDiceNum();
 }

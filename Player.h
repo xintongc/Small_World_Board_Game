@@ -9,6 +9,7 @@
 #include "Power/Power.h"
 #include "Region.h"
 #include "Race/Race.h"
+#include "dice.h"
 #include <vector>
 
 class Player {
@@ -19,6 +20,7 @@ public:
     Race activeRace;
     Race lostTribe;
     Power power;
+    Dice dice;
 
     vector<Region> occupiedRegions;
     void picks_race();
