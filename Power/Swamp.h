@@ -9,6 +9,10 @@
 #include "Power.h"
 
 class Swamp : public Power{
+public:
+    Swamp();
+    Swamp(const Swamp& orig);
+    virtual ~Swamp();
 
 };
 
