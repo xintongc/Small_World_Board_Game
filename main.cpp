@@ -8,17 +8,17 @@ using namespace std;
 
 int main() {
 
+//Part 1 + 2
 
     MapLoader mapLoader;
-    mapLoader.openFile("/Users/zncu/CLionProjects/small world/twoPlayer.map");
+    mapLoader.openFile("/Users/zncu/CLionProjects/small world/novaildMap1.map"); //novaildMap1    twoPlayer
     mapLoader.readFile();
     mapLoader.closeInput();
-//    mapLoader.displayMap();
     mapLoader.buildMap();
 
 
 
-
+//Part 1
 
 //    Map map = Map(24);
 //    map.addEdge(1,2);
@@ -28,7 +28,7 @@ int main() {
 //    map.addEdge(2,7);
 //
 //    map.display();
-//
+
     //part 3
 //    Dice dice;
 //    dice.rollingDice();     //one can request a dice being rolled

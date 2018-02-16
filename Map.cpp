@@ -65,14 +65,8 @@ void Map::addEdge(int origin, int destin) {
         cout<<"Invalid edge!\n";
     } else {
 
-        try {
             adjacencyMatrix[origin][destin] = 1;
             adjacencyMatrix[destin][origin] = 1;
-        } catch (const std::invalid_argument& e) {
-            cout << "Invalid map file";
-        }
-
-
 
     }
 }
