@@ -16,11 +16,10 @@ class Region {
 private:
 
     int id;
-    bool occupied;
-    bool border;
-    vector<int> connectedRegion;
+    bool occupied;  //whether this region is been occupied
+    bool border;    //whether this region is border
+    vector<int> connectedRegion; //save all the connected region
 
 };
-
 
 #endif //SMALL_WORLD_REGION_H

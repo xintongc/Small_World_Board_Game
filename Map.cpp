@@ -8,7 +8,7 @@
 Map::Map(int n) {
 
     this->n = n;
-    adjacencyMatrix = new int* [n];
+    adjacencyMatrix = new int* [n];   // A 2D matrix to show the connection of regions in map, if two regions are connected, shows 1; otherwise shows 0
 
 
     for(int i = 0; i < n; i++){
@@ -22,7 +22,6 @@ Map::Map(int n) {
         adjacencyMatrix[0][i] = i;
         adjacencyMatrix[i][0] = i;
     }
-
 }
 
 Map::~Map() {
@@ -30,13 +29,12 @@ Map::~Map() {
 }
 
 
-void Map::display(){
+void Map::display(){  //display the map created
 
     cout << endl;
 
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n; j++){
-
 
             if(j == 0){
                 if(i < 10)
@@ -58,7 +56,7 @@ void Map::display(){
     }
 }
 
-void Map::addEdge(int origin, int destin) {
+void Map::addEdge(int origin, int destin) {  //set two regions are connected
 
     if(origin > n || destin > n || origin < 0 || destin < 0){
         cout<<"Invalid edge!\n";
@@ -67,7 +65,7 @@ void Map::addEdge(int origin, int destin) {
     }
 }
 
-bool Map::connected(int origin, int destin) {
+bool Map::connected(int origin, int destin) {  //check whether two regions are connected
     if(adjacencyMatrix[origin][destin] == 1){
         return true;
     }
@@ -75,7 +73,7 @@ bool Map::connected(int origin, int destin) {
     return false;
 }
 
-void Map::checkSymmetry(){
+void Map::checkSymmetry(){ //check whether the map is symmetrical, if region 1 is connected to region 2, then the region2 should also shows connected to region 1
 
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
@@ -83,9 +81,7 @@ void Map::checkSymmetry(){
                 cout << "Invaild map! This map is not symmetrical, some edges are missing." << endl;
                 exit(0);
             }
-
         }
-
     }
 
 }
