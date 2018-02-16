@@ -8,13 +8,6 @@ using namespace std;
 
 int main() {
 
-//Part 1 + 2
-
-    MapLoader mapLoader;
-    mapLoader.openFile("/Users/zncu/CLionProjects/small world/novaildMap1.map"); //novaildMap1    twoPlayer
-    mapLoader.readFile();
-    mapLoader.closeInput();
-    mapLoader.buildMap();
 
 
 
@@ -28,6 +21,18 @@ int main() {
 //    map.addEdge(2,7);
 //
 //    map.display();
+
+
+//Part 1 + 2
+
+    MapLoader mapLoader;
+    mapLoader.openFile("/Users/zncu/CLionProjects/small world/twoPlayer.map"); //novaildMap1    twoPlayer
+    mapLoader.readFile();
+    mapLoader.closeInput();
+    mapLoader.buildMap();
+
+
+
 
     //part 3
 //    Dice dice;
