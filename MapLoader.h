@@ -31,7 +31,8 @@ private:
     vector<vector<int> > numbers;
     ifstream inFile;
 
-    void checkVaildMap();
+    void checkMissingRegion();
+    void checkNoConnectedRegion();
 
 };
 

@@ -64,10 +64,7 @@ void Map::addEdge(int origin, int destin) {
     if(origin > n || destin > n || origin < 0 || destin < 0){
         cout<<"Invalid edge!\n";
     } else {
-
             adjacencyMatrix[origin][destin] = 1;
-            adjacencyMatrix[destin][origin] = 1;
-
     }
 }
 
@@ -77,4 +74,19 @@ bool Map::connected(int origin, int destin) {
     }
     cout << "Region " << origin << " and region " << destin <<" are not connected." << endl;
     return false;
+}
+
+void Map::checkSymmetry(){
+
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            if(adjacencyMatrix[i][j] != adjacencyMatrix[j][i]){
+                cout << "Invaild map! This map is not symmetrical, some edges are missing." << endl;
+                exit(0);
+            }
+
+        }
+
+    }
+
 }

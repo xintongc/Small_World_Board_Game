@@ -40,7 +40,9 @@ void MapLoader::readFile()
 
 }
 
-void MapLoader::checkVaildMap(){
+
+
+void MapLoader::checkMissingRegion(){
 
     for (int i = 0; i < numbers.size(); i++ ){
         if(numbers[i][0] != i + 1){
@@ -49,11 +51,15 @@ void MapLoader::checkVaildMap(){
         }
     }
 
+
+}
+
+void MapLoader::checkNoConnectedRegion() {
     bool invaild = false;
     for(int i = 0; i < numbers.size(); i++){
-       if(numbers[i].size() == 1){
+        if(numbers[i].size() == 1){
             cout << "Invaild Map. The region " << i + 1 << " is not connected with any region." << endl;
-           invaild = true;
+            invaild = true;
         }
     }
     if(invaild){
@@ -63,10 +69,13 @@ void MapLoader::checkVaildMap(){
 
 
 
+
 Map MapLoader::buildMap() {
 
     Map map = Map(numbers.size()+1);
-    checkVaildMap();
+
+    checkMissingRegion();
+    checkNoConnectedRegion();
 
     for ( vector<vector<int>>::size_type i = 0; i < numbers.size(); i++ )
     {
@@ -77,6 +86,7 @@ Map MapLoader::buildMap() {
         }
     }
 
+    map.checkSymmetry();
     map.display();
 
 }

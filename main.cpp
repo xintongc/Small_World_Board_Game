@@ -26,7 +26,7 @@ int main() {
 //Part 1 + 2
 
     MapLoader mapLoader;
-    mapLoader.openFile("/Users/zncu/CLionProjects/small world/twoPlayer.map"); //novaildMap1    twoPlayer
+    mapLoader.openFile("/Users/zncu/CLionProjects/small world/twoPlayer.map"); //invaildMap1    twoPlayer
     mapLoader.readFile();
     mapLoader.closeInput();
     mapLoader.buildMap();
