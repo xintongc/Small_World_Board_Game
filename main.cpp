@@ -13,23 +13,23 @@ int main() {
 
 //Part 1
 
-//    Map map = Map(24);
-//    map.addEdge(1,2);
-//    map.addEdge(1,6);
-//    map.addEdge(2,3);
-//    map.addEdge(2,6);
-//    map.addEdge(2,7);
-//
-//    map.display();
+    Map map = Map(24);
+    map.addEdge(1,2);
+    map.addEdge(1,6);
+    map.addEdge(2,3);
+    map.addEdge(2,6);
+    map.addEdge(2,7);
+
+    map.display();
 
 
 //Part 1 + 2
 
-    MapLoader mapLoader;
-    mapLoader.openFile("/Users/zncu/CLionProjects/small world/twoPlayer.map"); //invaildMap1    twoPlayer
-    mapLoader.readFile();
-    mapLoader.closeInput();
-    mapLoader.buildMap();
+//    MapLoader mapLoader;
+//    mapLoader.openFile("/Users/zncu/CLionProjects/small world/twoPlayer.map"); //invaildMap1    twoPlayer
+//    mapLoader.readFile();
+//    mapLoader.closeInput();
+//    mapLoader.buildMap();
 
 
 

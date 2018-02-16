@@ -8,7 +8,6 @@
 Map::Map(int n) {
 
     this->n = n;
-//        visited = new bool[n];
     adjacencyMatrix = new int* [n];
 
 
