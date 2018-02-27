@@ -13,6 +13,7 @@ Dice::~Dice()
     cout << "Dice is being deleted" << endl;
 }
 
+//rolling dice with 0,0,0,1,2,3
 void Dice::rollingDice(){
     std::srand(time(0));
     int x=(rand() % 6)+1;

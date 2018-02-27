@@ -4,6 +4,7 @@
 
 #include "Player.h"
 
+//constructor, default 5 coins for player 
 Player::Player() {
     totalTokens = 0;
     victoryCoins = 5;
@@ -22,6 +23,7 @@ void Player::scores(){
 
 }
 
+//player rolling a dice
 int Player::reinforcementDie() {
     dice.rollingDice();
     return dice.getDiceNum();

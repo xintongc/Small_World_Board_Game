@@ -16,15 +16,15 @@ private:
 
     int n;
     int **adjacencyMatrix;
-//    bool *visited;
 
 public:
 
     Map(int n);
+    ~Map();
     void display();
     void addEdge(int origin, int destin);
     bool connected(int origin, int destin);
-    ~Map();
+    void checkSymmetry();
 };
 
 
