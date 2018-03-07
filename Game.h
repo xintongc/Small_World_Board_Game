@@ -10,7 +10,7 @@
 #include <vector>
 #include "Player.h"
 #include "Map.h"
-#include "MapLoader.h"
+
 
 
 class Game {
@@ -22,17 +22,17 @@ private:
     Map map = Map(1);
 
 public:
-
+    Game();
     virtual ~Game();
     void createMap();
 
     bool raceUsed[15];
-    bool powerUsed[21];
-    stack <int> raceStack;
-    stack <int> powerStack;
-    vector <Race> raceVector;
-    vector <Power> powerVector;
-    vector <int> coinsVector;
+     bool powerUsed[21];
+     stack <int> raceStack;
+     stack <int> powerStack;
+     vector <Race> raceVector;
+     vector <Power> powerVector;
+     vector <int> coinsVector;
 
     void initial();
     void listAllPairs();

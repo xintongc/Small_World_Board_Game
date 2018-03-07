@@ -3,8 +3,6 @@
 //
 
 #include "Game.h"
-#include <cstdlib>
-#include "Race/Race.h"
 #include "Race/Amazons.h"
 #include "Race/Dwarves.h"
 #include "Race/Elves.h"
@@ -43,6 +41,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "MapLoader.h"
+
+class MapLoader;
 
 using namespace std;
 
@@ -84,11 +85,11 @@ void Game::initial() {
     for (int i = 0; i < 15; i++) {
         raceUsed[i] = false;
     }
-    for(int i=0;i<21;i++) {
+    for (int i = 0; i < 21; i++) {
         powerUsed[i] = false;
     }
-
-void Game::listAllPairs() {
+}
+void Game::listAllPairs () {
     //----------random race number and add to race stack----------------
     int chooseRace = 0;
     int size1=0;
