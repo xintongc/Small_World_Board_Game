@@ -8,6 +8,7 @@ using namespace std;
 
 Amazons::Amazons() {
     tokens=6;
+    skill="Removing four tokens in redeployments";
 }
 
 Amazons::~Amazons() {}

@@ -3,7 +3,6 @@
 //
 
 #include "Player.h"
-#include "dice.h"
 
 //constructor, default 5 coins for player 
 Player::Player() {
@@ -15,7 +14,6 @@ Player::Player() {
 
 Player::~Player() {
 }
-
 
 void Player::conquers(){
     cout<<"conquers is called"<<endl;
@@ -31,10 +29,23 @@ int Player::reinforcementDie() {
     return dice.getDiceNum();
 }
 
-int Player::getTokens(){
+
+
+int Player::getVictoryCoins() const {
+    return victoryCoins;
+}
+
+int Player::getTotalTokens() const {
     return totalTokens;
 }
 
-int Player::getCoins() {
-    return victoryCoins;
+
+void Player::setVictoryCoins(int victoryCoins) {
+    Player::victoryCoins = victoryCoins;
 }
+
+void Player::setTotalTokens(int totalTokens) {
+    Player::totalTokens = totalTokens;
+}
+
+

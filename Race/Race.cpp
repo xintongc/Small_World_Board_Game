@@ -5,12 +5,15 @@
 #include "Race.h"
 Race::Race() {
     tokens=0;
-
 }
 Race::~Race() {}
 
-int Race::getTokens() {
+void Race::raceSkill() {}
+
+int Race::getTokens() const {
     return tokens;
 }
 
-void Race::raceSkill(){}
+const std::string &Race::getSkill() const {
+    return skill;
+}

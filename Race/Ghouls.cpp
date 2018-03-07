@@ -5,6 +5,7 @@
 #include "Ghouls.h"
 Ghouls::Ghouls() {
     tokens=5;
+    skill="all stay on the map when going into Decline";
 }
 
 Ghouls::~Ghouls() {}

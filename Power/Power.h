@@ -8,15 +8,14 @@
 
 class Power {
 public:
-
-    int tokens;
-
     Power();
     virtual ~Power();
 
     int getTokens() const;
     void usePower();
 
+
+    int tokens;
 
 };
 

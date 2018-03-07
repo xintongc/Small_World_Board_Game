@@ -4,17 +4,19 @@
 
 #ifndef SMALL_WORLD_RACE_H
 #define SMALL_WORLD_RACE_H
-
+#include<string>
 
 class Race {
 public:
     Race();
     ~Race() ;
 
-    int getTokens() ;
-    void raceSkill();
+    virtual void raceSkill();
+    int getTokens() const;
+    const std::string &getSkill() const;
 
-int tokens;
+    int tokens;
+    std::string skill;
 };
 
 
