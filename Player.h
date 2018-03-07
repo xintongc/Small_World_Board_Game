@@ -18,19 +18,19 @@ public:
     Player();
     ~Player();
 
+    int reinforcementDie();
+    int getCoins();
+    void conquers();
 private:
     Race activeRace;
+
     Race lostTribe;
     Power power;
     Dice dice;
-
     vector<Region> occupiedRegions;
     void picks_race();
-    void conquers();
     void scores();
-    int reinforcementDie();
     int getTokens();
-    int getCoins();
 
     int victoryCoins;
     int totalTokens;

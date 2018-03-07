@@ -10,8 +10,7 @@
 
 using namespace std;
 
-
-void Game::createMap() {
+Game::~Game() {
     int playerNumber = 0;
 
     cout << "How many playes in this game? Please enter a number between 2-5." << endl;
@@ -19,6 +18,7 @@ void Game::createMap() {
 
     while(playerNumber > 5 || playerNumber < 2){
         cout << "How many playes in this game? Please enter a number between 2-5." << endl;
+        cin >> playerNumber;
     }
 
     MapLoader mapLoader;
@@ -37,12 +37,6 @@ void Game::createMap() {
     mapLoader.readFile();
     mapLoader.closeInput();
     map = mapLoader.buildMap();
-    map.display();
-}
-
-
-Game::~Game() {
-
 }
 
 

@@ -22,9 +22,6 @@ private:
     Map map = Map(24);
 
 public:
-    void createMap();
-
-
 
     virtual ~Game();
 
