@@ -7,7 +7,9 @@
 using namespace std;
 
 Giants::Giants() {
-    tokens=6;
+    setTokens(6);
+    setType("Giants");
+    setSkill("Cost 1 less Giants token near mountain");
 }
 
 Giants::~Giants() {}

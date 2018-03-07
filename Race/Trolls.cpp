@@ -6,7 +6,9 @@
 
 
 Trolls::Trolls() {
-    tokens=6;
+    setTokens(6);
+    setType("Trolls");
+    //setSkill("");
 }
 
 Trolls::~Trolls() {}

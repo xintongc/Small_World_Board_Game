@@ -3,7 +3,9 @@
 #include "Heroic.h"
 
 Heroic::Heroic() {
-    tokens = 5;
+    setTokens(5);
+    setType("Heroic");
+    setPower("");
 }
 
 Heroic::Heroic(const Heroic& orig) {

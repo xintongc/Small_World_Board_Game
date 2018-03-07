@@ -19,12 +19,6 @@ public:
     Player();
     ~Player();
 
-    Race race[11];
-    Race lostTribe;
-    Power power[11];
-    Dice dice;
-    bool turn[10];
-
     vector<Region> occupiedRegions;
 
     void picks_race();
@@ -38,10 +32,23 @@ public:
     void setVictoryCoins(int victoryCoins);
     void setTotalTokens(int totalTokens);
 
+    const Race &getActiveRace() const;
+    const Race &getDeclineRace() const;
+    const Power &getActivePower() const;
+    const Power &getDeclinePower() const;
+    void setActiveRace(const Race &activeRace);
+    void setDeclineRace(const Race &declineRace);
+    void setActivePower(const Power &activePower);
+    void setDeclinePower(const Power &declinePower);
+
+
 private:
     int victoryCoins;
     int totalTokens;
-
+    Race activeRace;
+    Race declineRace;
+    Power activePower;
+    Power declinePower;
 };
 
 

@@ -5,7 +5,9 @@
 #include "Elves.h"
 
 Elves::Elves() {
-    tokens=6;
+    setTokens(6);
+    setType("Elves");
+    //setSkill("");
 }
 
 Elves::~Elves() {}

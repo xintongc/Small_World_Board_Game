@@ -1,5 +1,5 @@
 #include <iostream>
-#include "dice.h"
+#include "Dice.h"
 #include <ctime>
 
 using namespace std;

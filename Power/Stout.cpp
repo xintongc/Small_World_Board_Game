@@ -3,7 +3,9 @@
 #include "Stout.h"
 
 Stout::Stout() {
-    tokens = 4;
+    setTokens(4);
+    setType("Stout");
+    setPower("");
 }
 
 Stout::Stout(const Stout& orig) {

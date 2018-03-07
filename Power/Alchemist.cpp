@@ -2,7 +2,9 @@
 #include "Alchemist.h"
 
 Alchemist::Alchemist() {
-    tokens = 4;
+    setTokens(4);
+    setType("Alchemist");
+    setPower("");
 }
 
 Alchemist::Alchemist(const Alchemist& orig) {

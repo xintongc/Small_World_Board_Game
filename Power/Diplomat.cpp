@@ -2,7 +2,9 @@
 #include "Diplomat.h"
 
 Diplomat::Diplomat() {
-    tokens = 5;
+    setTokens(5);
+    setType("Diplomat");
+    setPower("");
 }
 
 Diplomat::Diplomat(const Diplomat& orig) {

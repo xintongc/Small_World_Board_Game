@@ -7,7 +7,9 @@
 using namespace std;
 
 Sorcerers::Sorcerers() {
-    tokens=5;
+    setTokens(5);
+    setType("Sorcerers");
+    //setSkill("");
 }
 
 Sorcerers::~Sorcerers() {}

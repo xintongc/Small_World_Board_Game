@@ -2,7 +2,9 @@
 #include "Underworld.h"
 
 Underworld::Underworld() {
-    tokens = 5;
+    setTokens(5);
+    setType("Underword");
+    setPower("");
 }
 
 Underworld::Underworld(const Underworld& orig) {

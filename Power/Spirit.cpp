@@ -2,7 +2,9 @@
 #include "Spirit.h"
 
 Spirit::Spirit() {
-    tokens = 5;
+    setTokens(5);
+    setType("Spirit");
+    setPower("");
 }
 
 Spirit::Spirit(const Spirit& orig) {

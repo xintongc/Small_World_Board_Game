@@ -8,7 +8,9 @@ using namespace std;
 
 
 Orcs::Orcs() {
-    tokens=5;
+    setTokens(5);
+    setType("Orcs");
+    //setSkill("");
 }
 
 Orcs::~Orcs() {}

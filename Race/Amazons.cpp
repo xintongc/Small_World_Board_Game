@@ -7,12 +7,13 @@
 using namespace std;
 
 Amazons::Amazons() {
-    tokens=6;
-    skill="Removing four tokens in redeployments";
+    setTokens(6);
+    setSkill("Removing four tokens in redeployments");
+    setType("Amazons");
 }
 
 Amazons::~Amazons() {}
 
 void Amazons::raceSkill() {
-    cout<<"Amazons' skill is taking out four tokens at the end "<<endl;
+    cout<<"Amazons' skill is removing four tokens in redeployments"<<endl;
 }

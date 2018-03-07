@@ -3,7 +3,9 @@
 #include "Berserk.h"
 
 Berserk::Berserk() {
-    tokens = 4;
+    setTokens(4);
+    setType("Berserk");
+    setPower("");
 }
 
 Berserk::Berserk(const Berserk& orig) {

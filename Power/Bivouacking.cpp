@@ -3,7 +3,9 @@
 #include "Bivouacking.h"
 
 Bivouacking::Bivouacking() {
-    tokens = 5;
+    setTokens(5);
+    setType("Bivouacking");
+    setPower("");
 }
 
 Bivouacking::Bivouacking(const Bivouacking& orig) {

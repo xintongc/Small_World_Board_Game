@@ -8,7 +8,9 @@ using namespace std;
 
 
 Humans::Humans() {
-    tokens=5;
+    setTokens(5);
+    setType("Humans");
+    //setSkill("");
 }
 
 Humans::~Humans() {}

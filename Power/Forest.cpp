@@ -3,7 +3,9 @@
 #include "Forest.h"
 
 Forest::Forest() {
-    tokens = 4;
+    setTokens(4);
+    setType("Forest");
+    setPower("");
 }
 
 Forest::Forest(const Forest& orig) {

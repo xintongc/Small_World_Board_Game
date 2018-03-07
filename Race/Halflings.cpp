@@ -7,7 +7,9 @@
 using namespace std;
 
 Halflings::Halflings() {
-    tokens=6;
+    setTokens(6);
+    setType("Halflings");
+    //setSkill("");
 }
 
 Halflings::~Halflings() {}
