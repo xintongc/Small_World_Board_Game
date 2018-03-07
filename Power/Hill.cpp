@@ -3,7 +3,9 @@
 #include "Hill.h"
 
 Hill::Hill() {
-    tokens = 4;
+    setTokens(4);
+    setType("Hill");
+    setPower("");
 }
 
 Hill::Hill(const Hill& orig) {

@@ -3,7 +3,9 @@
 #include "Fortified.h"
 
 Fortified::Fortified() {
-    tokens = 3;
+    setTokens(3);
+    setType("Fortified");
+    setPower("");
 }
 
 Fortified::Fortified(const Fortified& orig) {

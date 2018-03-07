@@ -5,7 +5,9 @@
 #include "Ratmen.h"
 
 Ratmen::Ratmen() {
-    tokens=8;
+    setTokens(8);
+    setType("Ratmen");
+    //setSkill("");
 }
 
 Ratmen::~Ratmen() {}

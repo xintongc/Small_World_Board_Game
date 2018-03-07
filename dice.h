@@ -10,7 +10,7 @@ public:
     ~Dice();
     void rollingDice();
     int getDiceNum();
-
+private:
     int diceNum;
 };
 

@@ -7,7 +7,9 @@
 using namespace std;
 
 Skeletons::Skeletons() {
-    tokens=6;
+    setTokens(6);
+    setType("Skeletons");
+    //setSkill("");
 }
 
 Skeletons::~Skeletons() {}

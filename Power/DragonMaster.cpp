@@ -2,7 +2,9 @@
 #include "DragonMaster.h"
 
 DragonMaster::DragonMaster() {
-    tokens = 5;
+    setTokens(5);
+    setType("DragonMaster");
+    setPower("");
 }
 
 DragonMaster::DragonMaster(const DragonMaster& orig) {

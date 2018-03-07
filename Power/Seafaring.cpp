@@ -3,7 +3,9 @@
 #include "Seafaring.h"
 
 Seafaring::Seafaring() {
-    tokens = 5;
+    setTokens(5);
+    setType("Seafaring");
+    setPower("");
 }
 
 Seafaring::Seafaring(const Seafaring& orig) {

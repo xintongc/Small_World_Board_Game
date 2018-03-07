@@ -24,7 +24,28 @@ private:
 public:
 
     virtual ~Game();
+    void createMap();
 
+    bool raceUsed[15];
+    bool powerUsed[21];
+    stack <int> raceStack;
+    stack <int> powerStack;
+    vector <Race> raceVector;
+    vector <Power> powerVector;
+    vector <int> coinsVector;
+
+    void initial();
+    void listAllPairs();
+    void showStackTop();
+    void printStacks();
+    vector <Race> initialRaceVector();
+    vector <Power> initialPowerVector();
+    vector <int> initialCoinsVector();
+    void printCurrentVectors();
+    void replenishCombo();
+
+    Race switchRace(int);
+    Power switchPower(int);
 
 };
 

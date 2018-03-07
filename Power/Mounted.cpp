@@ -3,7 +3,9 @@
 #include "Mounted.h"
 
 Mounted::Mounted() {
-    tokens = 5;
+    setTokens(5);
+    setType("Mounted");
+    setPower("");
 }
 
 Mounted::Mounted(const Mounted& orig) {

@@ -8,7 +8,9 @@ using namespace std;
 
 
 Tritons::Tritons() {
-    tokens=6;
+    setTokens(6);
+    setType("Tritons");
+    //setSkill("");
 }
 
 Tritons::~Tritons() {}

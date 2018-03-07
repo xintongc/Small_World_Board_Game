@@ -2,7 +2,9 @@
 #include "Wealthy.h"
 
 Wealthy::Wealthy() {
-    tokens = 4;
+    setTokens(4);
+    setType("Wealthy");
+    setPower("");
 }
 
 Wealthy::Wealthy(const Wealthy& orig) {

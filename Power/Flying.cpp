@@ -3,7 +3,9 @@
 #include "Flying.h"
 
 Flying::Flying() {
-    tokens = 5;
+    setTokens(5);
+    setType("Flying");
+    setPower("");
 }
 
 Flying::Flying(const Flying& orig) {

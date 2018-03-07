@@ -5,7 +5,9 @@
 #include "Swamp.h"
 
 Swamp::Swamp() {
-    tokens = 4;
+    setTokens(4);
+    setType("Swamp");
+    setPower("");
 }
 
 Swamp::Swamp(const Swamp& orig){

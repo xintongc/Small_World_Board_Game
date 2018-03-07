@@ -12,11 +12,19 @@ public:
     ~Race() ;
 
     virtual void raceSkill();
+
     int getTokens() const;
     const std::string &getSkill() const;
+    const std::string &getType() const;
 
+    void setTokens(int tokens);
+    void setSkill(const std::string &skill);
+    void setType(const std::string &type);
+
+private:
     int tokens;
     std::string skill;
+    std::string type;
 };
 
 

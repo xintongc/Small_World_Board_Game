@@ -7,8 +7,9 @@
 using namespace std;
 
 Dwarves::Dwarves() {
-    tokens=3;
-    skill="Earn 1 bonus coin for each Mine region";
+    setTokens(3);
+    setSkill("Earn 1 bonus coin for each Mine region");
+    setType("Dwarves");
 }
 
 Dwarves::~Dwarves() {}

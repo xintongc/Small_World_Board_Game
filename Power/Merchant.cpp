@@ -3,7 +3,9 @@
 #include "Merchant.h"
 
 Merchant::Merchant() {
-    tokens = 2;
+    setTokens(2);
+    setType("Merchant");
+    setPower("");
 }
 
 Merchant::Merchant(const Merchant& orig) {

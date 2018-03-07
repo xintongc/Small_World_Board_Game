@@ -2,7 +2,9 @@
 #include "Pillaging.h"
 
 Pillaging::Pillaging() {
-    tokens = 5;
+    setTokens(5);
+    setType("Pillaging");
+    setPower("");
 }
 
 Pillaging::Pillaging(const Pillaging& orig) {
