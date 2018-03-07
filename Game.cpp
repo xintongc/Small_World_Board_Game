@@ -48,8 +48,37 @@ using namespace std;
 
 Game::Game() {}
 
-Game::~Game() {}
 
+Game::~Game() {
+    int playerNumber = 0;
+
+    cout << "How many playes in this game? Please enter a number between 2-5." << endl;
+    cin >> playerNumber;
+    while(playerNumber > 5 || playerNumber < 2){
+        cout << "How many playes in this game? Please enter a number between 2-5." << endl;
+        cin >> playerNumber;
+    }
+
+    MapLoader mapLoader;
+
+    switch (playerNumber){
+        case 2:
+            mapLoader.openFile("/Users/zncu/CLionProjects/small world/twoPlayer.map");
+            break;
+        case 3:
+            mapLoader.openFile("/Users/zncu/CLionProjects/small world/threePlayer.map");
+            break;
+        case 4:
+            mapLoader.openFile("/Users/zncu/CLionProjects/small world/fourPlayer.map");
+            break;
+        case 5:
+            mapLoader.openFile("/Users/zncu/CLionProjects/small world/fivePlayer.map");
+            break;
+    }
+    mapLoader.readFile();
+    mapLoader.closeInput();
+    map = mapLoader.buildMap();
+}
 
 void Game::initial() {
     for (int i = 0; i < 15; i++) {
@@ -58,7 +87,6 @@ void Game::initial() {
     for(int i=0;i<21;i++) {
         powerUsed[i] = false;
     }
-}
 
 void Game::listAllPairs() {
     //----------random race number and add to race stack----------------

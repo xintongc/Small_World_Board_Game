@@ -10,18 +10,19 @@
 #include <vector>
 #include "Player.h"
 #include "Map.h"
-
+#include "MapLoader.h"
 
 
 class Game {
 
 private:
+
     vector<Player> Players;
     int round;
-    Map map = Map(24);
+    Map map = Map(1);
 
 public:
-    Game();
+
     virtual ~Game();
     void createMap();
 

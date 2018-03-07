@@ -78,6 +78,7 @@ void Map::checkSymmetry(){ //check whether the map is symmetrical, if region 1 i
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
             if(adjacencyMatrix[i][j] != adjacencyMatrix[j][i]){
+                cout << "missing position: i: " << i << ", j: " << j << endl;
                 cout << "Invaild map! This map is not symmetrical, some edges are missing." << endl;
                 exit(0);
             }
