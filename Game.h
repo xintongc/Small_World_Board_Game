@@ -8,6 +8,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <stack>
 #include "Player.h"
 #include "Map.h"
 #include "MapLoader.h"
