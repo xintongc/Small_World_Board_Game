@@ -28,10 +28,13 @@ Game::~Game() {
             mapLoader.openFile("/Users/zncu/CLionProjects/small world/twoPlayer.map");
             break;
         case 3:
+            mapLoader.openFile("/Users/zncu/CLionProjects/small world/threePlayer.map");
             break;
         case 4:
+            mapLoader.openFile("/Users/zncu/CLionProjects/small world/fourPlayer.map");
             break;
         case 5:
+            mapLoader.openFile("/Users/zncu/CLionProjects/small world/fivePlayer.map");
             break;
     }
     mapLoader.readFile();

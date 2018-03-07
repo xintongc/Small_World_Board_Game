@@ -19,7 +19,7 @@ private:
 
     vector<Player> Players;
     int round;
-    Map map = Map(24);
+    Map map = Map(1);
 
 public:
 
