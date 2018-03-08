@@ -15,58 +15,59 @@ Player::Player() {
 Player::~Player() {
 }
 
-//---------!!!!!!!has problem, player cann't use game methods and variables---------------
-void Player::picks_race() {
-    Game game;
-    int number;
+void Player::picks_race(ComboList& combo) {
+    int orderNum;
     do{
-        cout<<"Please select the number of combo: ";
-        cin>>number;
-        if(number>0 && number<6)
+        cout<<"\nPlease select the orderNum of combo: ";
+        cin>>orderNum;
+        if(orderNum>0 && orderNum<6)
         {
-            cout<<"You choose race "<<game.raceVector[number-1].getType()<<" and power "<<game.powerVector[number-1].getType()<<" from combo vector"<<endl;
-
-            for(int i=0;i<number-1;i++){  //-----------accumulate coins---------------
-                game.coinsVector[i]++;
+            cout<<"\nYou choose race \""<<combo.raceVector[orderNum-1].getType()
+                <<"\" and power \""<<combo.powerVector[orderNum-1].getType()
+                <<"\" from comboList vector"<<endl;
+            for(int i=0;i<orderNum-1;i++){  //-----------accumulate coins---------------
+                combo.coinsVector[i]++;
             }
 
-            activeRace=game.raceVector[number-1];
-            activePower=game.powerVector[number-1];
-            setVictoryCoins(game.coinsVector[number-1]);
+            setActiveRace(combo.raceVector[orderNum-1]);
+            setActivePower(combo.powerVector[orderNum-1]);
+            setVictoryCoins(combo.coinsVector[orderNum-1]);
 
-            game.raceVector.erase(game.raceVector.begin()+number-1);
-            game.powerVector.erase(game.powerVector.begin()+number-1);
-            game.coinsVector.erase(game.coinsVector.begin()+number-1);
+            combo.raceVector.erase(combo.raceVector.begin()+orderNum-1);
+            combo.powerVector.erase(combo.powerVector.begin()+orderNum-1);
+            combo.coinsVector.erase(combo.coinsVector.begin()+orderNum-1);
         }
-        else if(number==6)
+        else if(orderNum==6)
         {
             for(int i=0;i<5;i++){  //-----------accumulate coins---------------
-                game.coinsVector[i]++;
+                combo.coinsVector[i]++;
             }
 
             int temp1=0;
             int temp2=0;
 
-            if (!game.raceStack.empty()){
-                temp1= game.raceStack.top();
+            if (!combo.raceStack.empty()){
+                temp1= combo.raceStack.top();
             }
-            if (!game.powerStack.empty()){
-                temp2= game.powerStack.top();
+            if (!combo.powerStack.empty()){
+                temp2= combo.powerStack.top();
             }
-            cout<<"You choose race "<<game.switchRace(temp1).getType()<<" and power "<<game.switchRace(temp2).getType()<<" from combo stack"<<endl;
-            activeRace=game.switchRace(temp1);
-            activePower=game.switchPower(temp2);
+            cout<<"\nYou choose race \""<<combo.switchRace(temp1).getType()<<"\" and power \""<<combo.switchRace(temp2).getType()<<"\" from combo stack. "<<endl;
+            activeRace=combo.switchRace(temp1);
+            activePower=combo.switchPower(temp2);
         }
         else
         {
-            cout<<"Invalid number"<<endl;
+            cout<<"Invalid number. "<<endl;
             continue;
         }
-    }while(number<1 || number>6);
+    }while(orderNum<1 || orderNum>6);
 
-    game.replenishCombo();
+    combo.replenishCombo();
 
 }
+
+
 
 
 

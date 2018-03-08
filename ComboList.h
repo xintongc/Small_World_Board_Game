@@ -26,6 +26,8 @@ public:
     vector <Power> powerVector;
     vector <int> coinsVector;
 
+    void setupCombo();
+    void print();
     void initial();
     void listAllPairs();
     void showStackTop();

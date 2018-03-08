@@ -48,6 +48,20 @@ ComboList::ComboList() {
 
 ComboList::~ComboList() {}
 
+void ComboList::setupCombo() {
+    initial();
+    listAllPairs();
+    //combo.printStacks();
+
+    initialPowerVector();
+    initialRaceVector();
+    initialCoinsVector();
+}
+
+void ComboList::print() {
+    printCurrentVectors();
+    showStackTop();
+}
 
 void ComboList::initial() {
     for (int i = 0; i < 15; i++) {
@@ -139,7 +153,7 @@ vector <int> ComboList::initialCoinsVector() {
 void ComboList::printCurrentVectors() {
     cout<<"\nThe current ComboLists are: "<<endl;
     for(int i=0;i<5;i++){
-        cout<<raceVector[i].getType()<<" and " <<powerVector[i].getType()<<". Coins are: "<<coinsVector[i]<<endl;
+        cout<<raceVector[i].getType()<<" and " <<powerVector[i].getType()<<". \t Current coins are: "<<coinsVector[i]<<endl;
     }
 }
 
@@ -181,6 +195,8 @@ void ComboList::replenishCombo() {
                 coinsVector.push_back(0);
             }while(raceVector.size()<5);
         }
+        else
+            cout<<"Combo vector don't need to replenish. "<<endl;
     }
     else
         cout<<"Invalid raceVector, powerVector and coinsVector"<<endl;

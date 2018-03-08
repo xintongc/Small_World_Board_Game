@@ -10,6 +10,7 @@
 #include "Region.h"
 #include "Race/Race.h"
 #include "Dice.h"
+#include "ComboList.h"
 #include <vector>
 
 class Player {
@@ -20,7 +21,7 @@ public:
 
     vector<Region> occupiedRegions;
 
-    void picks_race();
+    void picks_race(ComboList&);
     void conquers();
     void scores();
     int reinforcementDie();
@@ -39,6 +40,8 @@ public:
     void setDeclineRace(const Race &declineRace);
     void setActivePower(const Power &activePower);
     void setDeclinePower(const Power &declinePower);
+
+
 
 
 private:
