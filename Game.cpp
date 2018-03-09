@@ -3,6 +3,9 @@
 //
 
 #include "Game.h"
+#include <iostream>
+#include <string>
+#include <vector>
 #include "MapLoader.h"
 
 class MapLoader;
@@ -10,6 +13,7 @@ class MapLoader;
 using namespace std;
 
 Game::Game() {
+    round=1;
 }
 
 
@@ -31,16 +35,16 @@ void Game::initial() {
 
     switch (playerNumber){
         case 2:
-            mapLoader.openFile("D:/CLion-workspace/small_world/twoPlayer.map");
+            mapLoader.openFile("/Users/zncu/CLionProjects/small world/twoPlayer.map");
             break;
         case 3:
-            mapLoader.openFile("D:/CLion-workspace/small_world/threePlayer.map");
+            mapLoader.openFile("/Users/zncu/CLionProjects/small world/threePlayer.map");
             break;
         case 4:
-            mapLoader.openFile("D:/CLion-workspace/small_world/fourPlayer.map");
+            mapLoader.openFile("/Users/zncu/CLionProjects/small world/fourPlayer.map");
             break;
         case 5:
-            mapLoader.openFile("D:/CLion-workspace/small_world/fivePlayer.map");
+            mapLoader.openFile("/Users/zncu/CLionProjects/small world/fivePlayer.map");
             break;
     }
     mapLoader.readFile();
