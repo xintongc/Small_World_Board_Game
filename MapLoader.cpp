@@ -88,6 +88,7 @@ Map MapLoader::buildMap() {  //create a map object from the .map txt file, if tw
 
     map.checkSymmetry();
     map.display();
+    return map;
 
 }
 

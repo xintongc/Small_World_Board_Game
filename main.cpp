@@ -9,6 +9,8 @@ using namespace std;
 int main() {
 
     Game game;
+    game.initial();
+
     ComboList combo;
     combo.setupCombo();
     combo.print();
@@ -24,6 +26,13 @@ int main() {
         combo.print(); //after pick-race, check current combo
 
     }
+
+
+
+
+
+
+
 
 
 
