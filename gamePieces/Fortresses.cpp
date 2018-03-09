@@ -8,7 +8,6 @@ using namespace std;
 
 Fortresses::Fortresses() {
     setType("Fortresses");
-    setAvaliableNum(6);
 }
 
 Fortresses::~Fortresses() {}

@@ -8,7 +8,6 @@ using namespace std;
 
 TrollLairs::TrollLairs() {
     setType("TrollLairs");
-    setAvaliableNum(10);
 }
 
 TrollLairs::~TrollLairs() {}

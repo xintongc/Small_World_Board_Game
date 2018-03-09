@@ -9,7 +9,6 @@ using namespace std;
 
 Encampments::Encampments() {
     setType("Encampments");
-    setAvaliableNum(5);
 }
 
 Encampments::~Encampments() {}

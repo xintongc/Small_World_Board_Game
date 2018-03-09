@@ -8,7 +8,6 @@ using namespace std;
 
 Mountains::Mountains() {
     setType("Mountains");
-    setAvaliableNum(9);
 }
 
 Mountains::~Mountains() {}

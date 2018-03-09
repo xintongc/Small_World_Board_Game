@@ -8,7 +8,6 @@ using namespace std;
 
 Heroes::Heroes() {
     setType("Heroes");
-    setAvaliableNum(2);
 }
 
 Heroes::~Heroes() {}

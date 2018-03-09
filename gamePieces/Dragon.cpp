@@ -9,7 +9,6 @@ using namespace std;
 
 Dragon::Dragon() {
     setType("Dragon");
-    setAvaliableNum(1);
 }
 
 Dragon::~Dragon() {}

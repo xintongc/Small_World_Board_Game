@@ -8,7 +8,6 @@ using namespace std;
 
 Holes_inthe_Ground::Holes_inthe_Ground() {
     setType("Holes_inthe_Ground");
-    setAvaliableNum(2);
 }
 
 Holes_inthe_Ground::~Holes_inthe_Ground() {}

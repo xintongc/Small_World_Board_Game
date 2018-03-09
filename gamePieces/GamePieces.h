@@ -15,12 +15,9 @@ public:
     const std::string &getType() const;
     void setType(const std::string &type);
 
-    int getAvaliableNum() const;
-    void setAvaliableNum(int avaliableNum);
 
 private:
     std::string type;
-    int avaliableNum;
 };
 
 
