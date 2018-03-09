@@ -10,21 +10,19 @@ int main() {
 
     Game game;
     game.initial();
+    game.initialPlayer();
+
 
     ComboList combo;
     combo.setupCombo();
-    combo.print();
-    Player player;
 
-    //----test diff turns-----------
-    for(int i=0;i<4;i++){
-//    game.setTotalTurns(4);
-//    while(game.getRound()<game.getTotalTurns()){
-        player.picks_race(combo);
-        cout<<"turn "<<game.getRound()<<": ";
-        player.currentStates();
-        combo.print(); //after pick-race, check current combo
-
+    cout<<"turn "<<game.getRound()<<": "<<endl;
+    for(int i=0;i<game.Players.size();i++){
+        combo.print();
+        cout<<"==============================="<<endl;
+        cout<<"player"<<i+1<<" is picking race. "<<endl;
+        game.Players[i].picks_race(combo);
+        game.Players[i].currentStates();
     }
 
 

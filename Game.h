@@ -17,19 +17,16 @@
 class Game {
 
 private:
-
-    vector<Player> Players;
-    Player turnMaker;
+    Map map = Map(1);
     int round;
     int NumOfPlayers;
-    Map map = Map(1);
     int totalTurns;
-    int playerNumber;
 
 public:
     Game();
     virtual ~Game();
     void initial();
+    void initialPlayer();
     void createMap();
 
     void startNewTurn();
@@ -39,13 +36,15 @@ public:
     const Player &getTurnMaker() const;
     int getRound() const;
     int getTotalTurns() const;
-    int getPlayerNumber() const;
+    int getNumOfPlayers() const;
 
     void setRound(int round);
     void setTurnMaker(const Player &turnMaker);
     void setTotalTurns(int totalTurns);
-    void setPlayerNumber(int playerNumber);
+    void setNumOfPlayers(int playerNumber);
 
+    vector<Player> Players;
+    Player turnMaker;
 };
 
 

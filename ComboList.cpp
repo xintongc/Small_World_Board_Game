@@ -171,8 +171,7 @@ void ComboList::showStackTop() {
     if (!powerStack.empty()){
         temp2= powerStack.top();
     }
-    cout<<"\nIn stacks, the top ComboList is: ";
-    cout<<switchRace(temp1).getType()<<" and "<<switchPower(temp2).getType()<<endl;
+    cout<<switchRace(temp1).getType()<<" and "<<switchPower(temp2).getType()<<". "<<endl;
 }
 
 

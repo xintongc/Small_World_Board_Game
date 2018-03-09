@@ -4,6 +4,7 @@
 
 #include "Player.h"
 #include "Game.h"
+#include "Dice.h"
 
 //constructor, default 5 coins for player 
 Player::Player() {
