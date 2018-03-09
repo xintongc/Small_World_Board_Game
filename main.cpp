@@ -1,43 +1,33 @@
 #include <iostream>
 
 #include "Game.h"
-#include "Combo.h"
 #include "ComboList.h"
 
 using namespace std;
 
 
 int main() {
-
-//    Game game;
-//    game.initial();
-//    game.listAllPairs();
-//    //game.printStacks();
-//
-//    game.initialPowerVector();
-//    game.initialRaceVector();
-//    game.initialCoinsVector();
-//
-//    game.printCurrentVectors();
-//    game.showStackTop();
-//    cout<<" "<<endl;
-
-//    game.pickCombo();
-//    game.printCurrentVectors();
-//    cout<<" "<<endl;
-//
-//    game.replenishCombo();
-//    game.printCurrentVectors();
-
-
-//    game.printCurrentVectors();
+    
 
     ComboList combo;
     combo.setupCombo();
     combo.print();
     Player player;
-    player.picks_race(combo);
-    combo.print();
+
+    //----test diff turns-----------
+    for(int i=0;i<4;i++){
+        player.currentStates();
+        player.picks_race(combo);
+        cout<<"turn "<<i<<"\t: ";
+        cout<<player.getActiveRace().getType()<<" "<<player.getActiveRace().getTokens()<<"\t";
+        cout<<player.getActivePower().getType()<<" "<<player.getActivePower().getTokens()<<"\t";
+        cout<<player.getTotalTokens()<<endl;
+        cout<<"coins "<<player.getVictoryCoins()<<endl;
+        combo.print(); //after pick-race, check current combo
+
+    }
+
+
 
 
 

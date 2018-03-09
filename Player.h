@@ -25,7 +25,7 @@ public:
     void conquers();
     void scores();
     int reinforcementDie();
-
+    void currentStates();
 
     int getVictoryCoins() const;
     int getTotalTokens() const;

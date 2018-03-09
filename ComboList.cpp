@@ -45,8 +45,8 @@ using namespace std;
 ComboList::ComboList() {
 }
 
-
 ComboList::~ComboList() {}
+
 
 void ComboList::setupCombo() {
     initial();
@@ -62,6 +62,7 @@ void ComboList::print() {
     printCurrentVectors();
     showStackTop();
 }
+
 
 void ComboList::initial() {
     for (int i = 0; i < 15; i++) {
@@ -100,7 +101,7 @@ void ComboList::listAllPairs () {
             size2++;
         }
     }while(size2<20);
-    //cout<<" "<<endl;
+
 }
 
 void ComboList::printStacks() {
@@ -177,11 +178,12 @@ void ComboList::showStackTop() {
 
 //replenishes the column of ComboLists available to others
 void ComboList::replenishCombo() {
-    if(raceVector.size()==powerVector.size()==coinsVector.size()){  //check both vectors have same size
+    //cout<<raceVector.size()<<powerVector.size()<<coinsVector.size()<<endl;
+    //if(raceVector.size()==powerVector.size()==coinsVector.size()){  //check both vectors have same size, but fails
         if(raceVector.size()<5){
             int temp1=0;
             int temp2=0;
-            do{
+            //do{
                 if (!raceStack.empty()){
                     temp1= raceStack.top();
                     raceStack.pop();
@@ -193,13 +195,15 @@ void ComboList::replenishCombo() {
                 raceVector.push_back(switchRace(temp1));
                 powerVector.push_back(switchPower(temp2));
                 coinsVector.push_back(0);
-            }while(raceVector.size()<5);
+            //}while(raceVector.size()<6);
         }
         else
             cout<<"Combo vector don't need to replenish. "<<endl;
-    }
-    else
-        cout<<"Invalid raceVector, powerVector and coinsVector"<<endl;
+//    }
+//    else{
+//        cout<<"Vectors size are not matched "<<endl;
+//    }
+
 }
 
 
