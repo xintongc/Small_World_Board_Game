@@ -85,4 +85,4 @@ void Game::initial() {
     map = mapLoader.buildMap();
 }
 
-}
+
