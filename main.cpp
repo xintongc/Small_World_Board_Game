@@ -7,8 +7,8 @@ using namespace std;
 
 
 int main() {
-    
 
+    Game game;
     ComboList combo;
     combo.setupCombo();
     combo.print();
@@ -16,23 +16,14 @@ int main() {
 
     //----test diff turns-----------
     for(int i=0;i<4;i++){
-        player.currentStates();
+//    game.setTotalTurns(4);
+//    while(game.getRound()<game.getTotalTurns()){
         player.picks_race(combo);
-        cout<<"turn "<<i<<"\t: ";
-        cout<<player.getActiveRace().getType()<<" "<<player.getActiveRace().getTokens()<<"\t";
-        cout<<player.getActivePower().getType()<<" "<<player.getActivePower().getTokens()<<"\t";
-        cout<<player.getTotalTokens()<<endl;
-        cout<<"coins "<<player.getVictoryCoins()<<endl;
+        cout<<"turn "<<game.getRound()<<": ";
+        player.currentStates();
         combo.print(); //after pick-race, check current combo
 
     }
-
-
-
-
-
-
-
 
 
 

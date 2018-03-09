@@ -5,12 +5,12 @@
 using namespace std;
 
 Dice::Dice(){
-    cout << "Dice is created" <<endl;
+    //cout << "Dice is created" <<endl;
 }
 
 Dice::~Dice()
 {
-    cout << "Dice is being deleted" << endl;
+    //cout << "Dice is being deleted" << endl;
 }
 
 //rolling dice with 0,0,0,1,2,3

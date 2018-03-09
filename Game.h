@@ -17,36 +17,31 @@
 class Game {
 
 private:
-
-    vector<Player> Players;
-    int round;
     Map map = Map(1);
+    vector<Player> Players;
+    Player turnMaker;
+    int round;
+    int totalTurns;
+    int playerNumber;
 
 public:
     Game();
     virtual ~Game();
     void createMap();
 
-    bool raceUsed[15];
-     bool powerUsed[21];
-     stack <int> raceStack;
-     stack <int> powerStack;
-     vector <Race> raceVector;
-     vector <Power> powerVector;
-     vector <int> coinsVector;
+    void startNewTurn();
+    bool allPlayersFinishATurn();
 
-    void initial();
-    void listAllPairs();
-    void showStackTop();
-    void printStacks();
-    vector <Race> initialRaceVector();
-    vector <Power> initialPowerVector();
-    vector <int> initialCoinsVector();
-    void printCurrentVectors();
-    void replenishCombo();
 
-    Race switchRace(int);
-    Power switchPower(int);
+    const Player &getTurnMaker() const;
+    int getRound() const;
+    int getTotalTurns() const;
+    int getPlayerNumber() const;
+
+    void setRound(int round);
+    void setTurnMaker(const Player &turnMaker);
+    void setTotalTurns(int totalTurns);
+    void setPlayerNumber(int playerNumber);
 
 };
 

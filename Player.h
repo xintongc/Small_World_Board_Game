@@ -36,12 +36,12 @@ public:
     const Race &getDeclineRace() const;
     const Power &getActivePower() const;
     const Power &getDeclinePower() const;
+    bool isPlayed() const;
     void setActiveRace(const Race &activeRace);
     void setDeclineRace(const Race &declineRace);
     void setActivePower(const Power &activePower);
     void setDeclinePower(const Power &declinePower);
-
-
+    void setPlayed(bool played);
 
 
 private:
@@ -51,6 +51,7 @@ private:
     Race declineRace;
     Power activePower;
     Power declinePower;
+    bool played;
 };
 
 

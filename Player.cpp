@@ -16,10 +16,12 @@ Player::~Player() {
 }
 
 void Player::currentStates() {
-    cout<<"\ntotal tokens: "<<getTotalTokens()<<endl;
+    cout<<"\nactive race: "<<getActiveRace().getType()<<" "<<getActiveRace().getTokens()<<endl;
+    cout<<"active power: "<<getActivePower().getType()<<" "<<getActivePower().getTokens()<<endl;
+    cout<<"total tokens: "<<getTotalTokens()<<endl;
     cout<<"victory coins: "<<getVictoryCoins()<<endl;
-    cout<<"active race: "<<getActiveRace().getType()<<endl;
-    cout<<"active power: "<<getActivePower().getType()<<endl;
+
+
 }
 
 //============so far, pick race and for each turn coins change done================================
@@ -93,11 +95,13 @@ void Player::picks_race(ComboList& combo) {
 
 
 void Player::conquers(){
-    cout<<"conquers is called"<<endl;
+
 }
 
 void Player::scores(){
 
+
+    setPlayed(true);                //----------finish play----------------------------
 }
 
 //player rolling a dice
@@ -154,6 +158,14 @@ const Power &Player::getDeclinePower() const {
 
 void Player::setDeclinePower(const Power &declinePower) {
     Player::declinePower = declinePower;
+}
+
+bool Player::isPlayed() const {
+    return played;
+}
+
+void Player::setPlayed(bool played) {
+    Player::played = played;
 }
 
 
