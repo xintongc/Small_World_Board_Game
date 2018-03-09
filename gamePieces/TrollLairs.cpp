@@ -7,7 +7,8 @@
 using namespace std;
 
 TrollLairs::TrollLairs() {
-    cout<<"TrollLairs is created."<<endl;
+    setType("TrollLairs");
+    setAvaliableNum(10);
 }
 
 TrollLairs::~TrollLairs() {}

@@ -7,7 +7,8 @@
 using namespace std;
 
 Fortresses::Fortresses() {
-    cout<<"Fortresses is created."<<endl;
+    setType("Fortresses");
+    setAvaliableNum(6);
 }
 
 Fortresses::~Fortresses() {}

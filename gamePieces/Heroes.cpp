@@ -7,7 +7,8 @@
 using namespace std;
 
 Heroes::Heroes() {
-    cout<<"Heroes is created."<<endl;
+    setType("Heroes");
+    setAvaliableNum(2);
 }
 
 Heroes::~Heroes() {}

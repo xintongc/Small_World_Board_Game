@@ -6,7 +6,9 @@
 #define SMALL_WORLD_MOUNTAINS_H
 
 
-class Mountains {
+#include "GamePieces.h"
+
+class Mountains : public GamePieces{
 public:
     Mountains();
     ~Mountains();

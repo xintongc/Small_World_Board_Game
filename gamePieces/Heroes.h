@@ -6,7 +6,9 @@
 #define SMALL_WORLD_HEROES_H
 
 
-class Heroes {
+#include "GamePieces.h"
+
+class Heroes : public GamePieces{
 public:
     Heroes();
     ~Heroes();

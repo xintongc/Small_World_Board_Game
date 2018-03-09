@@ -7,7 +7,8 @@
 using namespace std;
 
 Holes_inthe_Ground::Holes_inthe_Ground() {
-    cout<<"Holes_in_the_ground is created"<<endl;
+    setType("Holes_inthe_Ground");
+    setAvaliableNum(2);
 }
 
 Holes_inthe_Ground::~Holes_inthe_Ground() {}

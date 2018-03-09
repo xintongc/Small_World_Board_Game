@@ -6,7 +6,9 @@
 #define SMALL_WORLD_DRAGON_H
 
 
-class Dragon {
+#include "GamePieces.h"
+
+class Dragon : public GamePieces {
 public:
     Dragon();
     ~Dragon();

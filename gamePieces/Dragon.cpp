@@ -8,7 +8,8 @@ using namespace std;
 
 
 Dragon::Dragon() {
-    cout<<"Dragon is created"<<endl;
+    setType("Dragon");
+    setAvaliableNum(1);
 }
 
 Dragon::~Dragon() {}

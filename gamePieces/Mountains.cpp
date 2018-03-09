@@ -7,7 +7,8 @@
 using namespace std;
 
 Mountains::Mountains() {
-    cout<<"Mountains is created."<<endl;
+    setType("Mountains");
+    setAvaliableNum(9);
 }
 
 Mountains::~Mountains() {}

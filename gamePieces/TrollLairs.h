@@ -6,7 +6,9 @@
 #define SMALL_WORLD_TROLLLAIRS_H
 
 
-class TrollLairs {
+#include "GamePieces.h"
+
+class TrollLairs : public GamePieces{
 public:
     TrollLairs();
     ~TrollLairs();

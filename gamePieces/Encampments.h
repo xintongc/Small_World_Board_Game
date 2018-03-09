@@ -6,7 +6,9 @@
 #define SMALL_WORLD_ENCAMPMENTS_H
 
 
-class Encampments {
+#include "GamePieces.h"
+
+class Encampments : public GamePieces {
 public:
     Encampments();
     ~Encampments();

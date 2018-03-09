@@ -6,7 +6,9 @@
 #define SMALL_WORLD_HOLES_INTHE_GROUND_H
 
 
-class Holes_inthe_Ground {
+#include "GamePieces.h"
+
+class Holes_inthe_Ground : public GamePieces{
 public:
     Holes_inthe_Ground();
     ~Holes_inthe_Ground();

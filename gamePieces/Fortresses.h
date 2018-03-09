@@ -6,7 +6,9 @@
 #define SMALL_WORLD_FORTRESSES_H
 
 
-class Fortresses {
+#include "GamePieces.h"
+
+class Fortresses : public GamePieces{
 public:
     Fortresses();
     ~Fortresses();

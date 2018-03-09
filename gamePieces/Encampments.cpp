@@ -8,7 +8,8 @@
 using namespace std;
 
 Encampments::Encampments() {
-    cout<<"Encampment is created."<<endl;
+    setType("Encampments");
+    setAvaliableNum(5);
 }
 
 Encampments::~Encampments() {}
