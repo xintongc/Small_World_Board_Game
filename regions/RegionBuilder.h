@@ -1,5 +1,5 @@
 //
-// Created by xintong cheng on 2018-03-09.
+// Created by xintong cheng on 2018-03-10.
 //
 
 #ifndef SMALL_WORLD_REGIONBUILDER_H
@@ -17,12 +17,12 @@ public:
     Region* build();
 
     RegionBuilder* setId(int id);
+    RegionBuilder* setOwner(Owner owner);
     RegionBuilder* setLandform(Landform landform);
     RegionBuilder* setLandMark(LandMark landMark);
     RegionBuilder* setBorder(bool border);
     RegionBuilder* setLostTribes(bool lostTribes);
     RegionBuilder* addGamePieces(GamePieces* pieces);
-
 };
 
 

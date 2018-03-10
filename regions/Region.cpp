@@ -1,9 +1,8 @@
 //
-// Created by xintong cheng on 2018-02-10.
+// Created by xintong cheng on 2018-03-10.
 //
 
 #include "Region.h"
-
 Region::Region() {
     landMark = LandMark ::Non;
     owner = Owner ::Non;
@@ -85,13 +84,8 @@ void Region::displayGamePieces(){
 }
 
 void Region::info() {
-    cout<< "Region " << id << ": " << "Owmer:" << owner
-    << landform << " " << "Mark:" << landMark << " Border:" << isBorder()
+    cout<< "Region " << id << ": " << "Owmer:" << owner  << " Landform:"
+        << landform << " LandMark:" << landMark << " Border:" << isBorder()
         << " LostTribes:" << isLostTribes() << " GamePieces:";
     displayGamePieces();
 }
-
-
-
-
-
