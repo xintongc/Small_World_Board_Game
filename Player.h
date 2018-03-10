@@ -7,7 +7,7 @@
 
 
 #include "Power/Power.h"
-#include "Region.h"
+#include "regions/Region.h"
 #include "Race/Race.h"
 #include "ComboList.h"
 #include <vector>
