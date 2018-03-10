@@ -12,8 +12,8 @@
 
 using namespace std;
 
-enum class Landform {FarmLand, Hill, Forest, Swamp, Lake, Sea};
-enum class LandMark {Non, Mine, Magic, Cavern};
+enum class Landform {FarmLand, Hill, Forest, Swamp, Lake, Sea, Mountain};
+enum class LandMark {Non, Mine, Magic, Cavern, Mine_Cavern};
 enum class Owner {Non, Player1, Player2, Player3, Player4, Player5};
 
 template<typename T>

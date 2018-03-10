@@ -7,11 +7,15 @@
 #include <vector>
 #include "Region.h"
 
-class twoPlayerRegions {
+class TwoPlayerRegions {
+private:
+    vector<Region*> regions;
+public:
+    TwoPlayerRegions();
+    virtual ~TwoPlayerRegions();
 
-    vector<Region> regions;
-
-
+    void display();
+    void createTwoPlayerRegions();
 };
 
 
