@@ -20,6 +20,7 @@ Game::Game() {
 Game::~Game() {
 }
 
+//--------D:/CLion-workspace/small_world/
 void Game::initial() {
     int playerNumber = 0;
 
@@ -35,16 +36,16 @@ void Game::initial() {
 
     switch (playerNumber){
         case 2:
-            mapLoader.openFile("/Users/zncu/CLionProjects/small world/twoPlayer.map");
+            mapLoader.openFile("D:/CLion-workspace/small_world/twoPlayer.map");
             break;
         case 3:
-            mapLoader.openFile("/Users/zncu/CLionProjects/small world/threePlayer.map");
+            mapLoader.openFile("D:/CLion-workspace/small_world/threePlayer.map");
             break;
         case 4:
-            mapLoader.openFile("/Users/zncu/CLionProjects/small world/fourPlayer.map");
+            mapLoader.openFile("D:/CLion-workspace/small_world/fourPlayer.map");
             break;
         case 5:
-            mapLoader.openFile("/Users/zncu/CLionProjects/small world/fivePlayer.map");
+            mapLoader.openFile("D:/CLion-workspace/small_world/fivePlayer.map");
             break;
     }
     mapLoader.readFile();
@@ -52,7 +53,7 @@ void Game::initial() {
     map = mapLoader.buildMap();
 }
 
-
+//------the right number of players is created, and set the total turns----------
 void Game::initialPlayer() {
     round=1;
 
@@ -79,7 +80,7 @@ void Game::initialPlayer() {
             Players.push_back(Player());
             break;
     }
-    //cout<<Players.size()<<endl;
+    //cout<<Players.size()<<" players are created in the game. "<<endl;
 }
 
 
@@ -94,7 +95,6 @@ bool Game::allPlayersFinishATurn() {
 
 
 void Game::startNewTurn() {
-    if(allPlayersFinishATurn()){                //----------if all players have played, start new turn------------------
         int temp=0;
         int index=0;
         for(int i =0;i<NumOfPlayers;i++){       //--------------find who has the most coins and assign to turn maker----
@@ -104,15 +104,13 @@ void Game::startNewTurn() {
             }
         }
         setTurnMaker(Players[index]);
+        setTurnMakerIndex(index);
         round++;
 
         for(int i=0;i<NumOfPlayers;i++){        //------every new turn, set all players play status is false------------
             Players[i].setPlayed(false);
         }
-
         cout<<"turn maker is player"<<index<<". Turn "<<round<<" start now."<<endl;
-    }
-
 }
 
 
@@ -149,4 +147,12 @@ int Game::getNumOfPlayers() const {
 
 void Game::setNumOfPlayers(int NumOfPlayers) {
     Game::NumOfPlayers = NumOfPlayers;
+}
+
+int Game::getTurnMakerIndex() const {
+    return turnMakerIndex;
+}
+
+void Game::setTurnMakerIndex(int turnMakerIndex) {
+    Game::turnMakerIndex = turnMakerIndex;
 }

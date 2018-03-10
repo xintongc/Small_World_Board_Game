@@ -20,7 +20,8 @@ public:
 
     vector<Region> occupiedRegions;
 
-    void picks_race(ComboList&);
+    void pickRace(ComboList&);
+    void picks_race(ComboList&, int);
     void conquers();
     void scores();
     int reinforcementDie();

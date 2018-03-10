@@ -26,7 +26,7 @@ void Player::currentStates() {
 }
 
 //============so far, pick race and for each turn coins change done================================
-void Player::picks_race(ComboList& combo) {
+void Player::pickRace(ComboList& combo) {
     int orderNum;
     do{
         cout<<"\nPlease select the orderNum of combo: ";
@@ -38,11 +38,11 @@ void Player::picks_race(ComboList& combo) {
 //            continue;
 //        }
 //        else {
-            if (orderNum > 0 && orderNum < 6) {                     //====================pick from vector=======================
+            if (orderNum > 0 && orderNum < 6) {                     //====================pick from vector==============
                 cout << "\nYou choose race \"" << combo.raceVector[orderNum - 1].getType()
                      << "\" and power \"" << combo.powerVector[orderNum - 1].getType()
                      << "\" from comboList vector" << endl;
-                for (int i = 0; i < orderNum - 1; i++) {            //-----------accumulate combo coins---------------
+                for (int i = 0; i < orderNum - 1; i++) {            //-----------accumulate combo coins-----------------
                     combo.coinsVector[i]++;
                 }
 
@@ -56,15 +56,15 @@ void Player::picks_race(ComboList& combo) {
                 combo.coinsVector.erase(combo.coinsVector.begin() + orderNum - 1);
 
             }
-            else if (orderNum == 6) {                               //===================pick from stack=========================
-                for (int i = 0; i < 5; i++) {                       //-----------accumulate combo coins---------------
+            else if (orderNum == 6) {                               //===================pick from stack================
+                for (int i = 0; i < 5; i++) {                       //-----------accumulate combo coins-----------------
                     combo.coinsVector[i]++;
                 }
 
                 int temp1 = 0;
                 int temp2 = 0;
 
-                if (!combo.raceStack.empty()) {                     //----------------delete elements from stack---------------------------
+                if (!combo.raceStack.empty()) {                     //----------------delete elements from stack--------
                     temp1 = combo.raceStack.top();
                     combo.raceStack.pop();
                 }
@@ -87,20 +87,27 @@ void Player::picks_race(ComboList& combo) {
       //  }
     }while(orderNum<1 || orderNum>6);
 
-    combo.replenishCombo();                                         //-----------------------replenish combo------------------------------
+    combo.replenishCombo();                                         //-----------------------replenish combo------------
 
 }
 
 
-
+void Player::picks_race(ComboList& combo, int index) {
+    cout<<"\n==============================="<<endl;
+    combo.print();
+    cout<<"player"<<index<<" is picking race. "<<endl;
+    pickRace(combo);
+    cout<<"player"<<index<<"\'s current status: "<<endl;
+    currentStates();
+}
 
 
 void Player::conquers(){
-
+    cout<<"conquer"<<endl;
 }
 
 void Player::scores(){
-
+    cout<<"score"<<endl;
 
     setPlayed(true);                //----------finish play----------------------------
 }
