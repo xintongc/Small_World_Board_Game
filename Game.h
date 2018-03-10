@@ -21,6 +21,7 @@ private:
     int round;
     int NumOfPlayers;
     int totalTurns;
+    int turnMakerIndex;
 
 public:
     Game();
@@ -37,14 +38,16 @@ public:
     int getRound() const;
     int getTotalTurns() const;
     int getNumOfPlayers() const;
-
+    int getTurnMakerIndex() const;
     void setRound(int round);
     void setTurnMaker(const Player &turnMaker);
     void setTotalTurns(int totalTurns);
     void setNumOfPlayers(int playerNumber);
+    void setTurnMakerIndex(int turnMakerIndex);
 
     vector<Player> Players;
     Player turnMaker;
+
 };
 
 
