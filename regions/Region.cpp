@@ -78,7 +78,7 @@ vector<GamePieces*> Region:: getGamePiecesVector(){
 
 void Region::displayGamePieces(){
     for(int i = 0; i < gamePieces.size(); i++){
-        cout << "GamePieces[" << i << "]=" << gamePieces[i] << endl;
+        cout << "GamePieces[" << i << "]= " << gamePieces[i]->getType() << " ";
     }
     cout << endl;
 }
@@ -86,6 +86,6 @@ void Region::displayGamePieces(){
 void Region::info() {
     cout<< "Region " << id << ": " << "Owmer:" << owner  << " Landform:"
         << landform << " LandMark:" << landMark << " Border:" << isBorder()
-        << " LostTribes:" << isLostTribes() << " GamePieces:";
+        << " LostTribes:" << isLostTribes() << " ";
     displayGamePieces();
 }
