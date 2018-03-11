@@ -70,7 +70,7 @@ void MapLoader::checkNoConnectedRegion() {  //if one region is not connected wit
 
 
 
-Map* MapLoader::buildMap() {  //create a map object from the .map txt file, if two regions are connected, shows 1; otherwise shows 0
+void MapLoader::buildMap() {  //create a map object from the .map txt file, if two regions are connected, shows 1; otherwise shows 0
 
     Map* map = Map::getMap(numbers.size()+1);
 
@@ -88,7 +88,6 @@ Map* MapLoader::buildMap() {  //create a map object from the .map txt file, if t
 
     map->checkSymmetry();
     map->display();
-    return map;
 
 }
 
