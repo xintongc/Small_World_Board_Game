@@ -11,7 +11,6 @@
 #include "Race/Race.h"
 #include "ComboList.h"
 #include "Map.h"
-#include "regions/MapRegions.h"
 #include <vector>
 
 class Player {
@@ -20,7 +19,7 @@ public:
     Player();
     ~Player();
 
-//    vector<Region> occupiedRegions;  //can be deleted
+    vector<Region> occupiedRegions;
 
     void pickRace(ComboList&);
     void picks_race(ComboList&, int);

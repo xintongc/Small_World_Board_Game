@@ -4,6 +4,7 @@
 
 #include <sstream>
 #include<string>
+#include <iterator>
 #include "MapLoader.h"
 MapLoader::MapLoader(void) {
 

@@ -21,7 +21,7 @@ public:
 
     bool raceUsed[15];
     bool powerUsed[21];
-    
+
     stack <int> raceStack;
     stack <int> powerStack;
     vector <Race> raceVector;
