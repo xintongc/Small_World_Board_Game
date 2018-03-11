@@ -13,13 +13,14 @@ using namespace std;
 
 class Map {
 private:
-
+    static Map* map;
     int n;
     int **adjacencyMatrix;
+    Map(int n);
 
 public:
 
-    Map(int n);
+    static Map* getMap(int n);
     ~Map();
     void display();
     void addEdge(int origin, int destin);

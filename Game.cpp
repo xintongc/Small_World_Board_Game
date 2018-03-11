@@ -35,7 +35,7 @@ void Game::initial() {
 
     switch (playerNumber){
         case 2:
-            mapLoader.openFile("D:/CLion-workspace/small_world/twoPlayer.map");
+            mapLoader.openFile("/Users/zncu/CLionProjects/small world/twoPlayer.map");
             break;
         case 3:
             mapLoader.openFile("D:/CLion-workspace/small_world/threePlayer.map");
@@ -49,7 +49,7 @@ void Game::initial() {
     }
     mapLoader.readFile();
     mapLoader.closeInput();
-    map = mapLoader.buildMap();
+    mapLoader.buildMap();
 }
 
 //------the right number of players is created, and set the total turns----------
