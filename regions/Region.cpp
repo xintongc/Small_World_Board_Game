@@ -117,5 +117,41 @@ bool Region::hasMountain(){
 }
 
 bool Region::isFarmLand(){
-    return (int)getLandform() == 0;
+    return (int)getLandform()==0;
+}
+
+bool Region::isHill(){
+    return (int)getLandform()==1;
+}
+
+bool Region::isForest(){
+    return (int)getLandform()==2;
+}
+
+bool Region::isSwamp(){
+    return (int)getLandform()==3;
+}
+
+bool Region::isLake(){
+    return (int)getLandform()==4;
+}
+
+bool Region::isSea(){
+    return (int)getLandform()==5;
+}
+
+bool Region::isMine(){
+    return (int)getLandMark()==1;
+}
+
+bool Region::isMagic(){
+    return (int)getLandMark()==2;
+}
+
+bool Region::isCavern(){
+    return (int)getLandMark()==3;
+}
+
+bool Region::isMine_Cavern(){
+    return (int)getLandMark()==4;
 }

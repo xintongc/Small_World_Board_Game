@@ -40,43 +40,43 @@ public:
     virtual ~Region();
 
     int getId() const;
-
     void setId(int id);
 
     Landform getLandform() const;
-
     void setLandform(Landform landform);
 
     LandMark getLandMark() const;
-
     void setLandMark(LandMark landMark);
 
     Owner getOwner() const;
-
     void setOwner(Owner owner);
 
     bool isBorder() const;
-
     void setBorder(bool border);
 
     bool isLostTribes() const;
-
     void setLostTribes(bool lostTribes);
 
     int getPopulation() const;
-
     void setPopulation(int population);
 
     void addGamePieces(GamePieces* pieces);
-
     vector <GamePieces*> getGamePiecesVector();
 
     void displayGamePieces();
-
     void info();
 
     bool hasMountain();
     bool isFarmLand();
+    bool isHill();
+    bool isForest();
+    bool isSwamp();
+    bool isLake();
+    bool isSea();
+    bool isMine();
+    bool isMagic();
+    bool isCavern();
+    bool isMine_Cavern();
 
 
 
