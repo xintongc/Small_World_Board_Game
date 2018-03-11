@@ -32,8 +32,9 @@ void MapRegions::info(){
 
 void MapRegions::createTwoPlayerRegions(){
 
-    for (int i=1;i<24;i++){
-        regionBuilder.push_back(new RegionBuilder());
+    for (int i=0;i<24;i++){
+        RegionBuilder* rb=new RegionBuilder();
+        regionBuilder.push_back(rb);
     }
 
 
@@ -109,8 +110,9 @@ void MapRegions::createTwoPlayerRegions(){
 }
 
 void MapRegions::createThreePlayerRegions() {
-    for (int i=1;i<31;i++){
-        regionBuilder.push_back(new RegionBuilder());
+    for (int i=0;i<31;i++){
+        RegionBuilder* rb=new RegionBuilder();
+        regionBuilder.push_back(rb);
     }
 
     Region* region1 = regionBuilder[1]->setId(1)->setLandform(Landform::Sea)->setBorder(true)->build();
@@ -205,8 +207,9 @@ void MapRegions::createThreePlayerRegions() {
 }
 
 void MapRegions::createFourPlayerRegions() {
-    for (int i = 1; i < 40; i++) {
-        regionBuilder.push_back(new RegionBuilder());
+    for (int i=0;i<40;i++){
+        RegionBuilder* rb=new RegionBuilder();
+        regionBuilder.push_back(rb);
     }
 
     Region *region1 = regionBuilder[1]->setId(1)->setLandform(Landform::Sea)->setBorder(true)->build();
@@ -328,8 +331,9 @@ void MapRegions::createFourPlayerRegions() {
 }
 
 void MapRegions::createFivePlayerRegions() {
-    for (int i = 1; i < 49; i++) {
-        regionBuilder.push_back(new RegionBuilder());
+    for (int i=0;i<49;i++){
+        RegionBuilder* rb=new RegionBuilder();
+        regionBuilder.push_back(rb);
     }
 
     Region *region1 = regionBuilder[1]->setId(1)->setLandform(Landform::Sea)->setBorder(true)->build();
