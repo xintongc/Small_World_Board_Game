@@ -16,6 +16,7 @@ public:
 
     void display();
     void createTwoPlayerRegions();
+    void info();
 };
 
 
