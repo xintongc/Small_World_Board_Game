@@ -75,6 +75,8 @@ public:
 
     void info();
 
+    bool hasMountain();
+
 
 
 

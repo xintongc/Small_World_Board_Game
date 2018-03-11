@@ -98,3 +98,12 @@ int Region::getPopulation() const {
 void Region::setPopulation(int population) {
     Region::population = population;
 }
+
+bool Region::hasMountain(){
+    for(int i = 0; i < gamePieces.size(); i++){
+        if(!gamePieces[i]->getType().compare("Mountains")){
+            return true;
+        }
+    }
+    return false;
+}

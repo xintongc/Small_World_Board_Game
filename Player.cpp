@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "Game.h"
 #include "Dice.h"
+#include "regions/MapRegions.h"
 
 //constructor, default 5 coins for player 
 Player::Player() {
@@ -124,11 +125,62 @@ void Player::conquers(){
     cout<<"conquer"<<endl;
 }
 
-void Player::firstConquest(){
+Map* Player::chooseMap(int playerNum){
+    if(playerNum == 2){
+        return Map::getMap(24);
+    } else if(playerNum == 3){
+        return Map::getMap(31);
+    }else if(playerNum == 4){
+        return Map::getMap(40);
+    }else if(playerNum == 5){
+        return Map::getMap(48);
+    }
+}
+
+//bool Player::isBorder(MapRegions* regions,int regionID){
+//    return regions->getRegion(regionID)->isBorder();
+//}  not working (functin pointer)
+
+void Player::firstConquest(int playerNum){
     cout << "Please select the Region you want to first conquest." << endl;
     int n;
     cin >> n;
 
+    MapRegions* twoPlayerRegions = MapRegions::getMapRegions();
+    bool isBorder = twoPlayerRegions->getRegion(n)->isBorder();
+
+    if(isBorder){
+        conquerRegion(n);
+    } else{
+        while(!isBorder){
+            cout << "Please choose again,your first conquest region must be a border region" << endl;
+            cin >> n;
+  //          isBorder = isBorder(twoPlayerRegions,n);
+            isBorder = twoPlayerRegions->getRegion(n)->isBorder();
+        }
+    }
+}
+
+void Player::conquerRegion(int regionID){
+    int requiredTokens = 2;
+    MapRegions* twoPlayerRegions = MapRegions::getMapRegions();
+
+    if(twoPlayerRegions->getRegion(regionID)->isLostTribes()){
+        requiredTokens++;
+    }
+
+    if(twoPlayerRegions->getRegion(regionID)->hasMountain()){
+        requiredTokens ++;
+    }
+
+    if(requiredTokens > totalTokens){
+        cout << "You don't have enough tokens to conquer this region, please choose again" << endl;
+        cin >> regionID;
+        conquerRegion(regionID);
+    } else {
+        twoPlayerRegions->getRegion(regionID)->setOwner((Owner)id);
+        twoPlayerRegions->getRegion(regionID)->setPopulation(requiredTokens);
+    }
 
 }
 
@@ -223,6 +275,14 @@ bool Player::isHaveActiveCombo() const {
 
 void Player::setHaveActiveCombo(bool haveActiveCombo) {
     Player::haveActiveCombo = haveActiveCombo;
+}
+
+int Player::getId() const {
+    return id;
+}
+
+void Player::setId(int id) {
+    Player::id = id;
 }
 
 

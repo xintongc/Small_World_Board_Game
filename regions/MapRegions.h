@@ -25,7 +25,7 @@ public:
     void createFourPlayerRegions();
     void createFivePlayerRegions();
     void info();
-
+    Region* getRegion(int i);
 };
 
 
