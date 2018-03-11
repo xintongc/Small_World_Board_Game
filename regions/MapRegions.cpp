@@ -61,3 +61,6 @@ void MapRegions::createTwoPlayerRegions(){
 }
 
 
+Region* MapRegions::getRegion(int i){
+        return regions[i - 1];
+}

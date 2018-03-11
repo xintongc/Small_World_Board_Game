@@ -20,6 +20,7 @@ public:
     void display();
     void createTwoPlayerRegions();
     void info();
+    Region* getRegion(int i);
 };
 
 
