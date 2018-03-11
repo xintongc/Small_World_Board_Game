@@ -192,7 +192,7 @@ void Player::enemyLossesWithdrawals(int regionID){
 
     int enemyPopulation = playerRegions->getRegion(regionID)->getPopulation();
     int enemyID = (int)playerRegions->getRegion(regionID)->getOwner();
-    game->getGame()->Players[2].getTotalTokens();
+    game->Players[2].getTotalTokens();
 
 
 }
