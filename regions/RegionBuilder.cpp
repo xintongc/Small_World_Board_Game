@@ -37,3 +37,9 @@ RegionBuilder* RegionBuilder::addGamePieces(GamePieces* pieces){
     region->addGamePieces(pieces);
     return this;
 }
+
+RegionBuilder::RegionBuilder() {}
+
+RegionBuilder::~RegionBuilder() {
+
+}

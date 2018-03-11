@@ -23,6 +23,7 @@ public:
     void setType(const std::string &type);
 
 
+
 private:
     int tokens;
     std::string skill;
