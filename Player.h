@@ -59,7 +59,6 @@ public:
     void setHaveActiveCombo(bool haveActiveCombo);
 
     int getId() const;
-
     void setId(int id);
 
 private:
