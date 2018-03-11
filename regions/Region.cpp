@@ -8,6 +8,7 @@ Region::Region() {
     owner = Owner ::Non;
     border = false;
     lostTribes = false;
+    population = 0;
 }
 
 Region::~Region() {}
@@ -84,8 +85,16 @@ void Region::displayGamePieces(){
 }
 
 void Region::info() {
-    cout<< "Region " << id << ": " << "Owmer:" << owner  << " Landform:"
+    cout<< "Region " << id << ": " << "Owmer:" << owner  <<" Population:" << population << " Landform:"
         << landform << " LandMark:" << landMark << " Border:" << isBorder()
         << " LostTribes:" << isLostTribes() << " ";
     displayGamePieces();
+}
+
+int Region::getPopulation() const {
+    return population;
+}
+
+void Region::setPopulation(int population) {
+    Region::population = population;
 }

@@ -23,6 +23,9 @@ public:
     void pickRace(ComboList&);
     void picks_race(ComboList&, int);
     void conquers();
+
+    void firstConquest();
+
     void scores();
     int reinforcementDie();
     void currentStates();

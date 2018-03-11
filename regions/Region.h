@@ -32,6 +32,7 @@ private:
     Owner owner ;
     bool border;
     bool lostTribes;
+    int population;
     vector<GamePieces*> gamePieces;
 
 public:
@@ -62,9 +63,9 @@ public:
 
     void setLostTribes(bool lostTribes);
 
-//    const vector<GamePieces *, allocator<GamePieces *>> &getPieces() const;
+    int getPopulation() const;
 
-//    void setPieces(const vector<GamePieces *, allocator<GamePieces *>> &Pieces);
+    void setPopulation(int population);
 
     void addGamePieces(GamePieces* pieces);
 
