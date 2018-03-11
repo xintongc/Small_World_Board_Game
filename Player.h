@@ -25,16 +25,25 @@ public:
     void picks_race(ComboList&, int);
     void conquers();
 
+
+
+
+//    bool isBorder(MapRegions* regions,int regionID); //need improve later
+    void conqueredRegion(int regionID);
     void firstConquest(int playerNum);
     Map* chooseMap(int playerNum); //return map according to player number
-//    bool isBorder(MapRegions* regions,int regionID); //need improve later
-    void conquerRegion(int regionID);
     void enemyLossesWithdrawals(int regionID, int requiredTokens);
     void redeployTokens(int n);
     void followingConquest();
     bool connectedToConquestRegion(int regionID);
     vector<int> ownedRegions();
     int playerNum();
+    int basicRequiredTokens(int regionID);
+    int requiredTokensToConquer(int regionID);
+    void finalConquestAttempt();
+    bool ownedRegion(int regionID);
+    bool emptyRegion(int regionID);
+
 
 
     void scores();
