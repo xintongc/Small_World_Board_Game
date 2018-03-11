@@ -3,6 +3,8 @@
 //
 
 #include "Swamp.h"
+#include<iostream>
+using namespace std;
 
 Swamp::Swamp() {
     setTokens(4);
@@ -16,4 +18,9 @@ Swamp::Swamp(const Swamp& orig){
 
 Swamp::~Swamp() {
 
+}
+
+
+void Swamp::powerSkill() {
+    cout<<"Collect 1 bonus Victory coin for each Swamp Region you occupy at turn's end."<<endl;
 }

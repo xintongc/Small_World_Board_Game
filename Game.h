@@ -31,7 +31,7 @@ public:
 
     void startNewTurn();
     bool allPlayersFinishATurn();
-
+    void endingGame();
 
     const Player &getTurnMaker() const;
     int getRound() const;

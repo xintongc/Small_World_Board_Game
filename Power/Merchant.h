@@ -8,9 +8,8 @@
 class Merchant: public Power {
 public:
     Merchant();
-    Merchant(const Merchant& orig);
     virtual ~Merchant();
-private:
+    virtual void powerSkill();
 
 };
 

@@ -13,7 +13,7 @@ public:
     Swamp();
     Swamp(const Swamp& orig);
     virtual ~Swamp();
-
+    virtual void powerSkill();
 };
 
 

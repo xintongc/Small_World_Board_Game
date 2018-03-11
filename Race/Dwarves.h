@@ -12,7 +12,7 @@ class Dwarves : public Race {
 public:
     Dwarves();
     ~Dwarves();
-    void raceSkill();
+    virtual void raceSkill();
 };
 
 

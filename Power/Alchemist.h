@@ -8,10 +8,10 @@
 class Alchemist: public Power {
 public:
     Alchemist();
-    Alchemist(const Alchemist& orig);
     virtual ~Alchemist();
 
-private:
+    virtual void powerSkill();
+
 
 };
 

@@ -1,6 +1,7 @@
 
-
 #include "Merchant.h"
+#include<iostream>
+using namespace std;
 
 Merchant::Merchant() {
     setTokens(2);
@@ -8,9 +9,9 @@ Merchant::Merchant() {
     setPower("");
 }
 
-Merchant::Merchant(const Merchant& orig) {
-}
-
 Merchant::~Merchant() {
 }
 
+void Merchant::powerSkill() {
+    cout<<"Collect 1 bonus Victory coin for any Region you occupy."<<endl;
+}

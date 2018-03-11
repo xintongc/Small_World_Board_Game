@@ -8,9 +8,8 @@
 class Forest : public Power {
 public:
     Forest();
-    Forest(const Forest& orig);
     virtual ~Forest();
-private:
+    virtual void powerSkill();
 
 };
 

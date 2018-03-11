@@ -16,5 +16,5 @@ Orcs::Orcs() {
 Orcs::~Orcs() {}
 
 void Orcs::raceSkill() {
-    cout<<"Earn 1 more coin on each conquered region"<<endl;
+    cout<<"Each not empty Region your Orcs conquered this turn is worth 1 bonus Victory coin."<<endl;
 }
