@@ -180,9 +180,18 @@ void Player::conquerRegion(int regionID){
     } else {
         twoPlayerRegions->getRegion(regionID)->setOwner((Owner)id);
         twoPlayerRegions->getRegion(regionID)->setPopulation(requiredTokens);
+        totalTokens = totalTokens - requiredTokens;
     }
 
 }
+
+void Player::enemyLossesWithdrawals(){
+
+}
+
+//void Player::followingConquest(){
+//
+//}
 
 void Player::scores(){
     cout<<"score"<<endl;
