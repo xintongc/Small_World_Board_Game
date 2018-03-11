@@ -15,7 +15,7 @@ public:
     virtual ~MapRegions();
 
     void display();
-    void twoPlayerRegions();
+    void createTwoPlayerRegions();
     void info();
 };
 
