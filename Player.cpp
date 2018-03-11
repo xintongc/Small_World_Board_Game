@@ -186,14 +186,38 @@ void Player::conquerRegion(int regionID){
 
 }
 
-void Player::enemyLossesWithdrawals(int regionID){
+void Player::enemyLossesWithdrawals(int regionID, int requiredTokens){
     Game* game = Game::getGame();
     MapRegions* playerRegions = MapRegions::getMapRegions();
 
     int enemyPopulation = playerRegions->getRegion(regionID)->getPopulation();
     int enemyID = (int)playerRegions->getRegion(regionID)->getOwner();
-    game->Players[2].getTotalTokens();
 
+    playerRegions->getRegion(regionID)->setOwner((Owner)id);    //set owner of conquer region to self
+    playerRegions->getRegion(regionID)->setPopulation(requiredTokens); //put populations to conquer region
+
+    int enemyWithdrawalTokens = game->Players[enemyID].getTotalTokens()/2;
+    int enemyAvailableTokens = game->Players[enemyID].getTotalTokens();
+    int enemyLeftTokens = enemyAvailableTokens - enemyWithdrawalTokens;
+    game->Players[enemyID].setTotalTokens(enemyLeftTokens);             //withdrawl enemy's tokens
+    game->Players[enemyID].redeployTokens(enemyLeftTokens);  //let enemy redeploy the tokens
+
+}
+
+void Player::redeployTokens(int tokens){
+    MapRegions* playerRegions = MapRegions::getMapRegions();
+    playerRegions->display();
+    int regionID;
+    cout << "Player[" << id << "], your region is been conquerd, please select your left regions to redeploy your tokens:";
+    cin >> regionID;
+
+    while(playerRegions->getRegion(regionID)->getId() != id){
+        cout << "This region is not yours, please select your region again:";
+        cin >> regionID;
+    }
+
+    int currentPopulation = playerRegions->getRegion(regionID)->getPopulation();
+    playerRegions->getRegion(regionID)->setPopulation(currentPopulation + tokens);  //redeploy tokens to select regions which owned by player
 
 }
 
