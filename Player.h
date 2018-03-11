@@ -16,7 +16,7 @@
 class Player {
 
 public:
-    Player();
+    Player(int id);
     ~Player();
 
     vector<Region> occupiedRegions;
