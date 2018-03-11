@@ -17,7 +17,6 @@
 class Game {
 
 private:
-    Map map = Map(1);
     int round;
     int NumOfPlayers;
     int totalTurns;

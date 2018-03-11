@@ -9,11 +9,14 @@
 
 class MapRegions {
 private:
-    vector<Region*> regions;
-public:
-    MapRegions();
-    virtual ~MapRegions();
 
+    static MapRegions* mapRegions;
+    vector<Region*> regions;
+    MapRegions();
+
+public:
+    virtual ~MapRegions();
+    static MapRegions* getMapRegions();
     void display();
     void createTwoPlayerRegions();
     void info();
