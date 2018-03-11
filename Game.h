@@ -17,13 +17,17 @@
 class Game {
 
 private:
+
+    static Game* game;
+    Game();
     int round;
     int NumOfPlayers;
     int totalTurns;
     int turnMakerIndex;
 
 public:
-    Game();
+//    Game();
+    static Game* getGame();
     virtual ~Game();
     void initial();
     void initialPlayer();
@@ -33,20 +37,17 @@ public:
     bool allPlayersFinishATurn();
     void endingGame();
 
-    const Player &getTurnMaker() const;
     int getRound() const;
     int getTotalTurns() const;
     int getNumOfPlayers() const;
     int getTurnMakerIndex() const;
 
     void setRound(int round);
-    void setTurnMaker(const Player &turnMaker);
     void setTotalTurns(int totalTurns);
     void setNumOfPlayers(int playerNumber);
     void setTurnMakerIndex(int turnMakerIndex);
 
     vector<Player> Players;
-    Player turnMaker;
 
 };
 

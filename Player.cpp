@@ -8,7 +8,8 @@
 #include "regions/MapRegions.h"
 
 //constructor, default 5 coins for player 
-Player::Player() {
+Player::Player(int id) {
+    this->id = id;
     totalTokens = 0;
     victoryCoins = 50;
     haveActiveCombo=false;
@@ -186,6 +187,9 @@ void Player::conquerRegion(int regionID){
 }
 
 void Player::enemyLossesWithdrawals(){
+    Game* game = Game::getGame();
+    game->getGame()->Players[2].getTotalTokens();
+
 
 }
 

@@ -12,6 +12,14 @@ class MapLoader;
 
 using namespace std;
 
+Game* Game::game = 0;
+Game* Game::getGame(){
+    if(game == 0){
+        game = new Game;
+    }
+    return game;
+}
+
 Game::Game() {
     round=1;
 }
@@ -57,8 +65,9 @@ void Game::initial() {
 void Game::initialPlayer() {
     round=1;
 
-    Players.push_back(Player());
-    Players.push_back(Player());
+    Players.push_back(Player(0));
+    Players.push_back(Player(1));
+    Players.push_back(Player(2));
 
     switch (NumOfPlayers){
         case 2:
@@ -66,18 +75,18 @@ void Game::initialPlayer() {
             break;
         case 3:
             totalTurns=10;
-            Players.push_back(Player());
+            Players.push_back(Player(3));
             break;
         case 4:
             totalTurns=9;
-            Players.push_back(Player());
-            Players.push_back(Player());
+            Players.push_back(Player(3));
+            Players.push_back(Player(4));
             break;
         case 5:
             totalTurns=8;
-            Players.push_back(Player());
-            Players.push_back(Player());
-            Players.push_back(Player());
+            Players.push_back(Player(3));
+            Players.push_back(Player(4));
+            Players.push_back(Player(5));
             break;
     }
     //cout<<Players.size()<<" players are created in the game. "<<endl;
@@ -103,7 +112,7 @@ void Game::startNewTurn() {
                 index=i;
             }
         }
-        setTurnMaker(Players[index]);           //useless
+//        setTurnMaker(Players[index]);           //useless
         setTurnMakerIndex(index);
         setRound(getRound()+1);                 //The First Player moves the Game Turn marker forward one spot on the Game Turn Track
 
@@ -135,13 +144,6 @@ void Game::setRound(int round) {
     Game::round = round;
 }
 
-const Player &Game::getTurnMaker() const {
-    return turnMaker;
-}
-
-void Game::setTurnMaker(const Player &turnMaker) {
-    Game::turnMaker = turnMaker;
-}
 
 int Game::getTotalTurns() const {
     return totalTurns;
