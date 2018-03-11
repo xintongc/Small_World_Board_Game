@@ -29,7 +29,8 @@ public:
     Map* chooseMap(int playerNum); //return map according to player number
 //    bool isBorder(MapRegions* regions,int regionID); //need improve later
     void conquerRegion(int regionID);
-    void enemyLossesWithdrawals(int);
+    void enemyLossesWithdrawals(int regionID, int requiredTokens);
+    void redeployTokens(int n);
 
     void scores();
     int reinforcementDie();
