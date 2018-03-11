@@ -6,6 +6,13 @@
 #include "RegionBuilder.h"
 #include "../gamePieces/Mountains.h"
 
+MapRegions* MapRegions::mapRegions = 0;
+MapRegions* MapRegions::getMapRegions() {
+    if(mapRegions == 0){
+        mapRegions = new MapRegions;
+    }
+    return mapRegions;
+}
 
 MapRegions::MapRegions() {}
 MapRegions::~MapRegions() {}
