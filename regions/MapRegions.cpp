@@ -23,7 +23,7 @@ void MapRegions::info(){
     cout << "           0     1     2      3          4" <<endl;
 }
 
-void MapRegions::createTwoPlayerRegions(){
+void MapRegions::twoPlayerRegions(){
 
     RegionBuilder* regionBuilder1 = new RegionBuilder();
     RegionBuilder* regionBuilder2 = new RegionBuilder();

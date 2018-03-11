@@ -16,6 +16,7 @@ Game::Game() {
     round=1;
 }
 
+
 Game::~Game() {
 }
 
@@ -35,7 +36,7 @@ void Game::initial() {
 
     switch (playerNumber){
         case 2:
-            mapLoader.openFile("D:/CLion-workspace/small_world/twoPlayer.map");
+            mapLoader.openFile("/Users/zncu/CLionProjects/small world/twoPlayer.map");
             break;
         case 3:
             mapLoader.openFile("D:/CLion-workspace/small_world/threePlayer.map");
@@ -94,23 +95,24 @@ bool Game::allPlayersFinishATurn() {
 
 
 void Game::startNewTurn() {
-        int temp=0;
-        int index=0;
-        for(int i =0;i<NumOfPlayers;i++){       //--------------find who has the most coins and assign to turn maker----
-            if(temp<Players[i].getVictoryCoins()){
-                temp=Players[i].getVictoryCoins();
-                index=i;
-            }
+    int temp=0;
+    int index=0;
+    for(int i =0;i<NumOfPlayers;i++){       //--------------find who has the most coins and assign to turn maker----
+        if(temp<Players[i].getVictoryCoins()){
+            temp=Players[i].getVictoryCoins();
+            index=i;
         }
-        setTurnMaker(Players[index]);           //useless
-        setTurnMakerIndex(index);
-        setRound(getRound()+1);                 //The First Player moves the Game Turn marker forward one spot on the Game Turn Track
+    }
+    setTurnMaker(Players[index]);
+    setTurnMakerIndex(index);
+    round++;
 
-        for(int i=0;i<NumOfPlayers;i++){        //------every new turn, set all players play status is false------------
-            Players[i].setPlayed(false);
-        }
-        cout<<"\nturn maker is player"<<getTurnMakerIndex()+1<<". Turn "<<round<<" start now."<<endl;
+    for(int i=0;i<NumOfPlayers;i++){        //------every new turn, set all players play status is false------------
+        Players[i].setPlayed(false);
+    }
+    cout<<"turn maker is player"<<index<<". Turn "<<round<<" start now."<<endl;
 }
+
 
 
 

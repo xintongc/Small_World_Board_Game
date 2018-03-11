@@ -25,7 +25,10 @@ Map::Map(int n) {
 }
 
 Map::~Map() {
-    delete adjacencyMatrix;
+    for(int i = 0; i < n; i++){
+        delete [] adjacencyMatrix[i];
+    }
+    delete [] adjacencyMatrix;
 }
 
 
