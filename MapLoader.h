@@ -23,7 +23,7 @@ public:
     void openFile(string path);
     void closeInput();
     void readFile();
-    Map buildMap();
+    void buildMap();
 
 
 private:

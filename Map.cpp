@@ -4,6 +4,17 @@
 
 #include "Map.h"
 
+Map* Map::map = 0;
+
+Map* Map::getMap(int n)
+{
+    if (map == 0)
+    {
+        map = new Map(n);
+    }
+
+    return map;
+}
 
 Map::Map(int n) {
 
