@@ -11,7 +11,7 @@ Power::~Power() {
 
 }
 
-void Power:: usePower(){
+void Power:: powerSkill(){
 
 }
 

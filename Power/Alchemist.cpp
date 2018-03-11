@@ -1,5 +1,7 @@
 
 #include "Alchemist.h"
+#include<iostream>
+using namespace std;
 
 Alchemist::Alchemist() {
     setTokens(4);
@@ -7,9 +9,10 @@ Alchemist::Alchemist() {
     setPower("");
 }
 
-Alchemist::Alchemist(const Alchemist& orig) {
-}
 
 Alchemist::~Alchemist() {
 }
 
+void Alchemist::powerSkill() {
+    cout<<"Collect 2 bonus Victory coins at the end of each turn."<<endl;
+}

@@ -10,7 +10,7 @@ public:
     Hill();
     Hill(const Hill& orig);
     virtual ~Hill();
-private:
+    virtual void powerSkill();
 
 };
 

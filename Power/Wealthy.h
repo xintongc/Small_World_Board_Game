@@ -4,13 +4,14 @@
 #define WEALTHY_H
 
 #include "Power.h"
+#include "../Player.h"
 
 class Wealthy: public Power {
 public:
     Wealthy();
-    Wealthy(const Wealthy& orig);
     virtual ~Wealthy();
-private:
+    virtual void powerSkill();
+    void power(Player&);
 
 };
 

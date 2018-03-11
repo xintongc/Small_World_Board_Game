@@ -16,4 +16,5 @@ Dwarves::~Dwarves() {}
 
 void Dwarves::raceSkill() {
     cout<<"Dwarves' skill is earing more one coin for each mine region "<<endl;
+
 }

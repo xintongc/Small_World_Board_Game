@@ -112,7 +112,17 @@ void Game::startNewTurn() {
         cout<<"\nturn maker is player"<<getTurnMakerIndex()+1<<". Turn "<<round<<" start now."<<endl;
 }
 
-
+void Game::endingGame() {
+    int temp=0;
+    int Winnerindex=0;
+    for(int i =0;i<NumOfPlayers;i++){
+        if(temp<Players[i].getVictoryCoins()){
+            temp=Players[i].getVictoryCoins();
+            Winnerindex=i;
+        }
+    }
+    cout<<"The winner is player"<<Winnerindex+1<<endl;
+}
 
 
 //-------------getter and setter --------------------

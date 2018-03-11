@@ -10,7 +10,6 @@ using namespace std;
 Humans::Humans() {
     setTokens(5);
     setType("Humans");
-    //setSkill("");
 }
 
 Humans::~Humans() {}

@@ -12,7 +12,7 @@ class Humans: public Race {
 public:
     Humans();
     ~Humans();
-    void raceSkill();
+    virtual void raceSkill();
 };
 
 

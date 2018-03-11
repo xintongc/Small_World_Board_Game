@@ -15,5 +15,5 @@ Wizards::Wizards() {
 Wizards::~Wizards() {}
 
 void Wizards::raceSkill() {
-    cout<<"magic region worth 1 coin"<<endl;
+    cout<<"Each Magic Region your Wizards occupy is worth 1 bonus Victory coin."<<endl;
 }

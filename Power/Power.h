@@ -13,7 +13,7 @@ public:
     Power();
     virtual ~Power();
 
-    void usePower();
+    virtual void powerSkill();
 
     int getTokens() const;
     const std::string &getType() const;

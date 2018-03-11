@@ -5,6 +5,7 @@
 #ifndef SMALL_WORLD_RACE_H
 #define SMALL_WORLD_RACE_H
 #include<string>
+#include "../regions/Region.h"
 
 class Race {
 public:
@@ -20,6 +21,7 @@ public:
     void setTokens(int tokens);
     void setSkill(const std::string &skill);
     void setType(const std::string &type);
+
 
 private:
     int tokens;
