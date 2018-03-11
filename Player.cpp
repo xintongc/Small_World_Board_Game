@@ -124,6 +124,14 @@ void Player::conquers(){
     cout<<"conquer"<<endl;
 }
 
+void Player::firstConquest(){
+    cout << "Please select the Region you want to first conquest." << endl;
+    int n;
+    cin >> n;
+
+
+}
+
 void Player::scores(){
     cout<<"score"<<endl;
 

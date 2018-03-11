@@ -7,7 +7,7 @@
 
 
 #include "Power/Power.h"
-#include "Region.h"
+#include "regions/Region.h"
 #include "Race/Race.h"
 #include "ComboList.h"
 #include <vector>
@@ -23,6 +23,9 @@ public:
     void pickRace(ComboList&);
     void picks_race(ComboList&, int);
     void conquers();
+
+    void firstConquest();
+
     void scores();
     int reinforcementDie();
     void currentStates();
