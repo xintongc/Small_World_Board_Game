@@ -193,7 +193,7 @@ void Player::enemyLossesWithdrawals(int regionID, int requiredTokens){
     int enemyPopulation = playerRegions->getRegion(regionID)->getPopulation();
     int enemyID = (int)playerRegions->getRegion(regionID)->getOwner();
 
-    playerRegions->getRegion(regionID)->setOwner((Owner)id);    //set owner of conquer region to self
+    playerRegions->getRegion(regionID)->setOwner((Owner)id);    //set owner of conquer region to itself
     playerRegions->getRegion(regionID)->setPopulation(requiredTokens); //put populations to conquer region
 
     int enemyWithdrawalTokens = game->Players[enemyID].getTotalTokens()/2;
@@ -219,6 +219,46 @@ void Player::redeployTokens(int tokens){
     int currentPopulation = playerRegions->getRegion(regionID)->getPopulation();
     playerRegions->getRegion(regionID)->setPopulation(currentPopulation + tokens);  //redeploy tokens to select regions which owned by player
 
+}
+
+void Player::followingConquest(){
+    cout << "Please input the region you want to conquerd:";
+    int regionID;
+    cin >> regionID;
+    while(!connectedToConquestRegion(regionID)){
+        cout << "You unable to conquerd this region, since it is not connected to your owned regions" << endl;
+        cin >> regionID;
+    }
+    //can be conquest or not
+}
+
+bool Player::connectedToConquestRegion(int regionID){
+    vector<int> ownedRegions = ownedRegions();
+    int playerNum = playerNum();
+    Map* map = chooseMap(playerNum);
+
+    for (int i = 0; i < ownedRegions.size(); ++i) {
+        if(map->connected(regionID,ownedRegions[i])){
+            return true;
+        }
+    }
+    return false;
+}
+
+vector<int> Player::ownedRegions(){
+    vector<int> ownedRegions;
+    MapRegions* playerRegions = MapRegions::getMapRegions();
+    for (int i = 0; i < playerRegions->getRegionsSize(); ++i) {
+        if((int)playerRegions->getRegion(i)->getOwner() == id){
+            ownedRegions.push_back(i);
+        }
+    }
+    return ownedRegions;
+}
+
+int Player::playerNum(){
+    Game* game = Game::getGame();
+    return game->getNumOfPlayers();
 }
 
 //void Player::followingConquest(){

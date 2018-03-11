@@ -31,6 +31,11 @@ public:
     void conquerRegion(int regionID);
     void enemyLossesWithdrawals(int regionID, int requiredTokens);
     void redeployTokens(int n);
+    void followingConquest();
+    bool connectedToConquestRegion(int regionID);
+    vector<int> ownedRegions();
+    int playerNum();
+
 
     void scores();
     int reinforcementDie();
