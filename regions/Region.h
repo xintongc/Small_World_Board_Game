@@ -76,6 +76,7 @@ public:
     void info();
 
     bool hasMountain();
+    bool isFarmLand();
 
 
 

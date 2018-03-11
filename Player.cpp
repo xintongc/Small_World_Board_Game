@@ -163,13 +163,13 @@ void Player::firstConquest(int playerNum){
 
 void Player::conquerRegion(int regionID){
     int requiredTokens = 2;
-    MapRegions* twoPlayerRegions = MapRegions::getMapRegions();
+    MapRegions* playerRegions = MapRegions::getMapRegions();
 
-    if(twoPlayerRegions->getRegion(regionID)->isLostTribes()){
+    if(playerRegions->getRegion(regionID)->isLostTribes()){
         requiredTokens++;
     }
 
-    if(twoPlayerRegions->getRegion(regionID)->hasMountain()){
+    if(playerRegions->getRegion(regionID)->hasMountain()){
         requiredTokens ++;
     }
 
@@ -178,8 +178,8 @@ void Player::conquerRegion(int regionID){
         cin >> regionID;
         conquerRegion(regionID);
     } else {
-        twoPlayerRegions->getRegion(regionID)->setOwner((Owner)id);
-        twoPlayerRegions->getRegion(regionID)->setPopulation(requiredTokens);
+        playerRegions->getRegion(regionID)->setOwner((Owner)id);
+        playerRegions->getRegion(regionID)->setPopulation(requiredTokens);
         totalTokens = totalTokens - requiredTokens;
     }
 
