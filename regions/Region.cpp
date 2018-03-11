@@ -155,3 +155,7 @@ bool Region::isCavern(){
 bool Region::isMine_Cavern(){
     return (int)getLandMark()==4;
 }
+
+int Region::getOwnerID() {
+    return (int)owner;
+}

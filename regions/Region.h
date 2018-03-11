@@ -63,6 +63,8 @@ public:
     void addGamePieces(GamePieces* pieces);
     vector <GamePieces*> getGamePiecesVector();
 
+    int getOwnerID();
+
     void displayGamePieces();
     void info();
 
