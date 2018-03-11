@@ -481,3 +481,7 @@ void MapRegions::createFivePlayerRegions() {
     regions.push_back(region48);
 
 }
+
+Region* MapRegions::getRegion(int i){
+    return regions[i - 1];
+}

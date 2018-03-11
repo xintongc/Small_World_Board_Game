@@ -141,55 +141,63 @@ Map* Player::chooseMap(int playerNum){
 //    return regions->getRegion(regionID)->isBorder();
 //}  not working (functin pointer)
 
-//void Player::firstConquest(int playerNum){
-//    cout << "Please select the Region you want to first conquest." << endl;
-//    int n;
-//    cin >> n;
-//
-//    MapRegions* twoPlayerRegions = MapRegions::getMapRegions();
-//    bool isBorder = twoPlayerRegions->getRegion(n)->isBorder();
-//
-//    if(isBorder){
-//        conquerRegion(n);
-//    } else{
-//        while(!isBorder){
-//            cout << "Please choose again,your first conquest region must be a border region" << endl;
-//            cin >> n;
-//  //          isBorder = isBorder(twoPlayerRegions,n);
-//            isBorder = twoPlayerRegions->getRegion(n)->isBorder();
-//        }
-//    }
-//}
-//
-//void Player::conquerRegion(int regionID){
-//    int requiredTokens = 2;
-//    MapRegions* twoPlayerRegions = MapRegions::getMapRegions();
-//
-//    if(twoPlayerRegions->getRegion(regionID)->isLostTribes()){
-//        requiredTokens++;
-//    }
-//
-//    if(twoPlayerRegions->getRegion(regionID)->hasMountain()){
-//        requiredTokens ++;
-//    }
-//
-//    if(requiredTokens > totalTokens){
-//        cout << "You don't have enough tokens to conquer this region, please choose again" << endl;
-//        cin >> regionID;
-//        conquerRegion(regionID);
-//    } else {
-//        twoPlayerRegions->getRegion(regionID)->setOwner((Owner)id);
-//        twoPlayerRegions->getRegion(regionID)->setPopulation(requiredTokens);
-//    }
-//
-//}
+void Player::firstConquest(int playerNum){
+    cout << "Please select the Region you want to first conquest." << endl;
+    int n;
+    cin >> n;
 
-void Player::scores() {
-    cout<<"score"<<endl;
-    setPlayed(true);                //----------finish play----------------------------
+    MapRegions* twoPlayerRegions = MapRegions::getMapRegions();
+    bool isBorder = twoPlayerRegions->getRegion(n)->isBorder();
+
+    if(isBorder){
+        conquerRegion(n);
+    } else{
+        while(!isBorder){
+            cout << "Please choose again,your first conquest region must be a border region" << endl;
+            cin >> n;
+  //          isBorder = isBorder(twoPlayerRegions,n);
+            isBorder = twoPlayerRegions->getRegion(n)->isBorder();
+        }
+    }
 }
 
+void Player::conquerRegion(int regionID){
+    int requiredTokens = 2;
+    MapRegions* twoPlayerRegions = MapRegions::getMapRegions();
 
+    if(twoPlayerRegions->getRegion(regionID)->isLostTribes()){
+        requiredTokens++;
+    }
+
+    if(twoPlayerRegions->getRegion(regionID)->hasMountain()){
+        requiredTokens ++;
+    }
+
+    if(requiredTokens > totalTokens){
+        cout << "You don't have enough tokens to conquer this region, please choose again" << endl;
+        cin >> regionID;
+        conquerRegion(regionID);
+    } else {
+        twoPlayerRegions->getRegion(regionID)->setOwner((Owner)id);
+        twoPlayerRegions->getRegion(regionID)->setPopulation(requiredTokens);
+        totalTokens = totalTokens - requiredTokens;
+    }
+
+}
+
+void Player::enemyLossesWithdrawals(){
+
+}
+
+//void Player::followingConquest(){
+//
+//}
+
+void Player::scores(){
+    cout<<"score"<<endl;
+
+    setPlayed(true);                //----------finish play----------------------------
+}
 
 
 
