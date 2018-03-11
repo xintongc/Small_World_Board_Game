@@ -20,6 +20,7 @@ Game::~Game() {
 }
 
 //--------D:/CLion-workspace/small_world/
+///Users/zncu/CLionProjects/small world/
 void Game::initial() {
     int playerNumber = 0;
 
@@ -35,7 +36,7 @@ void Game::initial() {
 
     switch (playerNumber){
         case 2:
-            mapLoader.openFile("D:/CLion-workspace/small_world/twoPlayer.map");
+            mapLoader.openFile("/Users/zncu/CLionProjects/small world/threePlayer.map");
             break;
         case 3:
             mapLoader.openFile("D:/CLion-workspace/small_world/threePlayer.map");

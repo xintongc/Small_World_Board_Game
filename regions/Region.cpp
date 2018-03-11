@@ -115,3 +115,7 @@ bool Region::hasMountain(){
     }
     return false;
 }
+
+bool Region::isFarmLand(){
+    return (int)getLandform() == 0;
+}
