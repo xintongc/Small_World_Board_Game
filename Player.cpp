@@ -186,15 +186,79 @@ void Player::conquerRegion(int regionID){
 
 }
 
-void Player::enemyLossesWithdrawals(int regionID){
+void Player::enemyLossesWithdrawals(int regionID, int requiredTokens){
     Game* game = Game::getGame();
     MapRegions* playerRegions = MapRegions::getMapRegions();
 
     int enemyPopulation = playerRegions->getRegion(regionID)->getPopulation();
     int enemyID = (int)playerRegions->getRegion(regionID)->getOwner();
-    game->Players[2].getTotalTokens();
 
+    playerRegions->getRegion(regionID)->setOwner((Owner)id);    //set owner of conquer region to itself
+    playerRegions->getRegion(regionID)->setPopulation(requiredTokens); //put populations to conquer region
 
+    int enemyWithdrawalTokens = game->Players[enemyID].getTotalTokens()/2;
+    int enemyAvailableTokens = game->Players[enemyID].getTotalTokens();
+    int enemyLeftTokens = enemyAvailableTokens - enemyWithdrawalTokens;
+    game->Players[enemyID].setTotalTokens(enemyLeftTokens);             //withdrawl enemy's tokens
+    game->Players[enemyID].redeployTokens(enemyLeftTokens);  //let enemy redeploy the tokens
+
+}
+
+void Player::redeployTokens(int tokens){
+    MapRegions* playerRegions = MapRegions::getMapRegions();
+    playerRegions->display();
+    int regionID;
+    cout << "Player[" << id << "], your region is been conquerd, please select your left regions to redeploy your tokens:";
+    cin >> regionID;
+
+    while(playerRegions->getRegion(regionID)->getId() != id){
+        cout << "This region is not yours, please select your region again:";
+        cin >> regionID;
+    }
+
+    int currentPopulation = playerRegions->getRegion(regionID)->getPopulation();
+    playerRegions->getRegion(regionID)->setPopulation(currentPopulation + tokens);  //redeploy tokens to select regions which owned by player
+
+}
+
+void Player::followingConquest(){
+    cout << "Please input the region you want to conquerd:";
+    int regionID;
+    cin >> regionID;
+    while(!connectedToConquestRegion(regionID)){
+        cout << "You unable to conquerd this region, since it is not connected to your owned regions" << endl;
+        cin >> regionID;
+    }
+    //can be conquest or not
+}
+
+bool Player::connectedToConquestRegion(int regionID){
+    vector<int> ownedRegions = ownedRegions();
+    int playerNum = playerNum();
+    Map* map = chooseMap(playerNum);
+
+    for (int i = 0; i < ownedRegions.size(); ++i) {
+        if(map->connected(regionID,ownedRegions[i])){
+            return true;
+        }
+    }
+    return false;
+}
+
+vector<int> Player::ownedRegions(){
+    vector<int> ownedRegions;
+    MapRegions* playerRegions = MapRegions::getMapRegions();
+    for (int i = 0; i < playerRegions->getRegionsSize(); ++i) {
+        if((int)playerRegions->getRegion(i)->getOwner() == id){
+            ownedRegions.push_back(i);
+        }
+    }
+    return ownedRegions;
+}
+
+int Player::playerNum(){
+    Game* game = Game::getGame();
+    return game->getNumOfPlayers();
 }
 
 //void Player::followingConquest(){
