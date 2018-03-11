@@ -21,6 +21,7 @@ void MapRegions::display(){
     for(int i = 0; i < regions.size(); i++){
         regions[i]->info();
     }
+    cout<<"\n"<<endl;
 }
 
 void MapRegions::info(){
@@ -484,4 +485,8 @@ void MapRegions::createFivePlayerRegions() {
 
 Region* MapRegions::getRegion(int i){
     return regions[i - 1];
+}
+
+int MapRegions::getRegionsSize() {
+    return regions.size();
 }
