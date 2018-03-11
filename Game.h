@@ -33,6 +33,7 @@ public:
     void initialPlayer();
     void createMap();
 
+    void playGame();
     void startNewTurn();
     bool allPlayersFinishATurn();
     void endingGame();
