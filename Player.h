@@ -26,6 +26,8 @@ public:
     void scores();
     int reinforcementDie();
     void currentStates();
+    void declineCombo(ComboList&, int);
+
 
     int getVictoryCoins() const;
     int getTotalTokens() const;
@@ -37,12 +39,16 @@ public:
     const Power &getActivePower() const;
     const Power &getDeclinePower() const;
     bool isPlayed() const;
+    bool isHaveDeclineCombo() const;
+    bool isHaveActiveCombo() const;
+
     void setActiveRace(const Race &activeRace);
     void setDeclineRace(const Race &declineRace);
     void setActivePower(const Power &activePower);
     void setDeclinePower(const Power &declinePower);
     void setPlayed(bool played);
-
+    void setHaveDeclineCombo(bool haveDeclineCombo);
+    void setHaveActiveCombo(bool haveActiveCombo);
 
 private:
     int victoryCoins;
@@ -52,6 +58,8 @@ private:
     Power activePower;
     Power declinePower;
     bool played;
+    bool haveDeclineCombo;
+    bool haveActiveCombo;
 };
 
 

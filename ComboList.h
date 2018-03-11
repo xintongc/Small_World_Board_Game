@@ -41,6 +41,7 @@ public:
     Race switchRace(int);
     Power switchPower(int);
 
+
 };
 
 

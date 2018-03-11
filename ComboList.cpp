@@ -60,7 +60,7 @@ void ComboList::setupCombo() {
 
 void ComboList::print() {
     printCurrentVectors();
-    showStackTop();
+    //showStackTop();
 }
 
 
@@ -72,6 +72,7 @@ void ComboList::initial() {
         powerUsed[i] = false;
     }
 }
+
 void ComboList::listAllPairs () {
     //----------random race number and add to race stack----------------
     int chooseRace = 0;
@@ -104,48 +105,50 @@ void ComboList::listAllPairs () {
 
 }
 
-void ComboList::printStacks() {
-    cout<<"\n";
-    while( !raceStack.empty() ) {
-        cout << raceStack.top() << " ";
-        raceStack.pop();
-    }
-    cout << "\n";
-    while( !powerStack.empty() ) {
-        cout << powerStack.top() << " ";
-        powerStack.pop();
-    }
-}
+
 
 
 //initially select 5 races and powers to be face-up ComboLists
+//finally changed: add all to vector
 vector <Race> ComboList::initialRaceVector() {
     int temp = 0;
-    for (int i = 0; i < 5; i++) {
-        if (!raceStack.empty()) {
-            temp = raceStack.top();
-            raceStack.pop();
-        }
+//    for (int i = 0; i < 5; i++) {
+//        if (!raceStack.empty()) {
+//            temp = raceStack.top();
+//            raceStack.pop();
+//        }
+//        raceVector.push_back(switchRace(temp));
+//    }
+
+    for (int i = 0; i < 14; i++) {
+        temp = raceStack.top();
+        raceStack.pop();
         raceVector.push_back(switchRace(temp));
     }
     return raceVector;
 }
 
-//initially select 5 races and powers to be face-up ComboLists
 vector <Power> ComboList::initialPowerVector() {
     int temp=0;
-    for(int i=0;i<5;i++) {
-        if (!powerStack.empty()) {
-            temp = powerStack.top();
-            powerStack.pop();
-        }
+//    for(int i=0;i<5;i++) {
+//        if (!powerStack.empty()) {
+//            temp = powerStack.top();
+//            powerStack.pop();
+//        }
+//        powerVector.push_back(switchPower(temp));
+//    }
+
+    for(int i=0;i<20;i++) {
+        temp = powerStack.top();
+        powerStack.pop();
         powerVector.push_back(switchPower(temp));
     }
+
     return powerVector;
 }
 
 vector <int> ComboList::initialCoinsVector() {
-    for(int i=0;i<5;i++){
+    for(int i=0;i<14;i++){
         coinsVector.push_back(0);
     }
     return coinsVector;
@@ -153,57 +156,11 @@ vector <int> ComboList::initialCoinsVector() {
 
 void ComboList::printCurrentVectors() {
     cout<<"\nThe current ComboLists are: "<<endl;
-    for(int i=0;i<5;i++){
+    for(int i=0;i<6;i++){
         cout<<raceVector[i].getType()<<" and " <<powerVector[i].getType()<<". \t Current coins are: "<<coinsVector[i]<<endl;
     }
 }
 
-
-//A total of 6 Race banner and Special Power badge ComboLists should be visible face up on the playing area,
-// including the one on top of the stacks
-void ComboList::showStackTop() {
-    int temp1=0;
-    int temp2=0;
-
-    if (!raceStack.empty()){
-        temp1= raceStack.top();
-    }
-    if (!powerStack.empty()){
-        temp2= powerStack.top();
-    }
-    cout<<switchRace(temp1).getType()<<" and "<<switchPower(temp2).getType()<<". "<<endl;
-}
-
-
-//replenishes the column of ComboLists available to others
-void ComboList::replenishCombo() {
-    //cout<<raceVector.size()<<powerVector.size()<<coinsVector.size()<<endl;
-    //if(raceVector.size()==powerVector.size()==coinsVector.size()){  //check both vectors have same size, but fails
-        if(raceVector.size()<5){
-            int temp1=0;
-            int temp2=0;
-            //do{
-                if (!raceStack.empty()){
-                    temp1= raceStack.top();
-                    raceStack.pop();
-                }
-                if (!powerStack.empty()){
-                    temp2= powerStack.top();
-                    powerStack.pop();
-                }
-                raceVector.push_back(switchRace(temp1));
-                powerVector.push_back(switchPower(temp2));
-                coinsVector.push_back(0);
-            //}while(raceVector.size()<6);
-        }
-        else
-            cout<<"Combo vector don't need to replenish. "<<endl;
-//    }
-//    else{
-//        cout<<"Vectors size are not matched "<<endl;
-//    }
-
-}
 
 
 //create a race and being visible face up on the vector
@@ -426,4 +383,63 @@ Power ComboList::switchPower(int x) {
         default:
             cout<<"Invaid"<<endl;
     }
+}
+
+
+
+void ComboList::printStacks() {
+    cout<<"\n";
+    while( !raceStack.empty() ) {
+        cout << raceStack.top() << " ";
+        raceStack.pop();
+    }
+    cout << "\n";
+    while( !powerStack.empty() ) {
+        cout << powerStack.top() << " ";
+        powerStack.pop();
+    }
+}
+
+//A total of 6 Race banner and Special Power badge ComboLists should be visible face up on the playing area, including the one on top of the stacks
+void ComboList::showStackTop() {
+    int temp1=0;
+    int temp2=0;
+
+    if (!raceStack.empty()){
+        temp1= raceStack.top();
+    }
+    if (!powerStack.empty()){
+        temp2= powerStack.top();
+    }
+    cout<<switchRace(temp1).getType()<<" and "<<switchPower(temp2).getType()<<". "<<endl;
+}
+
+//replenishes the column of ComboLists available to others
+void ComboList::replenishCombo() {
+    //cout<<raceVector.size()<<powerVector.size()<<coinsVector.size()<<endl;
+    //if(raceVector.size()==powerVector.size()==coinsVector.size()){  //check both vectors have same size, but fails
+    if(raceVector.size()<5){
+        int temp1=0;
+        int temp2=0;
+        //do{
+        if (!raceStack.empty()){
+            temp1= raceStack.top();
+            raceStack.pop();
+        }
+        if (!powerStack.empty()){
+            temp2= powerStack.top();
+            powerStack.pop();
+        }
+        raceVector.push_back(switchRace(temp1));
+        powerVector.push_back(switchPower(temp2));
+        coinsVector.push_back(0);
+        //}while(raceVector.size()<6);
+    }
+    else
+        cout<<"Combo vector don't need to replenish. "<<endl;
+//    }
+//    else{
+//        cout<<"Vectors size are not matched "<<endl;
+//    }
+
 }

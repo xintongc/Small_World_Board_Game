@@ -16,7 +16,6 @@ Game::Game() {
     round=1;
 }
 
-
 Game::~Game() {
 }
 
@@ -103,14 +102,14 @@ void Game::startNewTurn() {
                 index=i;
             }
         }
-        setTurnMaker(Players[index]);
+        setTurnMaker(Players[index]);           //useless
         setTurnMakerIndex(index);
-        round++;
+        setRound(getRound()+1);                 //The First Player moves the Game Turn marker forward one spot on the Game Turn Track
 
         for(int i=0;i<NumOfPlayers;i++){        //------every new turn, set all players play status is false------------
             Players[i].setPlayed(false);
         }
-        cout<<"turn maker is player"<<index<<". Turn "<<round<<" start now."<<endl;
+        cout<<"\nturn maker is player"<<getTurnMakerIndex()+1<<". Turn "<<round<<" start now."<<endl;
 }
 
 

@@ -39,6 +39,7 @@ public:
     int getTotalTurns() const;
     int getNumOfPlayers() const;
     int getTurnMakerIndex() const;
+
     void setRound(int round);
     void setTurnMaker(const Player &turnMaker);
     void setTotalTurns(int totalTurns);

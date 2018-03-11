@@ -10,15 +10,30 @@
 Player::Player() {
     totalTokens = 0;
     victoryCoins = 50;
-    //cout << "Player is created"<<endl;
+    haveActiveCombo=false;
+    haveDeclineCombo=false;
 }
 
 Player::~Player() {
 }
 
 void Player::currentStates() {
-    cout<<"\nactive race: "<<getActiveRace().getType()<<" "<<getActiveRace().getTokens()<<endl;
-    cout<<"active power: "<<getActivePower().getType()<<" "<<getActivePower().getTokens()<<endl;
+    if(isHaveActiveCombo()){
+        cout<<"active race: "<<getActiveRace().getType()<<" "<<getActiveRace().getTokens()<<endl;
+        cout<<"active power: "<<getActivePower().getType()<<" "<<getActivePower().getTokens()<<endl;
+    } else{
+        cout<<"active race: empty."<<endl;
+        cout<<"active power: empty."<<endl;
+    }
+
+   if(isHaveDeclineCombo()){
+       cout<<"decline race: "<<getDeclineRace().getType()<<endl;
+       cout<<"decline power: "<<getDeclinePower().getType()<<endl;
+   } else{
+       cout<<"decline race: empty."<<endl;
+       cout<<"decline power: empty."<<endl;
+   }
+
     cout<<"total tokens: "<<getTotalTokens()<<endl;
     cout<<"victory coins: "<<getVictoryCoins()<<endl;
 
@@ -29,7 +44,7 @@ void Player::currentStates() {
 void Player::pickRace(ComboList& combo) {
     int orderNum;
     do{
-        cout<<"\nPlease select the orderNum of combo: ";
+        cout<<"Please select the orderNum of combo: ";
         cin>>orderNum;
 
         //----------check whether have enough coins to select combo----------
@@ -37,9 +52,8 @@ void Player::pickRace(ComboList& combo) {
 //            cout<<"Your victory coins are not enough to select the combo. "<<endl;
 //            continue;
 //        }
-//        else {
-            if (orderNum > 0 && orderNum < 6) {                     //====================pick from vector==============
-                cout << "\nYou choose race \"" << combo.raceVector[orderNum - 1].getType()
+            if (orderNum > 0 && orderNum < 7) {                     //====================pick from vector==============
+                cout << "\nChoosing race \"" << combo.raceVector[orderNum - 1].getType()
                      << "\" and power \"" << combo.powerVector[orderNum - 1].getType()
                      << "\" from comboList vector" << endl;
                 for (int i = 0; i < orderNum - 1; i++) {            //-----------accumulate combo coins-----------------
@@ -50,55 +64,59 @@ void Player::pickRace(ComboList& combo) {
                 setActivePower(combo.powerVector[orderNum - 1]);
                 setVictoryCoins(getVictoryCoins() + combo.coinsVector[orderNum - 1] - (orderNum-1));
                 setTotalTokens(getActiveRace().getTokens() + getActivePower().getTokens());
+                setHaveActiveCombo(true);
 
                 combo.raceVector.erase(combo.raceVector.begin() + orderNum - 1);        //-----------delete selected elements----------
                 combo.powerVector.erase(combo.powerVector.begin() + orderNum - 1);
                 combo.coinsVector.erase(combo.coinsVector.begin() + orderNum - 1);
 
-            }
-            else if (orderNum == 6) {                               //===================pick from stack================
-                for (int i = 0; i < 5; i++) {                       //-----------accumulate combo coins-----------------
-                    combo.coinsVector[i]++;
-                }
-
-                int temp1 = 0;
-                int temp2 = 0;
-
-                if (!combo.raceStack.empty()) {                     //----------------delete elements from stack--------
-                    temp1 = combo.raceStack.top();
-                    combo.raceStack.pop();
-                }
-                if (!combo.powerStack.empty()) {
-                    temp2 = combo.powerStack.top();
-                    combo.powerStack.pop();
-                }
-                cout << "\nYou choose race \"" << combo.switchRace(temp1).getType() << "\" and power \""
-                     << combo.switchPower(temp2).getType() << "\" from combo stack. " << endl;
-
-                activeRace = combo.switchRace(temp1);               //-----------assignment of player's race, power, coins, tokens-----
-                activePower = combo.switchPower(temp2);
-                setTotalTokens(getActiveRace().getTokens() + getActivePower().getTokens());
-                setVictoryCoins(getVictoryCoins() - 5);
-            }
-            else {
+            } else {
                 cout << "Invalid number. " << endl;
                 continue;
             }
-      //  }
     }while(orderNum<1 || orderNum>6);
-
-    combo.replenishCombo();                                         //-----------------------replenish combo------------
-
 }
 
 
 void Player::picks_race(ComboList& combo, int index) {
-    cout<<"\n==============================="<<endl;
+    cout<<"========================================"<<endl;
     combo.print();
-    cout<<"player"<<index<<" is picking race. "<<endl;
+    cout<<"\nplayer"<<index<<" is picking race now: "<<endl;
     pickRace(combo);
-    cout<<"player"<<index<<"\'s current status: "<<endl;
+    cout<<"\nplayer"<<index<<"\'s current status: "<<endl;
     currentStates();
+}
+
+
+void Player::declineCombo(ComboList &combo, int index) {
+    std::string str;
+    bool cond = false;
+    cout<<"========================================"<<endl;
+    cout<<"\nplayer"<<index<<" is playing now: "<<endl;
+
+    do {
+        cout << "Do you want to decline your current combo? (y/n)";
+        cin >> str;
+        if (str == "y" || str == "Y") {
+            if (haveDeclineCombo) {                   //if already have declined combo, clear it and add it to combo vector
+                combo.raceVector.push_back(declineRace);
+                combo.powerVector.push_back(declinePower);
+                haveDeclineCombo = false;
+            }
+            declineRace = activeRace;                 //set current active combo to declined combo
+            declinePower = activePower;
+            haveDeclineCombo = true;
+            haveActiveCombo = false;
+            cond = true;
+            currentStates();
+        } else if (str == "n" || str == "N") {
+            cond = true;
+            currentStates();
+        } else
+            cout << "invalid input, type again. " << endl;
+    } while (!cond);
+
+
 }
 
 
@@ -111,6 +129,13 @@ void Player::scores(){
 
     setPlayed(true);                //----------finish play----------------------------
 }
+
+
+
+
+
+
+
 
 //player rolling a dice
 int Player::reinforcementDie() {
@@ -174,6 +199,22 @@ bool Player::isPlayed() const {
 
 void Player::setPlayed(bool played) {
     Player::played = played;
+}
+
+bool Player::isHaveDeclineCombo() const {
+    return haveDeclineCombo;
+}
+
+void Player::setHaveDeclineCombo(bool haveDeclineCombo) {
+    Player::haveDeclineCombo = haveDeclineCombo;
+}
+
+bool Player::isHaveActiveCombo() const {
+    return haveActiveCombo;
+}
+
+void Player::setHaveActiveCombo(bool haveActiveCombo) {
+    Player::haveActiveCombo = haveActiveCombo;
 }
 
 
