@@ -13,6 +13,9 @@ private:
     Region* region = new Region();
 
 public:
+    RegionBuilder();
+
+    virtual ~RegionBuilder();
 
     Region* build();
 

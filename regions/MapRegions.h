@@ -6,6 +6,7 @@
 #define SMALL_WORLD_TWOPLAYERREGIONS_H
 #include <vector>
 #include "Region.h"
+#include "RegionBuilder.h"
 
 class MapRegions {
 private:
@@ -13,13 +14,18 @@ private:
     static MapRegions* mapRegions;
     vector<Region*> regions;
     MapRegions();
+    vector <RegionBuilder*> regionBuilder;
 
 public:
     virtual ~MapRegions();
     static MapRegions* getMapRegions();
     void display();
     void createTwoPlayerRegions();
+    void createThreePlayerRegions();
+    void createFourPlayerRegions();
+    void createFivePlayerRegions();
     void info();
+
 };
 
 
