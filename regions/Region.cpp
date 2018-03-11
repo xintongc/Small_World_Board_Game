@@ -85,9 +85,17 @@ void Region::displayGamePieces(){
 }
 
 void Region::info() {
-    cout<< "Region " << id << ": " << "Owmer:" << owner  <<" Population:" << population << " Landform:"
-        << landform << " LandMark:" << landMark << " Border:" << isBorder()
-        << " LostTribes:" << isLostTribes() << " ";
+    if(id<10){
+        cout<< "Region 0" << id << ": " << "Owmer:" << owner  <<" Population:" << population << " Landform:"
+            << landform << " LandMark:" << landMark << " Border:" << isBorder()
+            << " LostTribes:" << isLostTribes() << " ";
+    }
+    else{
+        cout<< "Region " << id << ": " << "Owmer:" << owner  <<" Population:" << population << " Landform:"
+            << landform << " LandMark:" << landMark << " Border:" << isBorder()
+            << " LostTribes:" << isLostTribes() << " ";
+    }
+
     displayGamePieces();
 }
 
