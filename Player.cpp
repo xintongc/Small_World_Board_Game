@@ -186,9 +186,13 @@ void Player::conquerRegion(int regionID){
 
 }
 
-void Player::enemyLossesWithdrawals(){
+void Player::enemyLossesWithdrawals(int regionID){
     Game* game = Game::getGame();
-    game->getGame()->Players[2].getTotalTokens();
+    MapRegions* playerRegions = MapRegions::getMapRegions();
+
+    int enemyPopulation = playerRegions->getRegion(regionID)->getPopulation();
+    int enemyID = (int)playerRegions->getRegion(regionID)->getOwner();
+    game->Players[2].getTotalTokens();
 
 
 }
