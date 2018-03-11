@@ -10,6 +10,8 @@
 #include "regions/Region.h"
 #include "Race/Race.h"
 #include "ComboList.h"
+#include "Map.h"
+#include "regions/MapRegions.h"
 #include <vector>
 
 class Player {
@@ -18,13 +20,16 @@ public:
     Player();
     ~Player();
 
-    vector<Region> occupiedRegions;
+//    vector<Region> occupiedRegions;  //can be deleted
 
     void pickRace(ComboList&);
     void picks_race(ComboList&, int);
     void conquers();
 
-    void firstConquest();
+    void firstConquest(int playerNum);
+    Map* chooseMap(int playerNum); //return map according to player number
+//    bool isBorder(MapRegions* regions,int regionID); //need improve later
+    void conquerRegion(int regionID);
 
     void scores();
     int reinforcementDie();
@@ -53,7 +58,12 @@ public:
     void setHaveDeclineCombo(bool haveDeclineCombo);
     void setHaveActiveCombo(bool haveActiveCombo);
 
+    int getId() const;
+
+    void setId(int id);
+
 private:
+    int id;
     int victoryCoins;
     int totalTokens;
     Race activeRace;
