@@ -12,12 +12,12 @@
 #include "ComboList.h"
 #include "Map.h"
 #include "regions/MapRegions.h"
-#include "Game.h"
 #include <vector>
 
 class Player {
 
 public:
+    Player();
     Player(int id);
     ~Player();
 
