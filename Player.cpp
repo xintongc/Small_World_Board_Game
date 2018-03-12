@@ -149,18 +149,6 @@ Map* Player::chooseMap(int playerNum){
 //    return regions->getRegion(regionID)->isBorder();
 //}  not working (functin pointer)
 
-int Player::basicRequiredTokens(int regionID){
-    int requiredTokens = 2;
-    MapRegions* playerRegions = MapRegions::getMapRegions();
-
-    if(playerRegions->getRegion(regionID)->isLostTribes()){
-        requiredTokens++;
-    }
-
-    if(playerRegions->getRegion(regionID)->hasMountain()){
-        requiredTokens ++;
-    }
-}
 
 void Player::firstConquest(int playerNum){
     cout << "Please select the Region you want to first conquest." << endl;
@@ -263,7 +251,22 @@ void Player::finalConquestAttempt(){
 
 }
 
+int Player::basicRequiredTokens(int regionID){
+    int requiredTokens = 2;
+    MapRegions* playerRegions = MapRegions::getMapRegions();
+
+    if(playerRegions->getRegion(regionID)->isLostTribes()){
+        requiredTokens++;
+    }
+
+    if(playerRegions->getRegion(regionID)->hasMountain()){
+        requiredTokens ++;
+    }
+    return requiredTokens;
+}
+
 int Player::requiredTokensToConquer(int regionID){
+
     MapRegions* playerRegions = MapRegions::getMapRegions();
     int requiredTokens = basicRequiredTokens(regionID);
     int population = playerRegions->getRegion(regionID)->getPopulation();
