@@ -47,7 +47,7 @@ public:
 
 
 
-    void scores();
+    void scores(int);
     int reinforcementDie();
     void currentStates();
     void declineCombo(ComboList&, int);
