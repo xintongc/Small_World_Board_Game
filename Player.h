@@ -36,10 +36,9 @@ public:
     void redeployTokens(int n);
     void followingConquest();
     bool connectedToConquestRegion(int regionID);
-    vector<int> ownedRegions();
-    int playerNum();
     int basicRequiredTokens(int regionID);
     int requiredTokensToConquer(int regionID);
+    bool enoughTokensToConquer(int regionID);
     void finalConquestAttempt();
     bool ownedRegion(int regionID);
     bool emptyRegion(int regionID);
