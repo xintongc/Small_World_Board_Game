@@ -304,89 +304,72 @@ bool Player::connectedToConquestRegion(int regionID){
     return false;
 }
 
-void Player::scores() {
-    cout<<"score"<<endl;
-    setPlayed(true);
+void Player::scores(int i) {
+    cout << "\nPlayer"<<i<<"\'s total score at this turn is: ";
+    Game *game = Game::getGame();
+
+    iterateMapRegions(i);                   //------player receives 1 coin from each Region his occupy on the map--------
+
+    if (game->Players[i].getActiveRace().getType() == "Dwarves") {      //------player collect additional Victory coins by Race/Power benefit--------
+        iterateMapRegions(i, LandMark::Mine);
+    } else if (game->Players[i].getActiveRace().getType() == "Humans") {
+        iterateMapRegions(i, Landform::FarmLand);
+    } else if (game->Players[i].getActiveRace().getType() == "Wizards") {
+        iterateMapRegions(i, LandMark::Magic);
+    }
+
+    if (game->Players[i].getActivePower().getType() == "Alchemist") {
+        game->Players[i].setVictoryCoins(game->Players[i].getVictoryCoins() + 2);
+    } else if (game->Players[i].getActivePower().getType() == "Forest") {
+        iterateMapRegions(i, Landform::Forest);
+    } else if (game->Players[i].getActivePower().getType() == "Hill") {
+        iterateMapRegions(i, Landform::Hill);
+    } else if (game->Players[i].getActivePower().getType() == "Merchant") {
+        iterateMapRegions(i);
+    } else if (game->Players[i].getActivePower().getType() == "Swamp") {
+        iterateMapRegions(i, Landform::Swamp);
+    } else if (game->Players[i].getActivePower().getType() == "Wealthy") {
+        if (game->getRound() == 1) {
+            game->Players[i].setVictoryCoins(game->Players[i].getVictoryCoins() + 7);
+        }
+    }
+    cout<<game->Players[i].getVictoryCoins()<<endl;
+
+    setPlayed(true);                //----------finish play----------------------------
 }
 
+void Player::iterateMapRegions(int playerID, Landform x){                       //Collect 1 bonus Victory coin for Landform Region you occupy
+    MapRegions* playerRegions = MapRegions::getMapRegions();
+    Game* game = Game::getGame();
 
+    for(int j=1;j<=playerRegions->getRegionsSize();j++){
+        if(playerRegions->getRegion(j)->getOwnerID()==game->Players[playerID].getId() && playerRegions->getRegion(j)->getLandform()==x){
+            game->Players[playerID].setVictoryCoins(game->Players[playerID].getVictoryCoins()+1);
+        }
+    }
+}
 
-//void Player::scores(){
-//    cout<<"score"<<endl;
-//
-//    Game* game = Game::getGame();
-//
-//    for(int i=1;i<game->Players.size();i++){
-//
-//        iterateMapRegions(i);     //------player receives 1 coin from each Region his occupy on the map--------
-//
-//        if(game->Players[i].getActiveRace().getType()=="Dwarves"){      //------player collect additional Victory coins by Race/Power benefit--------
-//            iterateMapRegions(i, LandMark::Mine);
-//        }
-//        else if(game->Players[i].getActiveRace().getType()=="Humans"){
-//            iterateMapRegions(i, Landform::FarmLand);
-//        }
-//        else if(game->Players[i].getActiveRace().getType()=="Wizards"){
-//            iterateMapRegions(i, LandMark::Magic);
-//        }
-//
-//        if(game->Players[i].getActivePower().getType()=="Alchemist"){
-//            game->Players[i].setVictoryCoins(game->Players[i].getVictoryCoins()+2);
-//        }
-//        else if(game->Players[i].getActivePower().getType()=="Forest"){
-//            iterateMapRegions(i, Landform::Forest);
-//        }
-//        else if(game->Players[i].getActivePower().getType()=="Hill"){
-//            iterateMapRegions(i, Landform::Hill);
-//        }
-//        else if(game->Players[i].getActivePower().getType()=="Merchant"){
-//            iterateMapRegions(i);
-//        }
-//        else if(game->Players[i].getActivePower().getType()=="Swamp"){
-//            iterateMapRegions(i, Landform::Swamp);
-//        }
-//        else if(game->Players[i].getActivePower().getType()=="Wealthy"){
-//            if(game->getRound()==1){
-//                game->Players[i].setVictoryCoins(game->Players[i].getVictoryCoins()+7);
-//            }
-//        }
-//    }
-//
-//    setPlayed(true);                //----------finish play----------------------------
-//}
-//
-//void Player::iterateMapRegions(int playerID, Landform x){                       //Collect 1 bonus Victory coin for Landform Region you occupy
-//    MapRegions* playerRegions = MapRegions::getMapRegions();
-//    Game* game = Game::getGame();
-//
-//    for(int j=1;j<=playerRegions->getRegionsSize();j++){
-//        if(playerRegions->getRegion(j)->getOwnerID()==game->Players[playerID].getId() && playerRegions->getRegion(j)->getLandform()==x){
-//            game->Players[playerID].setVictoryCoins(game->Players[playerID].getVictoryCoins()+1);
-//        }
-//    }
-//}
-//
-//void Player::iterateMapRegions(int playerID, LandMark x){                       //Collect 1 bonus Victory coin for Landmark Region you occupy
-//    MapRegions* playerRegions = MapRegions::getMapRegions();
-//    Game* game = Game::getGame();
-//
-//    for(int j=1;j<=playerRegions->getRegionsSize();j++){
-//        if(playerRegions->getRegion(j)->getOwnerID()==game->Players[playerID].getId() && playerRegions->getRegion(j)->getLandMark()==x){
-//            game->Players[playerID].setVictoryCoins(game->Players[playerID].getVictoryCoins()+1);
-//        }
-//    }
-//}
-//
-//void Player::iterateMapRegions(int playerID){                                   //Collect 1 bonus Victory coin for any Region you occupy
-//    MapRegions* playerRegions = MapRegions::getMapRegions();
-//    Game* game = Game::getGame();
-//
-//    for(int j=1;j<=playerRegions->getRegionsSize();j++){
-//        if(playerRegions->getRegion(j)->getOwnerID()==game->Players[playerID].getId()){
-//            game->Players[playerID].setVictoryCoins(game->Players[playerID].getVictoryCoins()+1);
-//        }
-//    }
-//}
+void Player::iterateMapRegions(int playerID, LandMark x){                       //Collect 1 bonus Victory coin for Landmark Region you occupy
+    MapRegions* playerRegions = MapRegions::getMapRegions();
+    Game* game = Game::getGame();
+
+    for(int j=1;j<=playerRegions->getRegionsSize();j++){
+        if(playerRegions->getRegion(j)->getOwnerID()==game->Players[playerID].getId() && playerRegions->getRegion(j)->getLandMark()==x){
+            game->Players[playerID].setVictoryCoins(game->Players[playerID].getVictoryCoins()+1);
+        }
+    }
+}
+
+void Player::iterateMapRegions(int playerID){                                   //Collect 1 bonus Victory coin for any Region you occupy
+    MapRegions* playerRegions = MapRegions::getMapRegions();
+    Game* game = Game::getGame();
+
+    for(int j=1;j<=playerRegions->getRegionsSize();j++){
+        if(playerRegions->getRegion(j)->getOwnerID()==game->Players[playerID].getId()){
+            game->Players[playerID].setVictoryCoins(game->Players[playerID].getVictoryCoins()+1);
+        }
+    }
+}
 
 
 //player rolling a dice
