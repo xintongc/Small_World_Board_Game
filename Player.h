@@ -11,6 +11,8 @@
 #include "Race/Race.h"
 #include "ComboList.h"
 #include "Map.h"
+#include "regions/MapRegions.h"
+#include "Game.h"
 #include <vector>
 
 class Player {
@@ -49,6 +51,10 @@ public:
     int reinforcementDie();
     void currentStates();
     void declineCombo(ComboList&, int);
+
+    void iterateMapRegions(int, Landform);
+    void iterateMapRegions(int, LandMark);
+    void iterateMapRegions(int);
 
 
     int getVictoryCoins() const;
