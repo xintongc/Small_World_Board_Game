@@ -39,34 +39,27 @@ public:
     Region();
     virtual ~Region();
 
-    int getId() const;
-    void setId(int id);
-
-    Landform getLandform() const;
-    void setLandform(Landform landform);
-
-    LandMark getLandMark() const;
-    void setLandMark(LandMark landMark);
-
-    Owner getOwner() const;
-    void setOwner(Owner owner);
-
-    bool isBorder() const;
-    void setBorder(bool border);
-
-    bool isLostTribes() const;
-    void setLostTribes(bool lostTribes);
-
-    int getPopulation() const;
-    void setPopulation(int population);
-
     void addGamePieces(GamePieces* pieces);
     vector <GamePieces*> getGamePiecesVector();
-
-    int getOwnerID();
-
     void displayGamePieces();
     void info();
+
+    int getId() const;
+    Landform getLandform() const;
+    LandMark getLandMark() const;
+    Owner getOwner() const;
+    bool isBorder() const;
+    bool isLostTribes() const;
+    int getPopulation() const;
+    int getOwnerID();
+
+    void setId(int id);
+    void setLandform(Landform landform);
+    void setLandMark(LandMark landMark);
+    void setOwner(Owner owner);
+    void setBorder(bool border);
+    void setLostTribes(bool lostTribes);
+    void setPopulation(int population);
 
     bool hasMountain();
     bool isFarmLand();
@@ -79,8 +72,6 @@ public:
     bool isMagic();
     bool isCavern();
     bool isMine_Cavern();
-
-
 
 
 };
