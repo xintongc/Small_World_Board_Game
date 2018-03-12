@@ -267,9 +267,23 @@ int Player::requiredTokensToConquer(int regionID){
     return requiredTokens;
 }
 
+bool Player::enoughTokensToConquer(int regionID){
+    return totalTokens >= requiredTokensToConquer(regionID);
+}
+
 bool Player::connectedToConquestRegion(int regionID){
-    vector<int> ownedRegions = ownedRegions();
-    int playerNum = playerNum();
+    vector<int> ownedRegions;
+
+    MapRegions* playerRegions = MapRegions::getMapRegions();
+    for (int i = 0; i < playerRegions->getRegionsSize(); ++i) {
+        if((int)playerRegions->getRegion(i)->getOwner() == id){
+            ownedRegions.push_back(i);
+        }
+    }
+
+    Game* game = Game::getGame();
+    int playerNum = game->getNumOfPlayers();
+
     Map* map = chooseMap(playerNum);
 
     for (int i = 0; i < ownedRegions.size(); ++i) {
@@ -280,21 +294,8 @@ bool Player::connectedToConquestRegion(int regionID){
     return false;
 }
 
-vector<int> Player::ownedRegions(){
-    vector<int> ownedRegions;
-    MapRegions* playerRegions = MapRegions::getMapRegions();
-    for (int i = 0; i < playerRegions->getRegionsSize(); ++i) {
-        if((int)playerRegions->getRegion(i)->getOwner() == id){
-            ownedRegions.push_back(i);
-        }
-    }
-    return ownedRegions;
-}
 
-int Player::playerNum(){
-    Game* game = Game::getGame();
-    return game->getNumOfPlayers();
-}
+
 
 
 void Player::scores(){
