@@ -129,8 +129,10 @@ void Player::declineCombo(ComboList &combo, int index) {
 }
 
 
-void Player::conquers(){
-    cout<<"conquer"<<endl;
+void Player::conquers(int playerNum){
+    cout << "Player[" << id <<"] is start conquer" << endl;
+    followingConquest();
+
 }
 
 Map* Player::chooseMap(int playerNum){
@@ -170,7 +172,14 @@ void Player::firstConquest(int playerNum){
     }
 }
 
+void Player::firstConqueredRegion(int regionID){
+    int requiredTokens = basicRequiredTokens(regionID);
+    MapRegions* playerRegions = MapRegions::getMapRegions();
 
+    playerRegions->getRegion(regionID)->setOwner((Owner)id);
+    playerRegions->getRegion(regionID)->setPopulation(requiredTokens);
+    totalTokens = totalTokens - requiredTokens;
+}
 
 void Player::conqueredRegion(int regionID){
     int requiredTokens = basicRequiredTokens(regionID);
@@ -180,6 +189,7 @@ void Player::conqueredRegion(int regionID){
     playerRegions->getRegion(regionID)->setPopulation(requiredTokens);
     totalTokens = totalTokens - requiredTokens;
 
+    followingConquest();
 }
 
 void Player::enemyLossesWithdrawals(int regionID, int requiredTokens){
@@ -192,11 +202,15 @@ void Player::enemyLossesWithdrawals(int regionID, int requiredTokens){
     playerRegions->getRegion(regionID)->setOwner((Owner)id);    //set owner of conquer region to itself
     playerRegions->getRegion(regionID)->setPopulation(requiredTokens); //put populations to conquer region
 
-    int enemyWithdrawalTokens = game->Players[enemyID].getTotalTokens()/2;
+    int enemyWithdrawalTokens = enemyPopulation/2;
     int enemyAvailableTokens = game->Players[enemyID].getTotalTokens();
     int enemyLeftTokens = enemyAvailableTokens - enemyWithdrawalTokens;
     game->Players[enemyID].setTotalTokens(enemyLeftTokens);             //withdrawl enemy's tokens
     game->Players[enemyID].redeployTokens(enemyLeftTokens);  //let enemy redeploy the tokens
+
+    int tokens;
+    cin >> tokens;
+    redeployTokens(tokens);
 
 }
 
@@ -218,6 +232,8 @@ void Player::redeployTokens(int tokens){
 }
 
 void Player::followingConquest(){
+    MapRegions* playerRegions = MapRegions::getMapRegions();
+
     cout << "Please input the region you want to conquerd:";
     int regionID;
     cin >> regionID;
@@ -225,8 +241,18 @@ void Player::followingConquest(){
         cout << "You unable to conquerd this region, since it is not connected to your owned regions" << endl;
         cin >> regionID;
     }
+    while(ownedRegion(regionID)){
+        cout << "This region is already conquered by you, please choose another region:";
+        cin >> regionID;
+    }
+
+    int requiredTokes = requiredTokensToConquer(regionID);
+
     if(enoughTokensToConquer(regionID)){
-        conqueredRegion(regionID);
+        if(playerRegions->getRegion(regionID)->getPopulation() != 0){
+            enemyLossesWithdrawals(regionID, requiredTokes);
+        }
+            conqueredRegion(regionID);
     } else {
         finalConquestAttempt();
     }
@@ -246,7 +272,7 @@ void Player::finalConquestAttempt(){
     cout << "Since your tokens are not enough to conquer this region, this is your final conquest attempt" << endl;
     cout << "Reinforcement Die is rolling...\n";
     int dieNum = reinforcementDie();
-    cout << "The number you rolled is: " << dieNum;
+    cout << "The number you rolled is: " << dieNum << endl;
     int lastAttemptTokens = dieNum + totalTokens;
 
 }
@@ -285,8 +311,9 @@ bool Player::connectedToConquestRegion(int regionID){
     vector<int> ownedRegions;
 
     MapRegions* playerRegions = MapRegions::getMapRegions();
-    for (int i = 0; i < playerRegions->getRegionsSize(); ++i) {
-        if((int)playerRegions->getRegion(i)->getOwner() == id){
+    for (int i = 1; i <= playerRegions->getRegionsSize(); ++i) {
+
+        if(playerRegions->getRegion(i)->getOwnerID() == getId()){
             ownedRegions.push_back(i);
         }
     }

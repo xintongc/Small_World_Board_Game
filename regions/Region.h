@@ -47,7 +47,7 @@ public:
     int getId() const;
     Landform getLandform() const;
     LandMark getLandMark() const;
-    Owner getOwner() const;
+    int getOwner();
     bool isBorder() const;
     bool isLostTribes() const;
     int getPopulation() const;

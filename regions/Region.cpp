@@ -37,8 +37,8 @@ void Region::setLandMark(LandMark landMark) {
     Region::landMark = landMark;
 }
 
-Owner Region::getOwner() const {
-    return owner;
+int Region::getOwner() {
+    return (int)owner;
 }
 
 void Region::setOwner(Owner owner) {

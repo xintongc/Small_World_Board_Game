@@ -148,7 +148,7 @@ void Game::playGame() {
 
             for (int i = 1; i < Players.size(); i++) {
                 Players[i].picks_race(combo, i);
-                Players[i].conquers();
+                Players[i].conquers(Players.size());
                 Players[i].scores();
 
             }
@@ -169,7 +169,7 @@ void Game::playGame() {
                 Players[firstPlayerIndex].picks_race(combo, firstPlayerIndex);
             }
 
-            Players[firstPlayerIndex].conquers();
+            Players[firstPlayerIndex].conquers(Players.size());
             Players[firstPlayerIndex].scores();
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -180,7 +180,7 @@ void Game::playGame() {
                     } else{
                         Players[i].picks_race(combo, i);
                     }
-                    Players[i].conquers();
+                    Players[i].conquers(Players.size());
                     Players[i].scores();
                 }
                 else{

@@ -25,7 +25,7 @@ public:
 
     void pickRace(ComboList&);
     void picks_race(ComboList&, int);
-    void conquers();
+    void conquers(int);
 
 
 
@@ -44,6 +44,7 @@ public:
     void finalConquestAttempt();
     bool ownedRegion(int regionID);
     bool emptyRegion(int regionID);
+    void firstConqueredRegion(int regionID);
 
 
 
