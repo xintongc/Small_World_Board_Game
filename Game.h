@@ -48,7 +48,7 @@ public:
     void setNumOfPlayers(int playerNumber);
     void setTurnMakerIndex(int turnMakerIndex);
 
-    vector<Player> Players;
+    vector <Player> Players;
 
 };
 

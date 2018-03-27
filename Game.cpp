@@ -143,34 +143,34 @@ void Game::playGame() {
     int firstPlayerIndex;
 
     do {
-        if (getRound() == 1) {                             //---------------round 1--------------------------------
+        if (getRound() == 1) {                                      //---------------round 1--------------------------------
             cout << "\nTurn " << getRound()<< endl;
 
             for (int i = 1; i < Players.size(); i++) {
                 Players[i].picks_race(combo, i);
                 Players[i].conquers();
-                Players[i].scores();
+                Players[i].scores(i);
 
             }
-            if (allPlayersFinishATurn())                   //--------------ensure every players play---------------
+            if (allPlayersFinishATurn())                            //--------------ensure every players play-----------
                 startNewTurn();
 
         }
 //----------------------------------------------------------------------------------------------------------------------
-        if (getRound() <= getTotalTurns()) {           //--------------round 2-8/9/10 -------------------------
+        if (getRound() <= getTotalTurns()) {                        //--------------round 2-8/9/10 ---------------------
             cout << "\nTurn " << getRound()<< endl;
             cout<<"========================================"<<endl;
 
-            firstPlayerIndex = getTurnMakerIndex();        //1. redefine each turn's turn maker (create new one each time, avoid reassign issue)------
+            firstPlayerIndex = getTurnMakerIndex();                 //1. redefine each turn's turn maker (create new one each time, avoid reassign issue)------
 
             if(Players[firstPlayerIndex].isHaveActiveCombo()){     //2. if player has active combo, ask whether to decline
                 Players[firstPlayerIndex].declineCombo(combo, firstPlayerIndex);
-            } else{                                                     //3. if player has no active combo, pick race
+            } else{                                                //3. if player has no active combo, pick race
                 Players[firstPlayerIndex].picks_race(combo, firstPlayerIndex);
             }
 
             Players[firstPlayerIndex].conquers();
-            Players[firstPlayerIndex].scores();
+            Players[firstPlayerIndex].scores(firstPlayerIndex);
 
 //----------------------------------------------------------------------------------------------------------------------
             for (int i = 1; i < Players.size(); i++) {             //4. rest players play--------------------------
@@ -181,7 +181,7 @@ void Game::playGame() {
                         Players[i].picks_race(combo, i);
                     }
                     Players[i].conquers();
-                    Players[i].scores();
+                    Players[i].scores(i);
                 }
                 else{
                     continue;
@@ -193,7 +193,6 @@ void Game::playGame() {
     } while (getRound() <= getTotalTurns());
 
     endingGame();
-
 
 }
 
