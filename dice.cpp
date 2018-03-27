@@ -4,12 +4,9 @@
 
 using namespace std;
 
-Dice::Dice(){
-    //cout << "Dice is created" <<endl;
-}
+Dice::Dice(){}
 
-Dice::~Dice()
-{ }
+Dice::~Dice(){}
 
 //rolling dice with 0,0,0,1,2,3
 void Dice::rollingDice(){
