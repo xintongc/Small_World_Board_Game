@@ -24,7 +24,7 @@ public:
     vector<Region> occupiedRegions;
 
     void pickRace(ComboList&);
-    void picks_race(ComboList&, int);
+    void picks_race(ComboList&);
     void conquers(int);
 
 
@@ -48,10 +48,10 @@ public:
 
 
 
-    void scores(int);
+    void scores();
     int reinforcementDie();
     void currentStates();
-    void declineCombo(ComboList&, int);
+    void declineCombo(ComboList&);
 
     void iterateMapRegions(int, Landform);
     void iterateMapRegions(int, LandMark);

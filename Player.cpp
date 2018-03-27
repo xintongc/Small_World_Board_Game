@@ -9,7 +9,7 @@
 
 Player::Player() {
     totalTokens = 0;
-    victoryCoins = 50;
+    victoryCoins = 5;
     haveActiveCombo=false;
     haveDeclineCombo=false;
 }
@@ -18,7 +18,7 @@ Player::Player() {
 Player::Player(int id) {
     this->id = id;
     totalTokens = 0;
-    victoryCoins = 50;
+    victoryCoins = 5;
     haveActiveCombo=false;
     haveDeclineCombo=false;
 }
@@ -34,7 +34,6 @@ void Player::currentStates() {
         cout<<"active race: empty."<<endl;
         cout<<"active power: empty."<<endl;
     }
-
    if(isHaveDeclineCombo()){
        cout<<"decline race: "<<getDeclineRace().getType()<<endl;
        cout<<"decline power: "<<getDeclinePower().getType()<<endl;
@@ -87,21 +86,21 @@ void Player::pickRace(ComboList& combo) {
 }
 
 
-void Player::picks_race(ComboList& combo, int index) {
+void Player::picks_race(ComboList& combo) {
     cout<<"========================================"<<endl;
     combo.print();
-    cout<<"\nplayer"<<index<<" is picking race now: "<<endl;
+    cout<<"\nplayer"<<getId()<<" is picking race now: "<<endl;
     pickRace(combo);
-    cout<<"\nplayer"<<index<<"\'s current status: "<<endl;
+    cout<<"\nplayer"<<getId()<<"\'s current status: "<<endl;
     currentStates();
 }
 
 
-void Player::declineCombo(ComboList &combo, int index) {
+void Player::declineCombo(ComboList &combo) {
     std::string str;
     bool cond = false;
     cout<<"========================================"<<endl;
-    cout<<"\nplayer"<<index<<" is playing now: "<<endl;
+    cout<<"\nplayer"<<getId()<<" is playing now: "<<endl;
 
     do {
         cout << "Do you want to decline your current combo? (y/n)";
@@ -112,8 +111,8 @@ void Player::declineCombo(ComboList &combo, int index) {
                 combo.powerVector.push_back(declinePower);
                 haveDeclineCombo = false;
             }
-            declineRace = activeRace;                 //set current active combo to declined combo
-            declinePower = activePower;
+            setDeclineRace(activeRace);                 //set current active combo to declined combo
+            setDeclinePower(activePower);
             haveDeclineCombo = true;
             haveActiveCombo = false;
             cond = true;
@@ -124,8 +123,6 @@ void Player::declineCombo(ComboList &combo, int index) {
         } else
             cout << "invalid input, type again. " << endl;
     } while (!cond);
-
-
 }
 
 
@@ -331,10 +328,10 @@ bool Player::connectedToConquestRegion(int regionID){
     return false;
 }
 
-void Player::scores(int i) {
-    cout << "\nPlayer"<<i<<"\'s total score at this turn is: ";
+void Player::scores() {
+    cout <<"\nPlayer"<<getId()<<"\'s total score at this turn is: ";
     Game *game = Game::getGame();
-
+    int i=getId();
     iterateMapRegions(i);                   //------player receives 1 coin from each Region his occupy on the map--------
 
     if (game->Players[i].getActiveRace().getType() == "Dwarves") {      //------player collect additional Victory coins by Race/Power benefit--------

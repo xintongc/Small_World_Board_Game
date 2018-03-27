@@ -30,14 +30,10 @@ public:
     void print();
     void initial();
     void listAllPairs();
-    void showStackTop();
-    void printStacks();
     vector <Race> initialRaceVector();
     vector <Power> initialPowerVector();
     vector <int> initialCoinsVector();
     void printCurrentVectors();
-    void replenishCombo();
-
     Race switchRace(int);
     Power switchPower(int);
 

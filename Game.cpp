@@ -74,7 +74,7 @@ void Game::initialPlayer() {
             totalTurns=10;
             break;
         case 3:
-            totalTurns=3;
+            totalTurns=10;
             Players.push_back(Player(3));
             break;
         case 4:
@@ -147,8 +147,8 @@ void Game::playGame() {
             cout << "\nTurn " << getRound()<< endl;
 
             for (int i = 1; i < Players.size(); i++) {
-                Players[i].picks_race(combo, i);
-                Players[i].conquers(Players.size());
+                Players[i].picks_race(combo);
+                //Players[i].conquers(Players.size());
                 Players[i].scores();
 
             }
@@ -164,23 +164,23 @@ void Game::playGame() {
             firstPlayerIndex = getTurnMakerIndex();        //1. redefine each turn's turn maker (create new one each time, avoid reassign issue)------
 
             if(Players[firstPlayerIndex].isHaveActiveCombo()){     //2. if player has active combo, ask whether to decline
-                Players[firstPlayerIndex].declineCombo(combo, firstPlayerIndex);
+                Players[firstPlayerIndex].declineCombo(combo);
             } else{                                                     //3. if player has no active combo, pick race
-                Players[firstPlayerIndex].picks_race(combo, firstPlayerIndex);
+                Players[firstPlayerIndex].picks_race(combo);
             }
 
-            Players[firstPlayerIndex].conquers(Players.size());
+            //Players[firstPlayerIndex].conquers(Players.size());
             Players[firstPlayerIndex].scores();
 
 //----------------------------------------------------------------------------------------------------------------------
             for (int i = 1; i < Players.size(); i++) {             //4. rest players play--------------------------
                 if (i != firstPlayerIndex) {
                     if(Players[i].isHaveActiveCombo()){
-                        Players[i].declineCombo(combo, i);
+                        Players[i].declineCombo(combo);
                     } else{
-                        Players[i].picks_race(combo, i);
+                        Players[i].picks_race(combo);
                     }
-                    Players[i].conquers(Players.size());
+                    //Players[i].conquers(Players.size());
                     Players[i].scores();
                 }
                 else{
