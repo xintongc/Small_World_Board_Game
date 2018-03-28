@@ -6,6 +6,7 @@
 Region::Region() {
     landMark = LandMark ::Non;
     owner = Owner ::Non;
+    tokens = 0;
     border = false;
     lostTribes = false;
     population = 0;
@@ -19,6 +20,10 @@ int Region::getId() const {
 
 void Region::setId(int id) {
     Region::id = id;
+}
+
+void Region::setTokens(int value) {
+    tokens = value;
 }
 
 Landform Region::getLandform() const {
@@ -39,6 +44,10 @@ void Region::setLandMark(LandMark landMark) {
 
 int Region::getOwner() {
     return (int)owner;
+}
+
+int Region::getTokens() const {
+    return tokens;
 }
 
 void Region::setOwner(Owner owner) {
@@ -86,12 +95,12 @@ void Region::displayGamePieces(){
 
 void Region::info() {
     if(id<10){
-        cout<< "Region 0" << id << ": " << "Owmer:" << owner  <<" Population:" << population << " Landform:"
+        cout<< "Region 0" << id << ": " << "Owmer:" << owner  << " Tokens:" << tokens  <<" Population:" << population << " Landform:"
             << landform << " LandMark:" << landMark << " Border:" << isBorder()
             << " LostTribes:" << isLostTribes() << " ";
     }
     else{
-        cout<< "Region " << id << ": " << "Owmer:" << owner  <<" Population:" << population << " Landform:"
+        cout<< "Region " << id << ": " << "Owmer:" << owner  <<" Tokens:" << tokens  <<" Population:" << population << " Landform:"
             << landform << " LandMark:" << landMark << " Border:" << isBorder()
             << " LostTribes:" << isLostTribes() << " ";
     }
