@@ -228,6 +228,10 @@ void Player::redeployTokens(int tokens){
 
 }
 
+void Player::redeployOneRegion(){
+
+}
+
 void Player::followingConquest(){
     MapRegions* playerRegions = MapRegions::getMapRegions();
 

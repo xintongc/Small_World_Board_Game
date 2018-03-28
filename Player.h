@@ -36,6 +36,8 @@ public:
     Map* chooseMap(int playerNum); //return map according to player number
     void enemyLossesWithdrawals(int regionID, int requiredTokens);
     void redeployTokens(int n);
+    void redeployOneRegion();
+
     void followingConquest();
     bool connectedToConquestRegion(int regionID);
     int basicRequiredTokens(int regionID);
