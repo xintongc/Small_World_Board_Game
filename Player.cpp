@@ -5,7 +5,6 @@
 #include "Player.h"
 #include "Game.h"
 #include "Dice.h"
-#include "regions/MapRegions.h"
 
 Player::Player() {
     totalTokens = 0;
