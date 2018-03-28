@@ -5,7 +5,6 @@
 #include "Player.h"
 #include "Game.h"
 #include "Dice.h"
-#include "regions/MapRegions.h"
 
 Player::Player() {
     totalTokens = 0;
@@ -203,33 +202,93 @@ void Player::enemyLossesWithdrawals(int regionID, int requiredTokens){
     int enemyAvailableTokens = game->Players[enemyID].getTotalTokens();
     int enemyLeftTokens = enemyAvailableTokens - enemyWithdrawalTokens;
     game->Players[enemyID].setTotalTokens(enemyLeftTokens);             //withdrawl enemy's tokens
-    game->Players[enemyID].redeployTokens(enemyLeftTokens);  //let enemy redeploy the tokens
+    //game->Players[enemyID].redeployTokens(enemyLeftTokens);  //let enemy redeploy the tokens ////????????????
 
     int tokens;
     cin >> tokens;
-    redeployTokens(tokens);
+    //redeployTokens(tokens); //???????????? need change
 
 }
 
-void Player::redeployTokens(int tokens){
+
+
+void Player::redeployTokens(){
+    int redeployAgain = true;
+
+    while (redeployAgain){
+        int tokens = reduceTokens();
+        increaseTokens(tokens);
+        cout << "Player[" << id << "], Do you want redeploy again? [y/n]: " << endl;
+        char word;
+        cin >> word;
+        if(word == 'y'){
+            redeployAgain == true;
+        } else if(word == 'n'){
+            redeployAgain == false;
+        } else{
+            cout << "Plase input [y/n]: " << endl;
+            cin >> word;
+        }
+    }
+}
+
+int Player::reduceTokens(){
     MapRegions* playerRegions = MapRegions::getMapRegions();
     playerRegions->display();
     int regionID;
-    cout << "Player[" << id << "], your region is been conquerd, please select your left regions to redeploy your tokens:";
+    cout << "which region you want to take out tokens?";
     cin >> regionID;
 
-    while(playerRegions->getRegion(regionID)->getId() != id){
+    while(ownedRegion(id)){
         cout << "This region is not yours, please select your region again:";
         cin >> regionID;
     }
 
     int currentPopulation = playerRegions->getRegion(regionID)->getPopulation();
-    playerRegions->getRegion(regionID)->setPopulation(currentPopulation + tokens);  //redeploy tokens to select regions which owned by player
+
+    while (currentPopulation <= 1){
+        cout << "Only one tokens in this region, you cannot deploy this region, please choose regionID again:" << endl;
+        cin >> regionID;
+    }
+
+    cout << "How many tokens you want to take from Region[" << regionID << "] ?" << endl;
+    int tokens;
+    cin >> tokens;
+    int leftTokens = playerRegions->getRegion(regionID)->getPopulation() - tokens;
+    if(leftTokens < 1){
+        cout << "You need to leave at lease one population to keep the region. Please choose token number again:" << endl;
+        cin >> tokens;
+    }
+
+    playerRegions->getRegion(regionID)->setPopulation(currentPopulation - tokens);
+    return tokens;
+}
+
+void Player::increaseTokens(int n){
+    MapRegions* playerRegions = MapRegions::getMapRegions();
+    cout << "Please choose regions you want to put tokens:"<< endl;
+    int regionID;
+    cin >> regionID;
+    while (ownedRegion(id)){
+        cout << "This region is not owned by you, please choose RegionID again:" << endl;
+        cin >> regionID;
+    }
+
+    int currentPopulation = playerRegions->getRegion(regionID)->getPopulation();
+    playerRegions->getRegion(id)->setPopulation(currentPopulation + n);
 
 }
 
-void Player::redeployOneRegion(){
-
+void Player::redeployInLoss(int n){
+    int total = n;
+    int left = n;
+    int put;
+    while(left > 0){
+        cout << "How many tokens you want to put this time?" << endl;
+        cin >> put;
+        increaseTokens(put);
+        left = total - put;
+    }
 }
 
 void Player::followingConquest(){
@@ -255,7 +314,7 @@ void Player::followingConquest(){
         }
             conqueredRegion(regionID);
     } else {
-        finalConquestAttempt();
+        finalConquestAttempt(regionID);
     }
 }
 
@@ -269,13 +328,24 @@ bool Player::emptyRegion(int regionID){
     return playerRegions->getRegion(regionID)->getPopulation();
 }
 
-void Player::finalConquestAttempt(){
+void Player::finalConquestAttempt(int regionID){
     cout << "Since your tokens are not enough to conquer this region, this is your final conquest attempt" << endl;
     cout << "Reinforcement Die is rolling...\n";
     int dieNum = reinforcementDie();
     cout << "The number you rolled is: " << dieNum << endl;
     int lastAttemptTokens = dieNum + totalTokens;
+    cout << "After adding the die number, you have "<< lastAttemptTokens << " tokens" << endl;
 
+    if (enoughTokensToConquer(regionID)){
+        setOwnerAndRegionPopulation(regionID,lastAttemptTokens);
+        cout << "You conqued this region" << endl;
+    }
+}
+
+void Player::setOwnerAndRegionPopulation(int regionID, int population){
+    MapRegions* playerRegions = MapRegions::getMapRegions();
+    playerRegions->getRegion(regionID)->setPopulation(population);
+    playerRegions->getRegion(regionID)->setOwner((Owner)id);
 }
 
 int Player::basicRequiredTokens(int regionID){

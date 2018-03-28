@@ -30,7 +30,6 @@ private:
     Landform landform;
     LandMark landMark;
     Owner owner ;
-    int tokens;
     bool border;
     bool lostTribes;
     int population;
@@ -49,7 +48,6 @@ public:
     Landform getLandform() const;
     LandMark getLandMark() const;
     int getOwner();
-    int getTokens() const;
     bool isBorder() const;
     bool isLostTribes() const;
     int getPopulation() const;
