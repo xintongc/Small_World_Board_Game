@@ -35,18 +35,22 @@ public:
     void firstConquest(int playerNum);
     Map* chooseMap(int playerNum); //return map according to player number
     void enemyLossesWithdrawals(int regionID, int requiredTokens);
-    void redeployTokens(int n);
-    void redeployOneRegion();
+    void redeployTokens();
+    void redeployInLoss(int n);
+    int reduceTokens();
+    void increaseTokens(int n);
 
     void followingConquest();
     bool connectedToConquestRegion(int regionID);
     int basicRequiredTokens(int regionID);
     int requiredTokensToConquer(int regionID);
+
     bool enoughTokensToConquer(int regionID);
-    void finalConquestAttempt();
+    void finalConquestAttempt(int regionID);
     bool ownedRegion(int regionID);
     bool emptyRegion(int regionID);
     void firstConqueredRegion(int regionID);
+    void setOwnerAndRegionPopulation(int regionID, int population);
 
 
 
@@ -95,6 +99,8 @@ private:
     bool played;
     bool haveDeclineCombo;
     bool haveActiveCombo;
+
+
 };
 
 
