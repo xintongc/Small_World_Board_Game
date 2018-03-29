@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include "MapLoader.h"
+#include "regions/MapRegions.h"
 
 class MapLoader;
 

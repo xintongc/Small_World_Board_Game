@@ -8,7 +8,7 @@ Subject::Subject(){
     observersList = new list<Observer*>;
 }
 Subject::~Subject(){
-    delete observersList;
+   // delete observersList;
 }
 void Subject::Attach(Observer* o){
     observersList->push_back(o);

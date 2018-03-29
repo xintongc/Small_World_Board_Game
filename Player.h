@@ -10,11 +10,11 @@
 #include "Race/Race.h"
 #include "ComboList.h"
 #include "Map.h"
-//#include "DesignPattern/Subject.h"
+#include "DesignPattern/Subject.h"
 #include <vector>
 
-class Player //: public Subject {
-{
+class Player : public Subject {
+
 public:
     Player();
     Player(int id);
