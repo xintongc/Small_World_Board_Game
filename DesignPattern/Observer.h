@@ -6,11 +6,12 @@
 #define SMALL_WORLD_OBSERVER_H
 
 
+#include <string>
 
 class Observer {
 public:
     ~Observer();
-    virtual void Update() = 0;
+    virtual void Update(const std::string&) = 0;
 protected:
     Observer();
 };

@@ -14,8 +14,8 @@ public:
     PlayerObserver();
     ~PlayerObserver();
     PlayerObserver(Player* player);
-    void Update();
-    void display();
+    void Update(const std::string&);
+    void display(const std::string&);
 
 private:
     Player* playerSubject;

@@ -18,13 +18,14 @@ PlayerObserver::PlayerObserver(Player *player) {
     playerSubject->Attach(this);
 }
 
-void PlayerObserver::Update()
+void PlayerObserver::Update(const std::string& str)
 {
-    display();
+    display(str);
 }
 
-void PlayerObserver::display()
+void PlayerObserver::display(const std::string& str)
 {
-    cout <<"Player "<< playerSubject->getId() << " starts to play the game. " << endl;
+    cout<<"\n==== From observer pattern ==== ";
+    cout <<"Player "<< playerSubject->getId() << ": " << str << endl;
 }
 

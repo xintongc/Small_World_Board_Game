@@ -150,8 +150,6 @@ void Game::playGame() {
     combo.setupCombo();
     int firstPlayerIndex;
 
-
-
     do {
         if (getRound() == 1) {                             //---------------round 1--------------------------------
             cout << "\nTurn " << getRound()<< endl;

@@ -136,7 +136,7 @@ vector <int> ComboList::initialCoinsVector() {
 void ComboList::printCurrentVectors() {
     cout<<"\nThe current ComboLists are: "<<endl;
     for(int i=0;i<6;i++){
-        cout<<i<<". "<<raceVector[i].getType()<<" and " <<powerVector[i].getType()<<". \t Current coins are: "<<coinsVector[i]<<endl;
+        cout<<i+1<<". "<<raceVector[i].getType()<<" and " <<powerVector[i].getType()<<". \t Current coins are: "<<coinsVector[i]<<endl;
     }
 }
 
