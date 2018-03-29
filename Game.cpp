@@ -169,11 +169,11 @@ void Game::playGame() {
 
         }
 //----------------------------------------------------------------------------------------------------------------------
-        if (getRound() <= getTotalTurns()) {           //--------------round 2-8/9/10 -------------------------
+        if (getRound() <= getTotalTurns()) {                //--------------round 2-8/9/10 -------------------------
             cout << "\nTurn " << getRound()<< endl;
             cout<<"========================================"<<endl;
 
-            firstPlayerIndex = getTurnMakerIndex();        //1. redefine each turn's turn maker (create new one each time, avoid reassign issue)------
+            firstPlayerIndex = getTurnMakerIndex();         //1. redefine each turn's turn maker (create new one each time, avoid reassign issue)------
 
             if(Players[firstPlayerIndex].isHaveActiveCombo()){     //2. if player has active combo, ask whether to decline
                 Players[firstPlayerIndex].declineCombo(combo);
