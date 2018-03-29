@@ -48,8 +48,8 @@ public:
     bool enoughTokensToConquer(int regionID);
     void finalConquestAttempt(int regionID);
     bool ownedRegion(int regionID);
-    bool emptyRegion(int regionID);
-    void firstConqueredRegion(int regionID);
+//    bool emptyRegion(int regionID);
+//    void firstConqueredRegion(int regionID);
     void setOwnerAndRegionPopulation(int regionID, int population);
 
 
