@@ -7,15 +7,14 @@
 
 
 #include "Power/Power.h"
-#include "regions/Region.h"
 #include "Race/Race.h"
 #include "ComboList.h"
 #include "Map.h"
-#include "regions/MapRegions.h"
+//#include "DesignPattern/Subject.h"
 #include <vector>
 
-class Player {
-
+class Player //: public Subject {
+{
 public:
     Player();
     Player(int id);
