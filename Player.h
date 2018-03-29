@@ -46,12 +46,17 @@ public:
     int requiredTokensToConquer(int regionID);
 
     bool enoughTokensToConquer(int regionID);
+    bool enoughTokensToConquerInFinalAttempt(int regionID , int die);
+
     void finalConquestAttempt(int regionID);
     bool ownedRegion(int regionID);
 //    bool emptyRegion(int regionID);
 //    void firstConqueredRegion(int regionID);
     void setOwnerAndRegionPopulation(int regionID, int population);
+    void showRegions();
 
+    void reduceTokensToOneInDecline();
+    void reduceTokensToOneInActiveAndResetToken();
 
 
     void scores();
