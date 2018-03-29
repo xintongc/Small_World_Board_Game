@@ -41,21 +41,28 @@ void Game::initial() {
     NumOfPlayers = playerNumber;
 
     MapLoader mapLoader;
+    MapRegions* playerRegions = MapRegions::getMapRegions();
+    playerRegions->info();
 
     switch (playerNumber){
         case 2:
-            mapLoader.openFile("/Users/zncu/CLionProjects/small world/threePlayer.map");
+            mapLoader.openFile("/Users/zncu/CLionProjects/small world/twoPlayer.map");
+            playerRegions->createTwoPlayerRegions();
             break;
         case 3:
             mapLoader.openFile("D:/CLion-workspace/small_world/threePlayer.map");
+            playerRegions->createThreePlayerRegions();
             break;
         case 4:
             mapLoader.openFile("D:/CLion-workspace/small_world/fourPlayer.map");
+            playerRegions->createFourPlayerRegions();
             break;
         case 5:
             mapLoader.openFile("D:/CLion-workspace/small_world/fivePlayer.map");
+            playerRegions->createFivePlayerRegions();
             break;
     }
+    playerRegions->display();
     mapLoader.readFile();
     mapLoader.closeInput();
     mapLoader.buildMap();
@@ -142,15 +149,20 @@ void Game::playGame() {
     combo.setupCombo();
     int firstPlayerIndex;
 
+
+
     do {
         if (getRound() == 1) {                             //---------------round 1--------------------------------
             cout << "\nTurn " << getRound()<< endl;
 
             for (int i = 1; i < Players.size(); i++) {
                 Players[i].picks_race(combo);
-                //Players[i].conquers(Players.size());
+                Players[i].firstConquest(Players.size());
                 Players[i].scores();
 
+            }
+            for (int i = 1; i < Players.size(); i++){
+                Players[i].redeployTokens();
             }
             if (allPlayersFinishATurn())                   //--------------ensure every players play---------------
                 startNewTurn();
@@ -165,11 +177,11 @@ void Game::playGame() {
 
             if(Players[firstPlayerIndex].isHaveActiveCombo()){     //2. if player has active combo, ask whether to decline
                 Players[firstPlayerIndex].declineCombo(combo);
-            } else{                                                     //3. if player has no active combo, pick race
+            } else if (!Players[firstPlayerIndex].isHaveActiveCombo() && Players[firstPlayerIndex].isHaveDeclineCombo()){                                                     //3. if player has no active combo, pick race
                 Players[firstPlayerIndex].picks_race(combo);
+                Players[firstPlayerIndex].conquers(Players.size());
             }
 
-            //Players[firstPlayerIndex].conquers(Players.size());
             Players[firstPlayerIndex].scores();
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -177,14 +189,19 @@ void Game::playGame() {
                 if (i != firstPlayerIndex) {
                     if(Players[i].isHaveActiveCombo()){
                         Players[i].declineCombo(combo);
-                    } else{
+                    } else if(!Players[i].isHaveActiveCombo() && Players[i].isHaveDeclineCombo()){
                         Players[i].picks_race(combo);
+                        Players[i].conquers(Players.size());
                     }
-                    //Players[i].conquers(Players.size());
                     Players[i].scores();
                 }
                 else{
                     continue;
+                }
+            }
+            for (int i = 1; i < Players.size(); i++){
+                if(Players[i].isHaveActiveCombo()){
+                    Players[i].redeployTokens();
                 }
             }
             if (allPlayersFinishATurn())

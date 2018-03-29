@@ -80,7 +80,7 @@ bool Map::connected(int origin, int destin) {  //check whether two regions are c
     if(adjacencyMatrix[origin][destin] == 1){
         return true;
     }
-    cout << "Region " << origin << " and region " << destin <<" are not connected." << endl;
+    //cout << "Region " << origin << " and region " << destin <<" are not connected." << endl;
     return false;
 }
 

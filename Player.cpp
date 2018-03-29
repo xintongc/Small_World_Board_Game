@@ -100,7 +100,8 @@ void Player::declineCombo(ComboList &combo) {
     bool cond = false;
     cout<<"========================================"<<endl;
     cout<<"\nplayer"<<getId()<<" is playing now: "<<endl;
-
+    Game* game = Game::getGame();
+    int playerNum = game->Players.size();
     do {
         cout << "Do you want to decline your current combo? (y/n)";
         cin >> str;
@@ -110,6 +111,7 @@ void Player::declineCombo(ComboList &combo) {
                 combo.powerVector.push_back(declinePower);
                 haveDeclineCombo = false;
             }
+            reduceTokensToOneInDecline();
             setDeclineRace(activeRace);                 //set current active combo to declined combo
             setDeclinePower(activePower);
             haveDeclineCombo = true;
@@ -119,6 +121,8 @@ void Player::declineCombo(ComboList &combo) {
         } else if (str == "n" || str == "N") {
             cond = true;
             currentStates();
+            reduceTokensToOneInActiveAndResetToken();
+            conquers(playerNum);
         } else
             cout << "invalid input, type again. " << endl;
     } while (!cond);
@@ -161,20 +165,11 @@ void Player::firstConquest(int playerNum){
         while(!isBorder){
             cout << "Please choose again,your first conquest region must be a border region" << endl;
             cin >> n;
-  //          isBorder = isBorder(twoPlayerRegions,n);
             isBorder = twoPlayerRegions->getRegion(n)->isBorder();
         }
     }
 }
 
-//void Player::firstConqueredRegion(int regionID){
-//    int requiredTokens = basicRequiredTokens(regionID);
-//    MapRegions* playerRegions = MapRegions::getMapRegions();
-//
-//    playerRegions->getRegion(regionID)->setOwner((Owner)id);
-//    playerRegions->getRegion(regionID)->setPopulation(requiredTokens);
-//    totalTokens = totalTokens - requiredTokens;
-//}
 
 void Player::conqueredRegion(int regionID){
     int requiredTokens = basicRequiredTokens(regionID);
@@ -204,28 +199,57 @@ void Player::enemyLossesWithdrawals(int regionID, int requiredTokens){
     playerRegions->display();
 }
 
+void Player::reduceTokensToOneInDecline(){
+    MapRegions* playerRegions = MapRegions::getMapRegions();
 
+    for(int j = 1;j <= playerRegions->getRegionsSize();j++){
+        if(ownedRegion(j)){
+            playerRegions->getRegion(j)->setPopulation(1);
+        }
+    }
+}
+
+void Player::reduceTokensToOneInActiveAndResetToken(){
+    int collectTokens;
+    MapRegions* playerRegions = MapRegions::getMapRegions();
+
+    for(int j = 1;j <= playerRegions->getRegionsSize();j++){
+        if(ownedRegion(j)){
+            if( playerRegions->getRegion(j)->getPopulation() > 1){
+                collectTokens = playerRegions->getRegion(j)->getPopulation() - 1;
+            }
+            playerRegions->getRegion(j)->setPopulation(1);
+        }
+    }
+    totalTokens = totalTokens + collectTokens;
+}
 
 void Player::redeployTokens(){
-    int redeployAgain = true;
+    int redeployAgain = false;
+    char word;
+    cout << "Player[" << id << "], it's your turn to redeploy. Do you want to redeploy? If yes, please input y" << endl;
+    cin >> word;
+    if(word == 'y'){
+        redeployAgain == true;
+    }
 
     while (redeployAgain){
         int tokens = reduceTokens();
         increaseTokens(tokens);
-        cout << "Player[" << id << "], Do you want redeploy again? [y/n]: " << endl;
-        char word;
+        cout << "Player[" << id << "], Do you want redeploy again? Please input 'y' to redeploy, otherwise stop:" << endl;
+
         cin >> word;
         if(word == 'y'){
             redeployAgain == true;
-        } else if(word == 'n'){
+
+        } else {
             redeployAgain == false;
-        } else{
-            cout << "Plase input [y/n]: " << endl;
-            cin >> word;
+            break;
         }
-        MapRegions* playerRegions = MapRegions::getMapRegions();
-        playerRegions->display();
+        showRegions();
     }
+    cout << "The regions after redeployed is:" << endl;
+    showRegions();
 }
 
 int Player::reduceTokens(){
@@ -235,7 +259,7 @@ int Player::reduceTokens(){
     cout << "which region you want to take out tokens?";
     cin >> regionID;
 
-    while(ownedRegion(id)){
+    while(!ownedRegion(regionID)){
         cout << "This region is not yours, please select your region again:";
         cin >> regionID;
     }
@@ -265,13 +289,13 @@ void Player::increaseTokens(int n){
     cout << "Please choose regions you want to put tokens:"<< endl;
     int regionID;
     cin >> regionID;
-    while (ownedRegion(id)){
+    while (!ownedRegion(regionID)){
         cout << "This region is not owned by you, please choose RegionID again:" << endl;
         cin >> regionID;
     }
 
     int currentPopulation = playerRegions->getRegion(regionID)->getPopulation();
-    playerRegions->getRegion(id)->setPopulation(currentPopulation + n);
+    playerRegions->getRegion(regionID)->setPopulation(currentPopulation + n);
 
 }
 
@@ -333,12 +357,18 @@ void Player::finalConquestAttempt(int regionID){
     int lastAttemptTokens = dieNum + totalTokens;
     cout << "After adding the die number, you have "<< lastAttemptTokens << " tokens" << endl;
 
-    if (enoughTokensToConquer(regionID)){
+    if (enoughTokensToConquerInFinalAttempt(regionID, dieNum)){
         setOwnerAndRegionPopulation(regionID,lastAttemptTokens);
         cout << "You conqued this region" << endl;
     } else {
         cout << "Sorry, you don't have enough tokens to conquer this region." << endl;
     }
+    showRegions();
+
+}
+
+bool Player::enoughTokensToConquerInFinalAttempt(int regionID , int die){
+    return (totalTokens + die >= requiredTokensToConquer(regionID));
 }
 
 void Player::setOwnerAndRegionPopulation(int regionID, int population){
@@ -401,6 +431,14 @@ bool Player::connectedToConquestRegion(int regionID){
     return false;
 }
 
+void Player::showRegions() {
+    cout << endl;
+    cout << endl;
+    MapRegions* playerRegions = MapRegions::getMapRegions();
+    playerRegions->info();
+    playerRegions->display();
+}
+
 void Player::scores() {
     cout <<"\nPlayer"<<getId()<<"\'s total score at this turn is: ";
     Game *game = Game::getGame();
@@ -445,6 +483,8 @@ void Player::iterateMapRegions(int playerID, Landform x){                       
         }
     }
 }
+
+
 
 void Player::iterateMapRegions(int playerID, LandMark x){                       //Collect 1 bonus Victory coin for Landmark Region you occupy
     MapRegions* playerRegions = MapRegions::getMapRegions();
