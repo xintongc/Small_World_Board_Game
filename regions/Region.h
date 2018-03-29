@@ -57,6 +57,7 @@ public:
     void setLandform(Landform landform);
     void setLandMark(LandMark landMark);
     void setOwner(Owner owner);
+    void setTokens(int value);
     void setBorder(bool border);
     void setLostTribes(bool lostTribes);
     void setPopulation(int population);
