@@ -5,7 +5,7 @@
 #ifndef SMALL_WORLD_SUBJECT_H
 #define SMALL_WORLD_SUBJECT_H
 
-#pragma once
+
 #include "Observer.h"
 #include <list>
 using namespace std;

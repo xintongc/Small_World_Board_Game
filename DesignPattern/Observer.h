@@ -5,7 +5,7 @@
 #ifndef SMALL_WORLD_OBSERVER_H
 #define SMALL_WORLD_OBSERVER_H
 
-#pragma once
+
 
 class Observer {
 public:

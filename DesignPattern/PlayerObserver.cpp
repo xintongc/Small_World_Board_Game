@@ -10,12 +10,12 @@ using namespace std;
 PlayerObserver::PlayerObserver() {};
 
 PlayerObserver::~PlayerObserver() {
-    playerSubject->Detach(this);
+    //playerSubject->Detach(this);
 };
 
 PlayerObserver::PlayerObserver(Player *player) {
     playerSubject=player;
-    playerSubject->Attach(this);
+    //playerSubject->Attach(this);
 }
 
 void PlayerObserver::Update()
