@@ -87,9 +87,10 @@ void Player::pickRace(ComboList& combo) {
 
 
 void Player::picks_race(ComboList& combo) {
-    cout<<"========================================"<<endl;
+    Notify("Picks race");
+    //cout<<"========================================"<<endl;
     combo.print();
-    cout<<"\nplayer"<<getId()<<" is picking race now: "<<endl;
+    //cout<<"\nplayer"<<getId()<<" is picking race now: "<<endl;
     pickRace(combo);
     cout<<"\nplayer"<<getId()<<"\'s current status: "<<endl;
     currentStates();
@@ -99,8 +100,8 @@ void Player::picks_race(ComboList& combo) {
 void Player::declineCombo(ComboList &combo) {
     std::string str;
     bool cond = false;
-    cout<<"========================================"<<endl;
-    cout<<"\nplayer"<<getId()<<" is playing now: "<<endl;
+    //cout<<"========================================"<<endl;
+    //cout<<"\nplayer"<<getId()<<" is playing now: "<<endl;
     Game* game = Game::getGame();
     int playerNum = game->Players.size();
     do {
@@ -121,8 +122,8 @@ void Player::declineCombo(ComboList &combo) {
             currentStates();
         } else if (str == "n" || str == "N") {
             cond = true;
-            currentStates();
             reduceTokensToOneInActiveAndResetToken();
+            currentStates();
             conquers(playerNum);
         } else
             cout << "invalid input, type again. " << endl;
@@ -131,7 +132,8 @@ void Player::declineCombo(ComboList &combo) {
 
 
 void Player::conquers(int playerNum){
-    cout << "Player[" << id <<"] is start conquer" << endl;
+    Notify("Conquers some regions");
+    //cout << "Player[" << id <<"] is start conquer" << endl;
     followingConquest();
 }
 
@@ -153,7 +155,8 @@ Map* Player::chooseMap(int playerNum){
 
 
 void Player::firstConquest(int playerNum){
-    cout << "Please select the Region you want to first conquest." << endl;
+    Notify("First conquers some regions");
+    cout << "\nPlease select the Region you want to first conquest: ";
     int n;
     cin >> n;
 
@@ -228,7 +231,7 @@ void Player::reduceTokensToOneInActiveAndResetToken(){
 void Player::redeployTokens(){
     int redeployAgain = false;
     char word;
-    cout << "Player[" << id << "], it's your turn to redeploy. Do you want to redeploy? If yes, please input y" << endl;
+    cout << "\nPlayer[" << id << "], it's your turn to redeploy. Do you want to redeploy? If yes, please input y" << endl;
     cin >> word;
     if(word == 'y'){
         redeployAgain == true;
@@ -351,7 +354,7 @@ bool Player::ownedRegion(int regionID) {
 //}
 
 void Player::finalConquestAttempt(int regionID){
-    cout << "Since your tokens are not enough to conquer this region, this is your final conquest attempt" << endl;
+    cout << "\nSince your tokens are not enough to conquer this region, this is your final conquest attempt" << endl;
     cout << "Reinforcement Die is rolling...\n";
     int dieNum = reinforcementDie();
     cout << "The number you rolled is: " << dieNum << endl;
@@ -441,7 +444,8 @@ void Player::showRegions() {
 }
 
 void Player::scores() {
-    cout <<"\nPlayer"<<getId()<<"\'s total score at this turn is: ";
+    Notify("Scores some victory coins");
+    cout <<"Player"<<getId()<<"\'s total score at this turn is: ";
     Game *game = Game::getGame();
     int i=getId();
     iterateMapRegions(i);                   //------player receives 1 coin from each Region his occupy on the map--------
