@@ -21,3 +21,9 @@ void Subject::Notify(const std::string& str){
     for (i = observersList->begin(); i != observersList->end(); ++i)
         (*i)->Update(str);
 };
+
+void Subject::NotifyStatistics(){
+    list<Observer *>::iterator i;
+    for (i = observersList->begin(); i != observersList->end(); ++i)
+        (*i)->UpdateStatistics();
+}

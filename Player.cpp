@@ -139,12 +139,16 @@ void Player::conquers(int playerNum){
 
 Map* Player::chooseMap(int playerNum){
     if(playerNum == 2){
+        regionNumber = 23;
         return Map::getMap(24);
     } else if(playerNum == 3){
+        regionNumber = 30;
         return Map::getMap(31);
     }else if(playerNum == 4){
+        regionNumber = 39;
         return Map::getMap(40);
     }else if(playerNum == 5){
+        regionNumber = 47;
         return Map::getMap(48);
     }
 }
@@ -183,6 +187,8 @@ void Player::conqueredRegion(int regionID){
     playerRegions->getRegion(regionID)->setPopulation(requiredTokens);
     totalTokens = totalTokens - requiredTokens;
 
+    NotifyStatistics();
+
     followingConquest();
 }
 
@@ -198,6 +204,7 @@ void Player::enemyLossesWithdrawals(int regionID, int requiredTokens){
 
     int enemyWithdrawalTokens = enemyPopulation/2;
 
+    cout << "Player[" << enemyID <<"] your region [" << regionID << "] has been conqured by enemy, please redeploy" << endl;
     game->Players[enemyID].increaseTokens(enemyWithdrawalTokens);             //enemy put the withdrawed tokens to one region
 
     playerRegions->display();
@@ -234,7 +241,7 @@ void Player::redeployTokens(){
     cout << "\nPlayer[" << id << "], it's your turn to redeploy. Do you want to redeploy? If yes, please input y" << endl;
     cin >> word;
     if(word == 'y'){
-        redeployAgain == true;
+        redeployAgain = true;
     }
 
     while (redeployAgain){
@@ -244,10 +251,10 @@ void Player::redeployTokens(){
 
         cin >> word;
         if(word == 'y'){
-            redeployAgain == true;
+            redeployAgain = true;
 
         } else {
-            redeployAgain == false;
+            redeployAgain = false;
             break;
         }
         showRegions();
@@ -321,6 +328,7 @@ void Player::followingConquest(){
     cout << "Please input the region you want to conquerd:";
     int regionID;
     cin >> regionID;
+    //bool isBorder = playerRegions->getRegion(regionID)->isBorder();
     while(!connectedToConquestRegion(regionID)){
         cout << "You unable to conquerd this region, since it is not connected to your owned regions" << endl;
         cin >> regionID;
@@ -334,6 +342,7 @@ void Player::followingConquest(){
 
     if(enoughTokensToConquer(regionID)){
         if(playerRegions->getRegion(regionID)->getPopulation() != 0){
+            cout << "You conqured emeny region" << endl;
             enemyLossesWithdrawals(regionID, requiredTokes);
         } else {
             conqueredRegion(regionID);
@@ -513,6 +522,19 @@ void Player::iterateMapRegions(int playerID){                                   
     }
 }
 
+double Player:: calculatePercentage(){
+    MapRegions* playerRegions = MapRegions::getMapRegions();
+    int regionCounter = 0;
+    for(int j=1;j<=playerRegions->getRegionsSize();j++){
+        if(ownedRegion(j)){
+            regionCounter++;
+        }
+    }
+
+    return (double)regionCounter / regionNumber * 100;
+
+}
+
 
 //player rolling a dice
 int Player::reinforcementDie() {
@@ -601,6 +623,25 @@ int Player::getId() const {
 void Player::setId(int id) {
     Player::id = id;
 }
+
+void Player::showBarGraph(){
+    int percentage = calculatePercentage();
+    for(int i = 0; i < percentage; i++){
+        cout << "*";
+    }
+}
+
+//int Player::getTotalRegionPercentage() const {
+//    return totalRegionPercentage;
+//}
+//
+//void Player::setTotalRegionPercentage(int totalRegionPercentage) {
+//    Player::totalRegionPercentage = totalRegionPercentage;
+//}
+
+//int Player::getRegionNumber() const {
+//    return regionNumber;
+//}
 
 
 

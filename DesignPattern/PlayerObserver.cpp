@@ -18,6 +18,8 @@ PlayerObserver::PlayerObserver(Player *player) {
     playerSubject->Attach(this);
 }
 
+void PlayerObserver::UpdateStatistics() {}
+
 void PlayerObserver::Update(const std::string& str)
 {
     display(str);

@@ -15,6 +15,7 @@ public:
     virtual void Attach(Observer* o);
     virtual void Detach(Observer* o);
     virtual void Notify(const std::string&);
+    virtual void NotifyStatistics();
     Subject();
     ~Subject();
 private:

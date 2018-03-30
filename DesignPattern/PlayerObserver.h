@@ -15,6 +15,7 @@ public:
     ~PlayerObserver();
     PlayerObserver(Player* player);
     void Update(const std::string&);
+    void UpdateStatistics();
     void display(const std::string&);
 
 private:

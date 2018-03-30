@@ -89,8 +89,15 @@ public:
     void setHaveDeclineCombo(bool haveDeclineCombo);
     void setHaveActiveCombo(bool haveActiveCombo);
 
+
     int getId() const;
     void setId(int id);
+
+//    int getTotalRegionPercentage() const;
+//
+//    void setTotalRegionPercentage(int totalRegionPercentage);
+    double calculatePercentage();
+    void showBarGraph();
 
 private:
     int id;
@@ -103,6 +110,14 @@ private:
     bool played;
     bool haveDeclineCombo;
     bool haveActiveCombo;
+
+    int regionNumber;
+public:
+    int getRegionNumber() const;
+
+//private:
+//    int totalRegionPercentage;
+
 
 
 };

@@ -7,9 +7,21 @@
 
 
 #include "../DesignPattern/Observer.h"
+#include "../Player.h"
 
 class StatisticsObserver : public Observer {
+public:
+    StatisticsObserver();
 
+    virtual ~StatisticsObserver();
+
+    void UpdateStatistics();
+    void Update(const std::string& str);
+    //  Player* statisticsSubject;
+    vector<Player*> statisticsSubject;
+
+    void displayStatistics();
+private:
 };
 
 
