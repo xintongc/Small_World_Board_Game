@@ -5,7 +5,7 @@
 #include "Subject.h"
 
 Subject::Subject(){
-    observersList = new list<Observer*>;
+    observersList = new vector<Observer*>;
 }
 Subject::~Subject(){
    // delete observersList;
@@ -14,16 +14,24 @@ void Subject::Attach(Observer* o){
     observersList->push_back(o);
 };
 void Subject::Detach(Observer* o){
-    observersList->remove(o);
+//    observersList->remove(o);
 };
-void Subject::Notify(const std::string& str){
-    list<Observer *>::iterator i;
-    for (i = observersList->begin(); i != observersList->end(); ++i)
-        (*i)->Update(str);
+void Subject::Notify(const std::string &str, Observer *observer){
+//    list<Observer *>::iterator i;
+//    for (i = observersList->begin(); i != observersList->end(); ++i)
+//        (*i)->Update(str);
 };
 
 void Subject::NotifyStatistics(){
-    list<Observer *>::iterator i;
-    for (i = observersList->begin(); i != observersList->end(); ++i)
+    vector<Observer *>::iterator i;
+
+    for (i = observersList->begin(); i != observersList->end(); ++i) {
         (*i)->UpdateStatistics();
+    }
 }
+void Subject::NotifyBarGraph(){
+        vector<Observer *>::iterator i;
+        for (i = observersList->begin(); i != observersList->end(); ++i) {
+            (*i)->UpdateBarGraph();
+        }
+};

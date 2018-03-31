@@ -7,19 +7,22 @@
 
 
 #include "Observer.h"
-#include <list>
+#include "../Player.h"
+#include <vector>
 using namespace std;
 
 class Subject {
 public:
     virtual void Attach(Observer* o);
     virtual void Detach(Observer* o);
-    virtual void Notify(const std::string&);
+    virtual void Notify(const std::string &, Observer *);
     virtual void NotifyStatistics();
+    virtual void NotifyBarGraph();
     Subject();
     ~Subject();
-private:
-    list<Observer*> *observersList;
+
+protected:
+    vector<Observer*> *observersList;
 };
 
 

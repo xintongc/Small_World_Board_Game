@@ -13,6 +13,7 @@ public:
     ~Observer();
     virtual void Update(const std::string&) = 0;
     virtual void UpdateStatistics() = 0;
+    virtual void UpdateBarGraph() = 0;
 protected:
     Observer();
 };

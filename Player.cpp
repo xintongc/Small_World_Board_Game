@@ -87,13 +87,15 @@ void Player::pickRace(ComboList& combo) {
 
 
 void Player::picks_race(ComboList& combo) {
-    Notify("Picks race");
+    Game* game = Game::getGame();
+    game->Notify("Picks race", this);
     //cout<<"========================================"<<endl;
     combo.print();
     //cout<<"\nplayer"<<getId()<<" is picking race now: "<<endl;
     pickRace(combo);
     cout<<"\nplayer"<<getId()<<"\'s current status: "<<endl;
     currentStates();
+
 }
 
 
@@ -132,23 +134,23 @@ void Player::declineCombo(ComboList &combo) {
 
 
 void Player::conquers(int playerNum){
-    Notify("Conquers some regions");
+  //  Notify("Conquers some regions");
     //cout << "Player[" << id <<"] is start conquer" << endl;
     followingConquest();
 }
 
 Map* Player::chooseMap(int playerNum){
     if(playerNum == 2){
-        regionNumber = 23;
+
         return Map::getMap(24);
     } else if(playerNum == 3){
-        regionNumber = 30;
+
         return Map::getMap(31);
     }else if(playerNum == 4){
-        regionNumber = 39;
+
         return Map::getMap(40);
     }else if(playerNum == 5){
-        regionNumber = 47;
+
         return Map::getMap(48);
     }
 }
@@ -159,7 +161,9 @@ Map* Player::chooseMap(int playerNum){
 
 
 void Player::firstConquest(int playerNum){
-    Notify("First conquers some regions");
+    Game* game = Game::getGame();
+    game->Notify("First conquers some regions", this);
+
     cout << "\nPlease select the Region you want to first conquest: ";
     int n;
     cin >> n;
@@ -180,6 +184,9 @@ void Player::firstConquest(int playerNum){
 
 
 void Player::conqueredRegion(int regionID){
+    Game* game = Game::getGame();
+    game->Notify(" conqured a region", this);
+
     int requiredTokens = basicRequiredTokens(regionID);
     MapRegions* playerRegions = MapRegions::getMapRegions();
 
@@ -187,7 +194,7 @@ void Player::conqueredRegion(int regionID){
     playerRegions->getRegion(regionID)->setPopulation(requiredTokens);
     totalTokens = totalTokens - requiredTokens;
 
-    NotifyStatistics();
+    game->NotifyStatistics();
 
     followingConquest();
 }
@@ -195,6 +202,7 @@ void Player::conqueredRegion(int regionID){
 void Player::enemyLossesWithdrawals(int regionID, int requiredTokens){
     Game* game = Game::getGame();
     MapRegions* playerRegions = MapRegions::getMapRegions();
+    game->NotifyStatistics();
 
     int enemyPopulation = playerRegions->getRegion(regionID)->getPopulation();
     int enemyID = (int)playerRegions->getRegion(regionID)->getOwner();
@@ -236,9 +244,12 @@ void Player::reduceTokensToOneInActiveAndResetToken(){
 }
 
 void Player::redeployTokens(){
+
+
     int redeployAgain = false;
     char word;
-    cout << "\nPlayer[" << id << "], it's your turn to redeploy. Do you want to redeploy? If yes, please input y" << endl;
+    Game* game = Game::getGame();
+    game->Notify("it's your turn to redeploy.Do you want to redeploy? If yes, please input y", this);
     cin >> word;
     if(word == 'y'){
         redeployAgain = true;
@@ -453,9 +464,12 @@ void Player::showRegions() {
 }
 
 void Player::scores() {
-    Notify("Scores some victory coins");
-    cout <<"Player"<<getId()<<"\'s total score at this turn is: ";
+
+
+
     Game *game = Game::getGame();
+    game->Notify("Scores.", this);
+    cout <<"Player"<<getId()<<"\'s total score at this turn is: ";
     int i=getId();
     iterateMapRegions(i);                   //------player receives 1 coin from each Region his occupy on the map--------
 
@@ -530,8 +544,11 @@ double Player:: calculatePercentage(){
             regionCounter++;
         }
     }
+    Game* game = Game::getGame();
+    int regionNumber = game->getRegionNumber();
 
-    return (double)regionCounter / regionNumber * 100;
+    double result = (double)regionCounter / regionNumber * 100;
+    return result;
 
 }
 
@@ -642,6 +659,34 @@ void Player::showBarGraph(){
 //int Player::getRegionNumber() const {
 //    return regionNumber;
 //}
+
+
+
+//design pattern
+
+
+
+
+void Player::UpdateStatistics() {
+    cout<<"==== From observer pattern ==== ";
+    cout <<"Player "<< getId() << ": has " << calculatePercentage() << "% regions."<<endl;
+
+}
+
+void Player::UpdateBarGraph(){
+    cout<<"==== From observer pattern ==== ";
+    cout <<"Player "<< getId() << ": ";
+    showBarGraph();
+
+}
+
+void Player::Update(const std::string& str)
+{
+    cout<<"\n==== From observer pattern ==== ";
+    cout <<"Player "<< getId() << ": " << str << endl;
+}
+
+
 
 
 

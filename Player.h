@@ -11,9 +11,10 @@
 #include "ComboList.h"
 #include "Map.h"
 #include "DesignPattern/Subject.h"
+//#include "Game.h"
 #include <vector>
 
-class Player : public Subject {
+class Player : public Observer {
 
 public:
     Player();
@@ -25,6 +26,11 @@ public:
     void pickRace(ComboList&);
     void picks_race(ComboList&);
     void conquers(int);
+
+    ////design pattern
+    void Update(const std::string&);
+    void UpdateStatistics();
+
 
 
 
@@ -99,6 +105,7 @@ public:
     double calculatePercentage();
     void showBarGraph();
 
+
 private:
     int id;
     int victoryCoins;
@@ -111,7 +118,10 @@ private:
     bool haveDeclineCombo;
     bool haveActiveCombo;
 
-    int regionNumber;
+ //   int regionNumber;
+    ///desgin pattern
+//    Game* gameSubject;
+
 public:
     int getRegionNumber() const;
 
