@@ -52,7 +52,7 @@ void Game::initial() {
             regionNumber = 23;
             break;
         case 3:
-            mapLoader.openFile("D:/CLion-workspace/small_world/threePlayer.map");
+            mapLoader.openFile("/Users/zncu/CLionProjects/small world/threePlayer.map");
             playerRegions->createThreePlayerRegions();
             regionNumber = 30;
             break;

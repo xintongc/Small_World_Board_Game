@@ -27,9 +27,7 @@ public:
     void picks_race(ComboList&);
     void conquers(int);
 
-    ////design pattern
-    void Update(const std::string&);
-    void UpdateStatistics();
+
 
 
 
@@ -102,7 +100,12 @@ public:
 //    int getTotalRegionPercentage() const;
 //
 //    void setTotalRegionPercentage(int totalRegionPercentage);
+
+    ////design pattern
+    void Update(const std::string&);
+    void UpdateStatistics();
     double calculatePercentage();
+    void UpdateBarGraph();
     void showBarGraph();
 
 

@@ -195,6 +195,7 @@ void Player::conqueredRegion(int regionID){
     totalTokens = totalTokens - requiredTokens;
 
     game->NotifyStatistics();
+    game->NotifyBarGraph();
 
     followingConquest();
 }
@@ -203,6 +204,7 @@ void Player::enemyLossesWithdrawals(int regionID, int requiredTokens){
     Game* game = Game::getGame();
     MapRegions* playerRegions = MapRegions::getMapRegions();
     game->NotifyStatistics();
+    game->NotifyBarGraph();
 
     int enemyPopulation = playerRegions->getRegion(regionID)->getPopulation();
     int enemyID = (int)playerRegions->getRegion(regionID)->getOwner();
@@ -668,21 +670,22 @@ void Player::showBarGraph(){
 
 
 void Player::UpdateStatistics() {
-    cout<<"==== From observer pattern ==== ";
+    cout<<"==== From Statistic observer pattern ==== ";
     cout <<"Player "<< getId() << ": has " << calculatePercentage() << "% regions."<<endl;
 
 }
 
 void Player::UpdateBarGraph(){
-    cout<<"==== From observer pattern ==== ";
+    cout<<"==== From Statistic observer pattern ==== ";
     cout <<"Player "<< getId() << ": ";
     showBarGraph();
+    cout<<endl;
 
 }
 
 void Player::Update(const std::string& str)
 {
-    cout<<"\n==== From observer pattern ==== ";
+    cout<<"\n==== From Player observer pattern ==== ";
     cout <<"Player "<< getId() << ": " << str << endl;
 }
 
