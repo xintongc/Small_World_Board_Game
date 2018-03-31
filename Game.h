@@ -14,7 +14,7 @@
 
 
 
-class Game {
+class Game : public Subject{
 
 private:
 
@@ -24,6 +24,9 @@ private:
     int NumOfPlayers;
     int totalTurns;
     int turnMakerIndex;
+    int regionNumber;
+public:
+    int getRegionNumber() const;
 
 public:
 //    Game();
@@ -49,6 +52,12 @@ public:
     void setTurnMakerIndex(int turnMakerIndex);
 
     vector<Player> Players;
+
+//    void Attach(Observer* o);
+//    void Detach(Observer* o);
+//    void NotifyStatistics();
+//    void Notify(const std::string&);
+      void Notify(const std::string &str, Observer *);
 
 };
 

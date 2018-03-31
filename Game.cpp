@@ -49,18 +49,22 @@ void Game::initial() {
         case 2:
             mapLoader.openFile("/Users/zncu/CLionProjects/small world/twoPlayer.map");
             playerRegions->createTwoPlayerRegions();
+            regionNumber = 23;
             break;
         case 3:
             mapLoader.openFile("D:/CLion-workspace/small_world/threePlayer.map");
             playerRegions->createThreePlayerRegions();
+            regionNumber = 30;
             break;
         case 4:
             mapLoader.openFile("D:/CLion-workspace/small_world/fourPlayer.map");
             playerRegions->createFourPlayerRegions();
+            regionNumber = 39;
             break;
         case 5:
             mapLoader.openFile("D:/CLion-workspace/small_world/fivePlayer.map");
             playerRegions->createFivePlayerRegions();
+            regionNumber = 47;
             break;
     }
     playerRegions->display();
@@ -96,6 +100,11 @@ void Game::initialPlayer() {
             Players.push_back(Player(4));
             Players.push_back(Player(5));
             break;
+    }
+
+    for(int i=1;i <= NumOfPlayers;i++){
+        Player* player = &Players[i];
+        Attach(player);
     }
 }
 
@@ -213,6 +222,11 @@ void Game::playGame() {
 
 }
 
+void Game::Notify(const std::string &str, Observer *player){
+    player->Update(str);
+}
+
+
 
 
 //-------------getter and setter --------------------
@@ -246,4 +260,8 @@ int Game::getTurnMakerIndex() const {
 
 void Game::setTurnMakerIndex(int turnMakerIndex) {
     Game::turnMakerIndex = turnMakerIndex;
+}
+
+int Game::getRegionNumber() const {
+    return regionNumber;
 }
