@@ -8,6 +8,10 @@
 #include <vector>
 #include "MapLoader.h"
 #include "regions/MapRegions.h"
+#include "strategy/AggressiveStrategy.h"
+#include "strategy/DefensiveStrategy.h"
+#include "strategy/ModerateStrategy.h"
+#include "strategy/RandomStrategy.h"
 
 class MapLoader;
 
@@ -57,7 +61,7 @@ void Game::initial() {
             regionNumber = 30;
             break;
         case 4:
-            mapLoader.openFile("D:/CLion-workspace/small_world/fourPlayer.map");
+            mapLoader.openFile("/Users/zncu/CLionProjects/small world/fourPlayer.map");
             playerRegions->createFourPlayerRegions();
             regionNumber = 39;
             break;
@@ -107,7 +111,33 @@ void Game::initialPlayer() {
         Attach(player);
     }
 }
+void Game::initialStrategyPlayer(){
+    round=1;
 
+    Players.push_back(Player(0, new AggressiveStrategy()));
+    Players.push_back(Player(1, new AggressiveStrategy()));
+    Players.push_back(Player(2, new DefensiveStrategy()));
+
+    switch (NumOfPlayers){
+        case 2:
+            totalTurns=10;
+            break;
+        case 3:
+            totalTurns=10;
+            Players.push_back(Player(3, new ModerateStrategy()));
+            break;
+        case 4:
+            totalTurns=9;
+            Players.push_back(Player(3, new ModerateStrategy()));
+            Players.push_back(Player(4, new RandomStrategy()));
+            break;
+    }
+
+    for(int i=1;i <= NumOfPlayers;i++){
+        Player* player = &Players[i];
+        Attach(player);
+    }
+}
 
 bool Game::allPlayersFinishATurn() {
     for(int i=1;i<=NumOfPlayers;i++){

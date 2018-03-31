@@ -59,6 +59,9 @@ public:
 //    void Notify(const std::string&);
       void Notify(const std::string &str, Observer *);
 
+
+    void initialStrategyPlayer();
+
 };
 
 
