@@ -294,8 +294,8 @@ void Game::playGameByStragegy() {
             cout << "\nTurn " << getRound()<< endl;
 
             for (int i = 1; i < Players.size(); i++) {
-                Players[i].picks_race(combo);
-                Players[i].firstConquest(Players.size());
+                Players[i].picks_raceByStrategy(combo);
+                Players[i].firstConquestByStrategy(Players.size());
                 Players[i].scores();
 
             }
@@ -314,10 +314,10 @@ void Game::playGameByStragegy() {
             firstPlayerIndex = getTurnMakerIndex();         //1. redefine each turn's turn maker (create new one each time, avoid reassign issue)------
 
             if(Players[firstPlayerIndex].isHaveActiveCombo()){     //2. if player has active combo, ask whether to decline
-                Players[firstPlayerIndex].declineCombo(combo);
+                Players[firstPlayerIndex].declineComboByStrategy(combo);
             } else if (!Players[firstPlayerIndex].isHaveActiveCombo() && Players[firstPlayerIndex].isHaveDeclineCombo()){                                                     //3. if player has no active combo, pick race
-                Players[firstPlayerIndex].picks_race(combo);
-                Players[firstPlayerIndex].conquers(Players.size());
+                Players[firstPlayerIndex].picks_raceByStrategy(combo);
+                Players[firstPlayerIndex].conquersByStrategy(Players.size());
             }
 
             Players[firstPlayerIndex].scores();
@@ -326,10 +326,10 @@ void Game::playGameByStragegy() {
             for (int i = 1; i < Players.size(); i++) {             //4. rest players play--------------------------
                 if (i != firstPlayerIndex) {
                     if(Players[i].isHaveActiveCombo()){
-                        Players[i].declineCombo(combo);
+                        Players[i].declineComboByStrategy(combo);
                     } else if(!Players[i].isHaveActiveCombo() && Players[i].isHaveDeclineCombo()){
-                        Players[i].picks_race(combo);
-                        Players[i].conquers(Players.size());
+                        Players[i].picks_raceByStrategy(combo);
+                        Players[i].conquersByStrategy(Players.size());
                     }
                     Players[i].scores();
                 }

@@ -19,6 +19,12 @@ public:
     void pickRace(ComboList& combo);
     void followingConquest();
     void firstConquestByStrategy(int) override;
+
+    void picks_raceByStrategy(ComboList &combo) override;
+
+    void conquersByStrategy(int playerNum) override;
+
+    void declineComboByStrategy(ComboList &combo) override;
 };
 
 

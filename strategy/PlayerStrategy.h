@@ -10,7 +10,9 @@ public:
 
 	virtual void play() = 0;
 	virtual void firstConquestByStrategy(int)= 0;
-//	virtual void picks_raceByStrategy(ComboList& combo) = 0;
+	virtual void picks_raceByStrategy(ComboList& combo) = 0;
+	virtual void conquersByStrategy(int playerNum) = 0;
+	virtual void declineComboByStrategy(ComboList &combo) = 0;
 
 };
 
