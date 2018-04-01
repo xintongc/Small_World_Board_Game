@@ -98,3 +98,15 @@ void AggressiveStrategy::followingConquest(){
         finalConquestAttempt(regionID);
     }
 }
+
+void AggressiveStrategy::picks_raceByStrategy(ComboList &combo) {
+
+}
+
+void AggressiveStrategy::conquersByStrategy(int playerNum) {
+
+}
+
+void AggressiveStrategy::declineComboByStrategy(ComboList &combo) {
+
+}

@@ -133,6 +133,9 @@ private:
 public:
     void setStrategy(PlayerStrategy *strategy);
     void firstConquestByStrategy(int);
+    void picks_raceByStrategy(ComboList& combo);
+    void conquersByStrategy(int playerNum);
+    void declineComboByStrategy(ComboList &combo);
 
 
 

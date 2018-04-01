@@ -705,8 +705,17 @@ void Player::firstConquestByStrategy(int playerNum){
     strategy->firstConquestByStrategy(playerNum);
 }
 
+void Player::picks_raceByStrategy(ComboList& combo){
+    strategy->picks_raceByStrategy(combo);
+}
 
+void Player::conquersByStrategy(int playerNum){
+    strategy->conquersByStrategy(playerNum);
+}
 
+void Player::declineComboByStrategy(ComboList &combo){
+    strategy->declineComboByStrategy(combo);
+}
 
 
 

@@ -4,11 +4,17 @@
 class RandomStrategy : public PlayerStrategy, Player
 {
 public:
-//	RandomStrategy();
-//	~RandomStrategy();
+	RandomStrategy();
+	~RandomStrategy();
 
     void play();
 
     void firstConquestByStrategy(int i) override;
+
+    void picks_raceByStrategy(ComboList &combo) override;
+
+    void conquersByStrategy(int playerNum) override;
+
+    void declineComboByStrategy(ComboList &combo) override;
 };
 
