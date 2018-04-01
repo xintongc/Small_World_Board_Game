@@ -149,7 +149,7 @@ void Game::initialStrategyPlayer(){
 
 void Game::selectStrategy(){
     for(int i=1;i <= NumOfPlayers;i++){
-        cout << "which strategy for player " << i << " ? 1.Aggressive 2.Defensive 3. Moderate 4. Random" << endl;
+        cout << "which strategy for player " << i << " ? 1.Aggressive 2.Defensive 3.Moderate 4.Random" << endl;
         int n;
         PlayerStrategy* playerStrategy;
         cin >> n;
