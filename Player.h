@@ -110,6 +110,8 @@ public:
     void UpdateBarGraph();
     void showBarGraph();
 
+    int getTotalRegionNumber() const;
+
 
 private:
     int id;
@@ -131,8 +133,7 @@ private:
 public:
     void setStrategy(PlayerStrategy *strategy);
 
-public:
-    int getRegionNumber() const;
+
 
 //private:
 //    int totalRegionPercentage;
