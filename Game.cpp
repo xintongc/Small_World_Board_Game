@@ -51,17 +51,17 @@ void Game::initial() {
 
     switch (playerNumber){
         case 2:
-            mapLoader.openFile("/Users/zncu/CLionProjects/small world/twoPlayer.map");
+            mapLoader.openFile("/Users/zncu/CLionProjects/small_world/twoPlayer.map");
             playerRegions->createTwoPlayerRegions();
             regionNumber = 23;
             break;
         case 3:
-            mapLoader.openFile("/Users/zncu/CLionProjects/small world/threePlayer.map");
+            mapLoader.openFile("/Users/zncu/CLionProjects/small_world/threePlayer.map");
             playerRegions->createThreePlayerRegions();
             regionNumber = 30;
             break;
         case 4:
-            mapLoader.openFile("/Users/zncu/CLionProjects/small world/fourPlayer.map");
+            mapLoader.openFile("/Users/zncu/CLionProjects/small_world/fourPlayer.map");
             playerRegions->createFourPlayerRegions();
             regionNumber = 39;
             break;
@@ -114,9 +114,9 @@ void Game::initialPlayer() {
 void Game::initialStrategyPlayer(){
     round=1;
 
-    Players.push_back(Player(0, new AggressiveStrategy()));
-    Players.push_back(Player(1, new AggressiveStrategy()));
-    Players.push_back(Player(2, new DefensiveStrategy()));
+    Players.push_back(Player(0));
+    Players.push_back(Player(1));
+    Players.push_back(Player(2));
 
     switch (NumOfPlayers){
         case 2:
@@ -124,18 +124,50 @@ void Game::initialStrategyPlayer(){
             break;
         case 3:
             totalTurns=10;
-            Players.push_back(Player(3, new ModerateStrategy()));
+            Players.push_back(Player(3));
             break;
         case 4:
             totalTurns=9;
-            Players.push_back(Player(3, new ModerateStrategy()));
-            Players.push_back(Player(4, new RandomStrategy()));
+            Players.push_back(Player(3));
+            Players.push_back(Player(4));
+            break;
+        case 5:
+            totalTurns=8;
+            Players.push_back(Player(3));
+            Players.push_back(Player(4));
+            Players.push_back(Player(5));
             break;
     }
 
     for(int i=1;i <= NumOfPlayers;i++){
         Player* player = &Players[i];
         Attach(player);
+    }
+
+    selectStrategy();
+}
+
+void Game::selectStrategy(){
+    for(int i=1;i <= NumOfPlayers;i++){
+        cout << "which strategy for player " << i << " ? 1.Aggressive 2.Defensive 3. Moderate 4. Random" << endl;
+        int n;
+        PlayerStrategy* playerStrategy;
+        cin >> n;
+        switch(n){
+            case 1:
+                playerStrategy = new AggressiveStrategy();
+                break;
+            case 2:
+                playerStrategy = new DefensiveStrategy();
+                break;
+            case 3:
+                playerStrategy = new ModerateStrategy();
+                break;
+            case 4:
+                playerStrategy = new RandomStrategy();
+                break;
+        }
+        Players[i].setStrategy(playerStrategy);
     }
 }
 

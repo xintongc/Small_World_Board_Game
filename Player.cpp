@@ -689,6 +689,10 @@ void Player::Update(const std::string& str)
     cout <<"Player "<< getId() << ": " << str << endl;
 }
 
+void Player::setStrategy(PlayerStrategy *strategy) {
+    Player::strategy = strategy;
+}
+
 
 
 
