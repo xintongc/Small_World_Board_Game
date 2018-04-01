@@ -1,4 +1,7 @@
 #pragma once
+#include "../Player.h"
+
+class Player;
 class PlayerStrategy
 {
 public:
@@ -6,5 +9,6 @@ public:
 	~PlayerStrategy() {}
 
 	virtual void play() = 0;
+
 };
 

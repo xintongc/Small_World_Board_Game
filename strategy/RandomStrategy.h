@@ -1,6 +1,7 @@
 #pragma once
 #include "PlayerStrategy.h"
-class RandomStrategy : public PlayerStrategy
+#include "../Player.h"
+class RandomStrategy : public PlayerStrategy, Player
 {
 public:
 	RandomStrategy();

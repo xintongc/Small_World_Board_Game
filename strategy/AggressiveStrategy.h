@@ -3,12 +3,12 @@
 //
 
 #ifndef SMALL_WORLD_AGGRESSIVESTRATEGY_H
+
 #define SMALL_WORLD_AGGRESSIVESTRATEGY_H
-
-
 #include "PlayerStrategy.h"
+#include "../Player.h"
 
-class AggressiveStrategy : public PlayerStrategy{
+class AggressiveStrategy : public PlayerStrategy, Player{
 public:
     AggressiveStrategy();
 

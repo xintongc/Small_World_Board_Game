@@ -5,10 +5,10 @@
 #ifndef SMALL_WORLD_DEFENSIVESTRATEGY_H
 #define SMALL_WORLD_DEFENSIVESTRATEGY_H
 
-
+#include "../Player.h"
 #include "PlayerStrategy.h"
 
-class DefensiveStrategy : public PlayerStrategy {
+class DefensiveStrategy : public PlayerStrategy, Player{
 public:
     DefensiveStrategy();
 
