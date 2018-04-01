@@ -5,12 +5,16 @@
 #include <iostream>
 #include "DefensiveStrategy.h"
 
-DefensiveStrategy::DefensiveStrategy() {}
-
-DefensiveStrategy::~DefensiveStrategy() {
-
-}
+//DefensiveStrategy::DefensiveStrategy() {}
+//
+//DefensiveStrategy::~DefensiveStrategy() {
+//
+//}
 
 void DefensiveStrategy::play() {
     std::cout << "DefensiveStrategy";
+}
+
+void DefensiveStrategy::firstConquestByStrategy(int i) {
+
 }

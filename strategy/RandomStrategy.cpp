@@ -4,15 +4,19 @@
 using namespace std;
 
 
-RandomStrategy::RandomStrategy()
-{
-}
-
-
-RandomStrategy::~RandomStrategy()
-{
-}
+//RandomStrategy::RandomStrategy()
+//{
+//}
+//
+//
+//RandomStrategy::~RandomStrategy()
+//{
+//}
 
 void RandomStrategy::play() {
     std::cout << "RandomStrategy";
+}
+
+void RandomStrategy::firstConquestByStrategy(int i) {
+
 }

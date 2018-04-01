@@ -10,11 +10,14 @@
 
 class DefensiveStrategy : public PlayerStrategy, Player{
 public:
-    DefensiveStrategy();
-
-    virtual ~DefensiveStrategy();
+//    DefensiveStrategy();
+//
+//    virtual ~DefensiveStrategy();
 
     void play() override;
+
+    void firstConquestByStrategy(int i) override;
+
 };
 
 

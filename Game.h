@@ -62,6 +62,7 @@ public:
 
     void initialStrategyPlayer();
     void selectStrategy();
+    void playGameByStragegy();
 
 };
 

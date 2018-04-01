@@ -132,6 +132,7 @@ private:
     PlayerStrategy * strategy;
 public:
     void setStrategy(PlayerStrategy *strategy);
+    void firstConquestByStrategy(int);
 
 
 

@@ -13,12 +13,12 @@
 class AggressiveStrategy : public PlayerStrategy, Player{
 public:
     AggressiveStrategy();
-
     virtual ~AggressiveStrategy();
+
     void play();
     void pickRace(ComboList& combo);
-    void firstConquest(int playerNum);
     void followingConquest();
+    void firstConquestByStrategy(int) override;
 };
 
 

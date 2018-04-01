@@ -5,12 +5,16 @@
 #include <iostream>
 #include "ModerateStrategy.h"
 
-ModerateStrategy::ModerateStrategy() {}
-
-ModerateStrategy::~ModerateStrategy() {
-
-}
+//ModerateStrategy::ModerateStrategy() {}
+//
+//ModerateStrategy::~ModerateStrategy() {
+//
+//}
 
 void ModerateStrategy::play() {
     std::cout << "ModerateStrategy";
+}
+
+void ModerateStrategy::firstConquestByStrategy(int i) {
+
 }

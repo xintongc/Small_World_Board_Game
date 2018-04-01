@@ -158,13 +158,13 @@ void Game::selectStrategy(){
                 playerStrategy = new AggressiveStrategy();
                 break;
             case 2:
-                playerStrategy = new DefensiveStrategy();
+//                playerStrategy = new DefensiveStrategy();
                 break;
             case 3:
-                playerStrategy = new ModerateStrategy();
+//                playerStrategy = new ModerateStrategy();
                 break;
             case 4:
-                playerStrategy = new RandomStrategy();
+//                playerStrategy = new RandomStrategy();
                 break;
         }
         Players[i].setStrategy(playerStrategy);
@@ -217,6 +217,74 @@ void Game::endingGame() {
 }
 
 void Game::playGame() {
+    ComboList combo;
+    combo.setupCombo();
+    int firstPlayerIndex;
+
+    do {
+        if (getRound() == 1) {                             //---------------round 1--------------------------------
+            cout << "\nTurn " << getRound()<< endl;
+
+            for (int i = 1; i < Players.size(); i++) {
+                Players[i].picks_race(combo);
+                Players[i].firstConquest(Players.size());
+                Players[i].scores();
+
+            }
+            for (int i = 1; i < Players.size(); i++){
+                Players[i].redeployTokens();
+            }
+            if (allPlayersFinishATurn())                   //--------------ensure every players play---------------
+                startNewTurn();
+
+        }
+//----------------------------------------------------------------------------------------------------------------------
+        if (getRound() <= getTotalTurns()) {                //--------------round 2-8/9/10 -------------------------
+            cout << "\nTurn " << getRound()<< endl;
+            cout<<"========================================"<<endl;
+
+            firstPlayerIndex = getTurnMakerIndex();         //1. redefine each turn's turn maker (create new one each time, avoid reassign issue)------
+
+            if(Players[firstPlayerIndex].isHaveActiveCombo()){     //2. if player has active combo, ask whether to decline
+                Players[firstPlayerIndex].declineCombo(combo);
+            } else if (!Players[firstPlayerIndex].isHaveActiveCombo() && Players[firstPlayerIndex].isHaveDeclineCombo()){                                                     //3. if player has no active combo, pick race
+                Players[firstPlayerIndex].picks_race(combo);
+                Players[firstPlayerIndex].conquers(Players.size());
+            }
+
+            Players[firstPlayerIndex].scores();
+
+//----------------------------------------------------------------------------------------------------------------------
+            for (int i = 1; i < Players.size(); i++) {             //4. rest players play--------------------------
+                if (i != firstPlayerIndex) {
+                    if(Players[i].isHaveActiveCombo()){
+                        Players[i].declineCombo(combo);
+                    } else if(!Players[i].isHaveActiveCombo() && Players[i].isHaveDeclineCombo()){
+                        Players[i].picks_race(combo);
+                        Players[i].conquers(Players.size());
+                    }
+                    Players[i].scores();
+                }
+                else{
+                    continue;
+                }
+            }
+            for (int i = 1; i < Players.size(); i++){
+                if(Players[i].isHaveActiveCombo()){
+                    Players[i].redeployTokens();
+                }
+            }
+            if (allPlayersFinishATurn())
+                startNewTurn();
+        }
+    } while (getRound() <= getTotalTurns());
+
+    endingGame();
+
+
+}
+
+void Game::playGameByStragegy() {
     ComboList combo;
     combo.setupCombo();
     int firstPlayerIndex;

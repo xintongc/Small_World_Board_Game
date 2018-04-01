@@ -4,9 +4,11 @@
 class RandomStrategy : public PlayerStrategy, Player
 {
 public:
-	RandomStrategy();
-	~RandomStrategy();
+//	RandomStrategy();
+//	~RandomStrategy();
 
     void play();
+
+    void firstConquestByStrategy(int i) override;
 };
 

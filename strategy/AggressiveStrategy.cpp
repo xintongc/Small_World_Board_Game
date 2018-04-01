@@ -17,6 +17,7 @@ void AggressiveStrategy::play() {
 }
 
 
+
 void AggressiveStrategy::pickRace(ComboList& combo){
 
     cout << "The Aggressive Strategy Player always choose the first combo list" << endl;
@@ -40,7 +41,7 @@ void AggressiveStrategy::pickRace(ComboList& combo){
     combo.coinsVector.erase(combo.coinsVector.begin() + orderNum - 1);
 }
 
-void AggressiveStrategy::firstConquest(int playerNum){
+void AggressiveStrategy::firstConquestByStrategy(int playerNum){
     Game* game = Game::getGame();
     game->Notify("First conquers some regions", this);
 

@@ -700,6 +700,12 @@ int Player::getTotalRegionNumber() const {
 }
 
 
+////strategy
+void Player::firstConquestByStrategy(int playerNum){
+    strategy->firstConquestByStrategy(playerNum);
+}
+
+
 
 
 
