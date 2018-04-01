@@ -11,6 +11,7 @@
 #include "ComboList.h"
 #include "Map.h"
 #include "DesignPattern/Subject.h"
+#include "strategy/PlayerStrategy.h"
 //#include "Game.h"
 #include <vector>
 
@@ -124,6 +125,10 @@ private:
  //   int regionNumber;
     ///desgin pattern
 //    Game* gameSubject;
+
+    PlayerStrategy * strategy;
+public:
+    void setStrategy(PlayerStrategy *strategy);
 
 public:
     int getRegionNumber() const;
