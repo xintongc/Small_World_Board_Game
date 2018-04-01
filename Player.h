@@ -6,6 +6,7 @@
 #define SMALL_WORLD_PLAYER_H
 
 
+#include <vector>
 #include "Power/Power.h"
 #include "Race/Race.h"
 #include "ComboList.h"
@@ -13,8 +14,8 @@
 #include "DesignPattern/Subject.h"
 #include "strategy/PlayerStrategy.h"
 //#include "Game.h"
-#include <vector>
 
+class PlayerStrategy;
 class Player : public Observer {
 
 public:
