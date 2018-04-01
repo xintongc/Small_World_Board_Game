@@ -7,6 +7,8 @@
 #define SMALL_WORLD_AGGRESSIVESTRATEGY_H
 #include "PlayerStrategy.h"
 #include "../Player.h"
+#include "../Game.h"
+#include "../regions/MapRegions.h"
 
 class AggressiveStrategy : public PlayerStrategy, Player{
 public:
@@ -14,6 +16,9 @@ public:
 
     virtual ~AggressiveStrategy();
     void play();
+    void pickRace(ComboList& combo);
+    void firstConquest(int playerNum);
+    void followingConquest();
 };
 
 

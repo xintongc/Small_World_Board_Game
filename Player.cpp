@@ -694,6 +694,12 @@ void Player::setStrategy(PlayerStrategy *strategy) {
 }
 
 
+int Player::getTotalRegionNumber() const {
+    Game* game = Game::getGame();
+    return game->getRegionNumber();
+}
+
+
 
 
 
