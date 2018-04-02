@@ -144,7 +144,7 @@ void Game::initialStrategyPlayer(){
         Attach(player);
     }
 
-//    selectStrategy();
+    selectStrategy();
 }
 
 void Game::selectStrategy(){

@@ -16,12 +16,16 @@ public:
     virtual ~AggressiveStrategy();
 
     void play();
-    void pickRace(ComboList& combo);
-    void followingConquest();
+//    void pickRace(ComboList& combo);
+    void followingConquest(Player*);
     void firstConquestByStrategy(Player*, int i) override;
     void picks_raceByStrategy(Player*, ComboList &combo) override;
     void conquersByStrategy(Player*, int playerNum) override;
     void declineComboByStrategy(Player*, ComboList &combo) override;
+    void conqueredRegion(Player* player, int regionID);
+    void enemyLossesWithdrawals(Player* player, int regionID, int requiredTokens);
+    void finalConquestAttempt(Player* player, int regionID);
+
 };
 
 
