@@ -8,7 +8,7 @@
 #include "../Player.h"
 #include "PlayerStrategy.h"
 
-class ModerateStrategy : public PlayerStrategy, Player {
+class ModerateStrategy : public PlayerStrategy {
 public:
     ModerateStrategy();
 
@@ -16,13 +16,10 @@ public:
 
     void play() override;
 
-    void firstConquestByStrategy(int i) override;
-
-    void picks_raceByStrategy(ComboList &combo) override;
-
-    void conquersByStrategy(int playerNum) override;
-
-    void declineComboByStrategy(ComboList &combo) override;
+    void firstConquestByStrategy(Player*, int i) override;
+    void picks_raceByStrategy(Player*, ComboList &combo) override;
+    void conquersByStrategy(Player*, int playerNum) override;
+    void declineComboByStrategy(Player*, ComboList &combo) override;
 };
 
 

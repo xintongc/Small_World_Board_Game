@@ -10,7 +10,7 @@
 #include "../Game.h"
 #include "../regions/MapRegions.h"
 
-class AggressiveStrategy : public PlayerStrategy, Player{
+class AggressiveStrategy : public PlayerStrategy{
 public:
     AggressiveStrategy();
     virtual ~AggressiveStrategy();
@@ -18,13 +18,10 @@ public:
     void play();
     void pickRace(ComboList& combo);
     void followingConquest();
-    void firstConquestByStrategy(int) override;
-
-    void picks_raceByStrategy(ComboList &combo) override;
-
-    void conquersByStrategy(int playerNum) override;
-
-    void declineComboByStrategy(ComboList &combo) override;
+    void firstConquestByStrategy(Player*, int i) override;
+    void picks_raceByStrategy(Player*, ComboList &combo) override;
+    void conquersByStrategy(Player*, int playerNum) override;
+    void declineComboByStrategy(Player*, ComboList &combo) override;
 };
 
 

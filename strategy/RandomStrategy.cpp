@@ -17,18 +17,18 @@ void RandomStrategy::play() {
     std::cout << "RandomStrategy";
 }
 
-void RandomStrategy::firstConquestByStrategy(int i) {
+void RandomStrategy::firstConquestByStrategy(Player* player, int i) {
 
 }
 
-void RandomStrategy::picks_raceByStrategy(ComboList &combo) {
+void RandomStrategy::picks_raceByStrategy(Player* player, ComboList &combo) {
 
 }
 
-void RandomStrategy::conquersByStrategy(int playerNum) {
+void RandomStrategy::conquersByStrategy(Player* player, int playerNum) {
 
 }
 
-void RandomStrategy::declineComboByStrategy(ComboList &combo) {
+void RandomStrategy::declineComboByStrategy(Player* player, ComboList &combo) {
 
 }

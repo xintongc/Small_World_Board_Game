@@ -7,26 +7,35 @@
 
 ModerateStrategy::ModerateStrategy() {}
 
-ModerateStrategy::~ModerateStrategy() {
-
-}
+ModerateStrategy::~ModerateStrategy() {}
 
 void ModerateStrategy::play() {
     std::cout << "ModerateStrategy";
 }
 
-void ModerateStrategy::firstConquestByStrategy(int i) {
-
+void ModerateStrategy::firstConquestByStrategy(Player* player,int i) {
+    player->firstConquest(i);
 }
 
-void ModerateStrategy::picks_raceByStrategy(ComboList &combo) {
-
+void ModerateStrategy::picks_raceByStrategy(Player* player, ComboList &combo) {
+    player->picks_race(combo);
 }
 
-void ModerateStrategy::conquersByStrategy(int playerNum) {
-
+void ModerateStrategy::conquersByStrategy(Player* player, int playerNum) {
+    player->conquers(playerNum);
 }
 
-void ModerateStrategy::declineComboByStrategy(ComboList &combo) {
-
+void ModerateStrategy::declineComboByStrategy(Player* player,ComboList &combo) {
+    if (player->isHaveDeclineCombo()){
+        combo.raceVector.push_back(player->getDeclineRace());
+        combo.powerVector.push_back(player->getDeclinePower());
+        player->setHaveDeclineCombo(false);
+    }
+    player->reduceTokensToOneInDecline();
+    player->setDeclineRace(player->getActiveRace());
+    player->setDeclinePower(player->getActivePower());
+    player->setHaveDeclineCombo(true);
+    player->setHaveActiveCombo(false);
+    player->currentStates();
 }
+
