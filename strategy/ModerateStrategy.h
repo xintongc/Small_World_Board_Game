@@ -7,6 +7,7 @@
 
 #include "../Player.h"
 #include "PlayerStrategy.h"
+#include "../Game.h"
 
 class ModerateStrategy : public PlayerStrategy {
 public:
@@ -20,6 +21,7 @@ public:
     void picks_raceByStrategy(Player*, ComboList &combo) override;
     void conquersByStrategy(Player*, int playerNum) override;
     void declineComboByStrategy(Player*, ComboList &combo) override;
+    void redeployTokensByStrategy(Player*) override ;
 };
 
 

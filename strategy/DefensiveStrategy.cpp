@@ -30,3 +30,7 @@ void DefensiveStrategy::conquersByStrategy(Player* player, int playerNum) {
 void DefensiveStrategy::declineComboByStrategy(Player* player, ComboList &combo) {
 
 }
+
+void DefensiveStrategy::redeployTokensByStrategy(Player *player) {
+
+}

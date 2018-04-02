@@ -26,6 +26,7 @@ public:
     void enemyLossesWithdrawals(Player* player, int regionID, int requiredTokens);
     void finalConquestAttempt(Player* player, int regionID);
 
+    void redeployTokensByStrategy(Player *player) override;
 };
 
 
