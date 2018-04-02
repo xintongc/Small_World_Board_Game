@@ -112,6 +112,8 @@ public:
     void declineComboByStrategy(ComboList &combo);
     void redeployTokensByStrategy();
 
+    void showInfo();
+
 protected:
     int id;
     int victoryCoins;

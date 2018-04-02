@@ -14,7 +14,7 @@ Player::Player() {
 //    haveDeclineCombo=false;
 }
 
-//constructor, default 5 coins for player 
+//constructor, default 5 coins for player
 Player::Player(int id) {
     this->id = id;
     totalTokens = 0;
@@ -716,3 +716,6 @@ void Player::redeployTokensByStrategy(){
 }
 
 
+void Player::showInfo(){
+
+}
