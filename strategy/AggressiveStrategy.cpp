@@ -172,3 +172,7 @@ void AggressiveStrategy::declineComboByStrategy(Player* player,ComboList &combo)
     player->currentStates();
     conquersByStrategy(player, playerNum);
 }
+
+void AggressiveStrategy::redeployTokensByStrategy(Player *player) {
+
+}

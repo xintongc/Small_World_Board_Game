@@ -26,6 +26,9 @@ void ModerateStrategy::conquersByStrategy(Player* player, int playerNum) {
 }
 
 void ModerateStrategy::declineComboByStrategy(Player* player,ComboList &combo) {
+    Game* game = Game::getGame();
+    game->Notify("Decline active combo", player);
+
     if (player->isHaveDeclineCombo()){
         combo.raceVector.push_back(player->getDeclineRace());
         combo.powerVector.push_back(player->getDeclinePower());
@@ -39,3 +42,6 @@ void ModerateStrategy::declineComboByStrategy(Player* player,ComboList &combo) {
     player->currentStates();
 }
 
+void ModerateStrategy::redeployTokensByStrategy(Player * player) {
+    player->redeployTokens();
+}

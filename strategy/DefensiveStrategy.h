@@ -21,6 +21,7 @@ public:
     void conquersByStrategy(Player*, int playerNum) override;
     void declineComboByStrategy(Player*, ComboList &combo) override;
 
+    void redeployTokensByStrategy(Player *player) override;
 };
 
 
