@@ -114,9 +114,9 @@ void Game::initialPlayer() {
 void Game::initialStrategyPlayer(){
     round=1;
 
-    Players.push_back(Player(0, new AggressiveStrategy()));
-    Players.push_back(Player(1,new AggressiveStrategy()));
-    Players.push_back(Player(2,new AggressiveStrategy()));
+    Players.push_back(Player(0));
+    Players.push_back(Player(1));
+    Players.push_back(Player(2));
 
     switch (NumOfPlayers){
         case 2:
@@ -124,18 +124,18 @@ void Game::initialStrategyPlayer(){
             break;
         case 3:
             totalTurns=10;
-            Players.push_back(Player(3,new AggressiveStrategy()));
+            Players.push_back(Player(3));
             break;
         case 4:
             totalTurns=9;
-            Players.push_back(Player(3,new AggressiveStrategy()));
-            Players.push_back(Player(4,new AggressiveStrategy()));
+            Players.push_back(Player(3));
+            Players.push_back(Player(4));
             break;
         case 5:
             totalTurns=8;
-            Players.push_back(Player(3,new AggressiveStrategy()));
-            Players.push_back(Player(4,new AggressiveStrategy()));
-            Players.push_back(Player(5,new AggressiveStrategy()));
+            Players.push_back(Player(3));
+            Players.push_back(Player(4));
+            Players.push_back(Player(5));
             break;
     }
 
