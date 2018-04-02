@@ -1,7 +1,7 @@
 #pragma once
 #include "PlayerStrategy.h"
 #include "../Player.h"
-class RandomStrategy : public PlayerStrategy, Player
+class RandomStrategy : public PlayerStrategy
 {
 public:
 	RandomStrategy();
@@ -9,12 +9,9 @@ public:
 
     void play();
 
-    void firstConquestByStrategy(int i) override;
-
-    void picks_raceByStrategy(ComboList &combo) override;
-
-    void conquersByStrategy(int playerNum) override;
-
-    void declineComboByStrategy(ComboList &combo) override;
+	void firstConquestByStrategy(Player*, int i) override;
+	void picks_raceByStrategy(Player*, ComboList &combo) override;
+	void conquersByStrategy(Player*, int playerNum) override;
+	void declineComboByStrategy(Player*, ComboList &combo) override;
 };
 

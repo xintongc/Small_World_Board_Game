@@ -114,9 +114,9 @@ void Game::initialPlayer() {
 void Game::initialStrategyPlayer(){
     round=1;
 
-    Players.push_back(Player(0));
-    Players.push_back(Player(1));
-    Players.push_back(Player(2));
+    Players.push_back(Player(0, new AggressiveStrategy()));
+    Players.push_back(Player(1,new AggressiveStrategy()));
+    Players.push_back(Player(2,new AggressiveStrategy()));
 
     switch (NumOfPlayers){
         case 2:
@@ -124,18 +124,18 @@ void Game::initialStrategyPlayer(){
             break;
         case 3:
             totalTurns=10;
-            Players.push_back(Player(3));
+            Players.push_back(Player(3,new AggressiveStrategy()));
             break;
         case 4:
             totalTurns=9;
-            Players.push_back(Player(3));
-            Players.push_back(Player(4));
+            Players.push_back(Player(3,new AggressiveStrategy()));
+            Players.push_back(Player(4,new AggressiveStrategy()));
             break;
         case 5:
             totalTurns=8;
-            Players.push_back(Player(3));
-            Players.push_back(Player(4));
-            Players.push_back(Player(5));
+            Players.push_back(Player(3,new AggressiveStrategy()));
+            Players.push_back(Player(4,new AggressiveStrategy()));
+            Players.push_back(Player(5,new AggressiveStrategy()));
             break;
     }
 
@@ -144,7 +144,7 @@ void Game::initialStrategyPlayer(){
         Attach(player);
     }
 
-    selectStrategy();
+//    selectStrategy();
 }
 
 void Game::selectStrategy(){
@@ -158,13 +158,13 @@ void Game::selectStrategy(){
                 playerStrategy = new AggressiveStrategy();
                 break;
             case 2:
-//                playerStrategy = new DefensiveStrategy();
+                playerStrategy = new DefensiveStrategy();
                 break;
             case 3:
-//                playerStrategy = new ModerateStrategy();
+                playerStrategy = new ModerateStrategy();
                 break;
             case 4:
-//                playerStrategy = new RandomStrategy();
+                playerStrategy = new RandomStrategy();
                 break;
         }
         Players[i].setStrategy(playerStrategy);

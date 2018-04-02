@@ -2,17 +2,17 @@
 #include "../Player.h"
 
 class Player;
-class PlayerStrategy
-{
+class PlayerStrategy {
 public:
-//	PlayerStrategy() {}
-//	~PlayerStrategy() {}
+	PlayerStrategy() {}
+	~PlayerStrategy() {}
 
 	virtual void play() = 0;
-	virtual void firstConquestByStrategy(int)= 0;
-	virtual void picks_raceByStrategy(ComboList& combo) = 0;
-	virtual void conquersByStrategy(int playerNum) = 0;
-	virtual void declineComboByStrategy(ComboList &combo) = 0;
+	virtual void firstConquestByStrategy(Player*, int)= 0;
+	virtual void picks_raceByStrategy(Player*, ComboList&) = 0;
+	virtual void conquersByStrategy(Player*, int) = 0;
+	virtual void declineComboByStrategy(Player*, ComboList &) = 0;
+
 
 };
 

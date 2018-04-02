@@ -15,18 +15,18 @@ void DefensiveStrategy::play() {
     std::cout << "DefensiveStrategy";
 }
 
-void DefensiveStrategy::firstConquestByStrategy(int i) {
+void DefensiveStrategy::firstConquestByStrategy(Player* player, int i) {
 
 }
 
-void DefensiveStrategy::picks_raceByStrategy(ComboList &combo) {
+void DefensiveStrategy::picks_raceByStrategy(Player* player, ComboList &combo) {
 
 }
 
-void DefensiveStrategy::conquersByStrategy(int playerNum) {
+void DefensiveStrategy::conquersByStrategy(Player* player, int playerNum) {
 
 }
 
-void DefensiveStrategy::declineComboByStrategy(ComboList &combo) {
+void DefensiveStrategy::declineComboByStrategy(Player* player, ComboList &combo) {
 
 }

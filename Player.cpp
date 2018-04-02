@@ -8,10 +8,10 @@
 #include "regions/MapRegions.h"
 
 Player::Player() {
-    totalTokens = 0;
-    victoryCoins = 5;
-    haveActiveCombo=false;
-    haveDeclineCombo=false;
+//    totalTokens = 0;
+//    victoryCoins = 5;
+//    haveActiveCombo=false;
+//    haveDeclineCombo=false;
 }
 
 //constructor, default 5 coins for player 
@@ -21,6 +21,15 @@ Player::Player(int id) {
     victoryCoins = 5;
     haveActiveCombo=false;
     haveDeclineCombo=false;
+}
+
+Player::Player(int id, PlayerStrategy* strategy){
+    this->id = id;
+    totalTokens = 0;
+    victoryCoins = 5;
+    haveActiveCombo=false;
+    haveDeclineCombo=false;
+    this->strategy = strategy;
 }
 
 Player::~Player() {
@@ -690,7 +699,7 @@ void Player::Update(const std::string& str)
 }
 
 void Player::setStrategy(PlayerStrategy *strategy) {
-    Player::strategy = strategy;
+    this->strategy = strategy;
 }
 
 
@@ -701,20 +710,25 @@ int Player::getTotalRegionNumber() const {
 
 
 ////strategy
+
+
+
+
+
 void Player::firstConquestByStrategy(int playerNum){
-    strategy->firstConquestByStrategy(playerNum);
+    strategy->firstConquestByStrategy(this, playerNum);
 }
 
 void Player::picks_raceByStrategy(ComboList& combo){
-    strategy->picks_raceByStrategy(combo);
+    strategy->picks_raceByStrategy(this,combo);
 }
 
 void Player::conquersByStrategy(int playerNum){
-    strategy->conquersByStrategy(playerNum);
+    strategy->conquersByStrategy(this,playerNum);
 }
 
 void Player::declineComboByStrategy(ComboList &combo){
-    strategy->declineComboByStrategy(combo);
+    strategy->declineComboByStrategy(this, combo);
 }
 
 

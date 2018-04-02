@@ -21,6 +21,7 @@ class Player : public Observer {
 public:
     Player();
     Player(int id);
+    Player(int id, PlayerStrategy* strategy);
     ~Player();
 
     vector<Region> occupiedRegions;
