@@ -22,6 +22,10 @@ public:
     void declineComboByStrategy(Player*, ComboList &combo) override;
 
     void redeployTokensByStrategy(Player *player) override;
+    void conqueredRegion(Player* player, int regionID);
+    void followingConquest(Player* player);
+    void enemyLossesWithdrawals(Player* player, int regionID, int requiredTokens);
+    void finalConquestAttempt(Player* player, int regionID);
 };
 
 
