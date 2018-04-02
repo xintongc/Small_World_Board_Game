@@ -45,7 +45,7 @@ void AggressiveStrategy::picks_raceByStrategy(Player* player, ComboList &combo) 
 
 void AggressiveStrategy::firstConquestByStrategy(Player* player,int i){
 
-    cout << "AggressiveStrategy firstConquestByStrategy" << endl;
+    cout << "\nAggressiveStrategy firstConquestByStrategy" << endl;
 
     Game* game = Game::getGame();
     game->Notify("First conquers some regions", player);
@@ -174,5 +174,5 @@ void AggressiveStrategy::declineComboByStrategy(Player* player,ComboList &combo)
 }
 
 void AggressiveStrategy::redeployTokensByStrategy(Player *player) {
-
+    player->redeployTokens();
 }
