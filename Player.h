@@ -113,7 +113,7 @@ public:
     int getTotalRegionNumber() const;
 
 
-private:
+protected:
     int id;
     int victoryCoins;
     int totalTokens;

@@ -16,13 +16,22 @@ void AggressiveStrategy::play() {
     std::cout<< "AggressiveStrategy";
 }
 
-
+void AggressiveStrategy::picks_raceByStrategy(ComboList &combo) {
+    Game* game = Game::getGame();
+    game->Notify("Picks race", this);
+    //cout<<"========================================"<<endl;
+    combo.print();
+    //cout<<"\nplayer"<<getId()<<" is picking race now: "<<endl;
+    pickRace(combo);
+    cout<<"\nplayer"<<getId()<<"\'s current status: "<<endl;
+    currentStates();
+}
 
 void AggressiveStrategy::pickRace(ComboList& combo){
 
     cout << "The Aggressive Strategy Player always choose the first combo list" << endl;
 
-    int orderNum = 0;
+    int orderNum = 1;
     cout << "\nChoosing race \"" << combo.raceVector[orderNum - 1].getType()
          << "\" and power \"" << combo.powerVector[orderNum - 1].getType()
          << "\" from comboList vector" << endl;
@@ -45,7 +54,7 @@ void AggressiveStrategy::firstConquestByStrategy(int playerNum){
     Game* game = Game::getGame();
     game->Notify("First conquers some regions", this);
 
-    cout << "\nAggressiveStrategy player choose a empty region to do the first conquest: ";
+    cout << "\nAggressiveStrategy player choose a unoccupied region to do the first conquest: "<< endl;
 
     MapRegions* playerRegions = MapRegions::getMapRegions();
     int regionID;
@@ -57,6 +66,7 @@ void AggressiveStrategy::firstConquestByStrategy(int playerNum){
         bool isEnemie = playerRegions->getRegion(regionID)->getPopulation() > 0;
 
         if(isBorder && !isEnemie ){
+            cout << "Region[" << i << "] been choosen." << endl;
             conqueredRegion(regionID);
             break;
         }
@@ -67,22 +77,16 @@ void AggressiveStrategy::firstConquestByStrategy(int playerNum){
 void AggressiveStrategy::followingConquest(){
     MapRegions* playerRegions = MapRegions::getMapRegions();
 
-    cout << "Please input the region you want to conquerd:";
+    cout << "AggressiveStrategy Player choose an unoccupied region to conquer:";
     int regionID;
     int totalRegionNum = getTotalRegionNumber();
 
     for (int i = 1; i <= totalRegionNum; ++i) {
-
-    }
-
-
-    while(!connectedToConquestRegion(regionID)){
-        cout << "You unable to conquerd this region, since it is not connected to your owned regions" << endl;
-        cin >> regionID;
-    }
-    while(ownedRegion(regionID)){
-        cout << "This region is already conquered by you, please choose another region:";
-        cin >> regionID;
+        if(connectedToConquestRegion(i)){
+            cout << "AggressiveStrategy Player choose region[" << i << "] to conquer" <<endl;
+            regionID = i;
+            break;
+        }
     }
 
     int requiredTokes = requiredTokensToConquer(regionID);
@@ -99,14 +103,41 @@ void AggressiveStrategy::followingConquest(){
     }
 }
 
-void AggressiveStrategy::picks_raceByStrategy(ComboList &combo) {
 
-}
 
 void AggressiveStrategy::conquersByStrategy(int playerNum) {
-
+    followingConquest();
 }
 
 void AggressiveStrategy::declineComboByStrategy(ComboList &combo) {
-
+    std::string str;
+    bool cond = false;
+    //cout<<"========================================"<<endl;
+    //cout<<"\nplayer"<<getId()<<" is playing now: "<<endl;
+    Game* game = Game::getGame();
+    int playerNum = game->Players.size();
+    do {
+        cout << "Do you want to decline your current combo? (y/n)";
+        cin >> str;
+        if (str == "y" || str == "Y") {
+            if (haveDeclineCombo) {                   //if already have declined combo, clear it and add it to combo vector
+                combo.raceVector.push_back(declineRace);
+                combo.powerVector.push_back(declinePower);
+                haveDeclineCombo = false;
+            }
+            reduceTokensToOneInDecline();
+            setDeclineRace(activeRace);                 //set current active combo to declined combo
+            setDeclinePower(activePower);
+            haveDeclineCombo = true;
+            haveActiveCombo = false;
+            cond = true;
+            currentStates();
+        } else if (str == "n" || str == "N") {
+            cond = true;
+            reduceTokensToOneInActiveAndResetToken();
+            currentStates();
+            conquers(playerNum);
+        } else
+            cout << "invalid input, type again. " << endl;
+    } while (!cond);
 }

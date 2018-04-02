@@ -12,12 +12,13 @@ int main() {
     game->initial();
 //    game->initialPlayer();
 
-//    game->initialStrategyPlayer();
+    game->initialStrategyPlayer();
 
 
-    Player* player = new Player(1);
-    player->setStrategy(new AggressiveStrategy());
-    player->firstConquestByStrategy(2);
+//    Player* player = new Player(1);
+//    player->setStrategy(new AggressiveStrategy());
+//    player->firstConquestByStrategy(2);
+
 
 
 //    player->firstConquest(2);
@@ -25,6 +26,8 @@ int main() {
 
 
 //    game->playGame();
+
+    game->playGameByStragegy();
 
 
 
