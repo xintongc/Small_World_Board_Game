@@ -7,8 +7,6 @@
 
 
 #include <string>
-#include "../Player.h"
-#include "../regions/MapRegions.h"
 
 class Observer {
 public:
@@ -16,11 +14,6 @@ public:
     virtual void Update(const std::string&) = 0;
     virtual void UpdateStatistics() = 0;
     virtual void UpdateBarGraph() = 0;
-
-    virtual void update(Player * inputPlayer) = 0;
-    virtual void update(MapRegions * inputRegion) = 0;
-    virtual void showInfo() = 0;
-
 protected:
     Observer();
 };
