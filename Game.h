@@ -13,11 +13,9 @@
 #include "Map.h"
 
 
-
 class Game : public Subject{
 
 private:
-
     static Game* game;
     Game();
     int round;
@@ -25,9 +23,6 @@ private:
     int totalTurns;
     int turnMakerIndex;
     int regionNumber;
-public:
-    int getRegionNumber() const;
-
 public:
 //    Game();
     static Game* getGame();
@@ -45,6 +40,7 @@ public:
     int getTotalTurns() const;
     int getNumOfPlayers() const;
     int getTurnMakerIndex() const;
+    int getRegionNumber() const;
 
     void setRound(int round);
     void setTotalTurns(int totalTurns);

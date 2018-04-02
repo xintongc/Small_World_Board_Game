@@ -40,7 +40,7 @@ void RandomStrategy::picks_raceByStrategy(Player *player, ComboList &combo) {
     combo.raceVector.erase(combo.raceVector.begin() + orderNum - 1);
     combo.powerVector.erase(combo.powerVector.begin() + orderNum - 1);
     combo.coinsVector.erase(combo.coinsVector.begin() + orderNum - 1);
-
+    player->currentStates();
 }
 
 void RandomStrategy::conquersByStrategy(Player *player, int playerNum) {

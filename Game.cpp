@@ -300,7 +300,7 @@ void Game::playGameByStragegy() {
 
             }
             for (int i = 1; i < Players.size(); i++){
-                Players[i].redeployTokens();
+                Players[i].redeployTokensByStrategy();
             }
             if (allPlayersFinishATurn())                   //--------------ensure every players play---------------
                 startNewTurn();
@@ -339,7 +339,7 @@ void Game::playGameByStragegy() {
             }
             for (int i = 1; i < Players.size(); i++){
                 if(Players[i].isHaveActiveCombo()){
-                    Players[i].redeployTokens();
+                    Players[i].redeployTokensByStrategy();
                 }
             }
             if (allPlayersFinishATurn())

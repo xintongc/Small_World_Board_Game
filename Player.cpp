@@ -143,8 +143,8 @@ void Player::declineCombo(ComboList &combo) {
 
 
 void Player::conquers(int playerNum){
-  //  Notify("Conquers some regions");
-    //cout << "Player[" << id <<"] is start conquer" << endl;
+    Game* game = Game::getGame();
+    game->Notify("Conquers some regions", this);
     followingConquest();
 }
 
@@ -188,6 +188,7 @@ void Player::firstConquest(int playerNum){
             cin >> n;
             isBorder = twoPlayerRegions->getRegion(n)->isBorder();
         }
+        conqueredRegion(n);
     }
 }
 
@@ -226,7 +227,7 @@ void Player::enemyLossesWithdrawals(int regionID, int requiredTokens){
     cout << "Player[" << enemyID <<"] your region [" << regionID << "] has been conqured by enemy, please redeploy" << endl;
     game->Players[enemyID].increaseTokens(enemyWithdrawalTokens);             //enemy put the withdrawed tokens to one region
 
-    playerRegions->display();
+    followingConquest();
 }
 
 void Player::reduceTokensToOneInDecline(){
@@ -237,6 +238,7 @@ void Player::reduceTokensToOneInDecline(){
             playerRegions->getRegion(j)->setPopulation(1);
         }
     }
+    totalTokens=0;
 }
 
 void Player::reduceTokensToOneInActiveAndResetToken(){
@@ -247,11 +249,11 @@ void Player::reduceTokensToOneInActiveAndResetToken(){
         if(ownedRegion(j)){
             if( playerRegions->getRegion(j)->getPopulation() > 1){
                 collectTokens = playerRegions->getRegion(j)->getPopulation() - 1;
+                totalTokens = totalTokens + collectTokens;
             }
             playerRegions->getRegion(j)->setPopulation(1);
         }
     }
-    totalTokens = totalTokens + collectTokens;
 }
 
 void Player::redeployTokens(){
@@ -659,25 +661,8 @@ void Player::showBarGraph(){
     }
 }
 
-//int Player::getTotalRegionPercentage() const {
-//    return totalRegionPercentage;
-//}
-//
-//void Player::setTotalRegionPercentage(int totalRegionPercentage) {
-//    Player::totalRegionPercentage = totalRegionPercentage;
-//}
-
-//int Player::getRegionNumber() const {
-//    return regionNumber;
-//}
-
-
 
 //design pattern
-
-
-
-
 void Player::UpdateStatistics() {
     cout<<"==== From Statistic observer pattern ==== ";
     cout <<"Player "<< getId() << ": has " << calculatePercentage() << "% regions."<<endl;
@@ -710,11 +695,6 @@ int Player::getTotalRegionNumber() const {
 
 
 ////strategy
-
-
-
-
-
 void Player::firstConquestByStrategy(int playerNum){
     strategy->firstConquestByStrategy(this, playerNum);
 }
@@ -731,5 +711,8 @@ void Player::declineComboByStrategy(ComboList &combo){
     strategy->declineComboByStrategy(this, combo);
 }
 
+void Player::redeployTokensByStrategy(){
+    strategy->redeployTokensByStrategy(this);
+}
 
 
