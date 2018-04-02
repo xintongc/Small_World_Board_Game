@@ -29,6 +29,7 @@ void DefensiveStrategy::firstConquestByStrategy(Player* player, int i) {
     MapRegions* playerRegions = MapRegions::getMapRegions();
     int regionID;
     int totalRegionNum = player->getTotalRegionNumber();
+    bool getRegionID = false;
 
     for (int i = 1; i <= totalRegionNum; ++i) {
         regionID = i;
@@ -38,24 +39,25 @@ void DefensiveStrategy::firstConquestByStrategy(Player* player, int i) {
         if(isBorder && isEnemie && !player->ownedRegion(regionID)){
             cout << "Region[" << i << "] been choosen." << endl;
             conqueredRegion(player, regionID);
+            getRegionID = true;
             break;
         }
 
     }
 
-    for (int i = 1; i <= totalRegionNum; ++i) {
-        regionID = i;
-        bool isBorder = playerRegions->getRegion(regionID)->isBorder();
-        bool isEnemie = playerRegions->getRegion(regionID)->getPopulation() > 0;
+    if(!getRegionID){
+        for (int i = 1; i <= totalRegionNum; ++i) {
+            regionID = i;
+            bool isBorder = playerRegions->getRegion(regionID)->isBorder();
+            bool isEnemie = playerRegions->getRegion(regionID)->getPopulation() > 0;
 
-        if(isBorder && !isEnemie && !player->ownedRegion(regionID)){
-            cout << "Region[" << i << "] been choosen." << endl;
-            conqueredRegion(player, regionID);
-            break;
+            if(isBorder && !isEnemie && !player->ownedRegion(regionID)){
+                cout << "Region[" << i << "] been choosen." << endl;
+                conqueredRegion(player, regionID);
+                break;
+            }
         }
     }
-
-
 
 
 }
