@@ -55,6 +55,7 @@ void AggressiveStrategy::firstConquestByStrategy(Player* player,int i){
     MapRegions* playerRegions = MapRegions::getMapRegions();
     int regionID;
     int totalRegionNum = player->getTotalRegionNumber();
+    bool getRegionID = false;
 
     for (int i = 1; i <= totalRegionNum; ++i) {
         regionID = i;
@@ -64,7 +65,22 @@ void AggressiveStrategy::firstConquestByStrategy(Player* player,int i){
         if(isBorder && !isEnemie && !player->ownedRegion(regionID)){
             cout << "Region[" << i << "] been choosen." << endl;
             conqueredRegion(player, regionID);
+            getRegionID = true;
             break;
+        }
+    }
+
+    if(!getRegionID){
+        for (int i = 1; i <= totalRegionNum; ++i) {
+            regionID = i;
+            bool isBorder = playerRegions->getRegion(regionID)->isBorder();
+            bool isEnemie = playerRegions->getRegion(regionID)->getPopulation() > 0;
+
+            if(isBorder && isEnemie && !player->ownedRegion(regionID)){
+                cout << "Region[" << i << "] been choosen." << endl;
+                conqueredRegion(player, regionID);
+                break;
+            }
         }
     }
 
@@ -94,6 +110,7 @@ void AggressiveStrategy::followingConquest(Player* player){
     cout << "AggressiveStrategy Player choose an unoccupied region to conquer:";
     int regionID;
     int totalRegionNum = player->getTotalRegionNumber();
+    bool getRegionID = false;
 
 
 
@@ -104,7 +121,21 @@ void AggressiveStrategy::followingConquest(Player* player){
         if(player->connectedToConquestRegion(i) && !isEnemie && !player->ownedRegion(regionID)){
             cout << "AggressiveStrategy Player choose region[" << i << "] to conquer" <<endl;
             regionID = i;
+            getRegionID = true;
             break;
+        }
+    }
+
+    if(!getRegionID){
+        for (int i = 1; i <= totalRegionNum; ++i) {
+            regionID = i;
+            bool isEnemie = (playerRegions->getRegion(regionID)->getPopulation() > 0);
+
+            if(player->connectedToConquestRegion(i) && isEnemie && !player->ownedRegion(regionID)){
+                cout << "AggressiveStrategy Player choose region[" << i << "] to conquer" <<endl;
+                regionID = i;
+                break;
+            }
         }
     }
 
