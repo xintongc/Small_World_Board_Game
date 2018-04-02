@@ -31,11 +31,6 @@ public:
     void conquers(int);
 
 
-
-
-
-
-
 //    bool isBorder(MapRegions* regions,int regionID); //need improve later
     void conqueredRegion(int regionID);
     void firstConquest(int playerNum);
@@ -87,6 +82,8 @@ public:
     bool isPlayed() const;
     bool isHaveDeclineCombo() const;
     bool isHaveActiveCombo() const;
+    int getTotalRegionNumber() const;
+    int getId() const;
 
     void setActiveRace(const Race &activeRace);
     void setDeclineRace(const Race &declineRace);
@@ -95,13 +92,9 @@ public:
     void setPlayed(bool played);
     void setHaveDeclineCombo(bool haveDeclineCombo);
     void setHaveActiveCombo(bool haveActiveCombo);
-
-
-    int getId() const;
     void setId(int id);
 
 //    int getTotalRegionPercentage() const;
-//
 //    void setTotalRegionPercentage(int totalRegionPercentage);
 
     ////design pattern
@@ -111,8 +104,13 @@ public:
     void UpdateBarGraph();
     void showBarGraph();
 
-    int getTotalRegionNumber() const;
-
+    ///strategt pattern
+    void setStrategy(PlayerStrategy *strategy);
+    void firstConquestByStrategy(int);
+    void picks_raceByStrategy(ComboList& combo);
+    void conquersByStrategy(int playerNum);
+    void declineComboByStrategy(ComboList &combo);
+    void redeployTokensByStrategy();
 
 protected:
     int id;
@@ -125,24 +123,7 @@ protected:
     bool played;
     bool haveDeclineCombo;
     bool haveActiveCombo;
-
- //   int regionNumber;
-    ///desgin pattern
-//    Game* gameSubject;
-
     PlayerStrategy * strategy;
-public:
-    void setStrategy(PlayerStrategy *strategy);
-    void firstConquestByStrategy(int);
-    void picks_raceByStrategy(ComboList& combo);
-    void conquersByStrategy(int playerNum);
-    void declineComboByStrategy(ComboList &combo);
-
-
-
-//private:
-//    int totalRegionPercentage;
-
 
 
 };
