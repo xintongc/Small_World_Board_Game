@@ -24,3 +24,9 @@ BasicView ::BasicView(){
      std::cout << "==== From View of basicGameStasticsObserver==== ";
      std::cout<< "This is the " << ++turnRun << " turn of the game. \n" << endl;
  }
+
+void BasicView:: showInfo(Observer*){
+}
+
+void BasicView:: showCoins(Observer* observer){}
+void BasicView:: showHands(Observer* observer){}

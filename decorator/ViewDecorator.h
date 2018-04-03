@@ -2,19 +2,21 @@
 // Created by xintong cheng on 2018-04-02.
 //
 
-#ifndef SMALL_WORLD_BASICVIEW_H
-#define SMALL_WORLD_BASICVIEW_H
-
+#ifndef SMALL_WORLD_VIEWDECORATOR_H
+#define SMALL_WORLD_VIEWDECORATOR_H
 
 #include "../DesignPattern/Observer.h"
 
-class BasicView : public Observer {
+class ViewDecorator : public Observer{
+private:
+    Observer* basicView;
+
 public:
+    ViewDecorator(Observer *basicView);
 
-    virtual ~BasicView();
+    ViewDecorator();
 
-    BasicView();
-
+    virtual ~ViewDecorator();
     virtual void Update(const std::string&);
     virtual void UpdateStatistics();
     virtual void UpdateBarGraph();
@@ -25,9 +27,7 @@ public:
     virtual void showCoins(Observer* observer);
     virtual void showHands(Observer* observer);
 
-private:
-    int turnRun = 0;
 };
 
 
-#endif //SMALL_WORLD_BASICVIEW_H
+#endif //SMALL_WORLD_VIEWDECORATOR_H
