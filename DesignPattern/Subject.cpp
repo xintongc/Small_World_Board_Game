@@ -55,3 +55,11 @@ void Subject::notifyHands(){
         (*i)->showHands(*i);
     }
 }
+
+void Subject::notifyCoins() {
+    vector<Observer *>::iterator i;
+
+    for (i = observersList->begin(); i != observersList->end(); ++i) {
+        (*i)->showCoins(*i);
+    }
+}
