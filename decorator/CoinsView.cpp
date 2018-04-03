@@ -3,6 +3,10 @@
 //
 
 #include "CoinsView.h"
+#include "../Player.h"
+#include <iostream>
+using namespace std;
+
 CoinsView::CoinsView() {}
 
 CoinsView::CoinsView(Observer *basicView) : ViewDecorator(basicView) {}
@@ -16,7 +20,10 @@ void CoinsView ::UpdateBarGraph(){}
 void CoinsView:: showInfo(Observer*){
 }
 
-void CoinsView:: showCoins(Observer* observer){}
+void CoinsView:: showCoins(Observer* observer){
+    cout<<"==== From Decorator pattern ==== ";
+    cout <<"Player "<< ((Player*)observer)->getId() << " has "<<((Player*)observer)->getVictoryCoins()<<" coins."<<endl;
+}
 void CoinsView:: showHands(Observer* observer){}
 
 

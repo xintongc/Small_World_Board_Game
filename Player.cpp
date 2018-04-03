@@ -9,6 +9,7 @@
 #include "decorator/BasicView.h"
 #include "decorator/DominationView.h"
 #include "decorator/HandsView.h"
+#include "decorator/CoinsView.h"
 
 Player::Player() {
 //    totalTokens = 0;
@@ -523,6 +524,8 @@ void Player::scores() {
     }
     cout<<game->Players[i].getVictoryCoins()<<endl;
 
+    game->notifyCoins();
+
     setPlayed(true);                //----------finish play----------------------------
 }
 
@@ -734,16 +737,14 @@ void Player::showInfo(){
 }
 
 void Player::showInfo(Observer* observer) {
-
-    DominationView* dominationView = new DominationView();
+    DominationView *dominationView = new DominationView();
     dominationView->showInfo(observer);
-
 }
 
 
-
 void Player::showCoins(Observer* observer){
-
+    CoinsView* coinsView = new CoinsView();
+    coinsView->showCoins(observer);
 }
 void Player::showHands(Observer* observer){
 
