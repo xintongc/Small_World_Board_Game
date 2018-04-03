@@ -39,3 +39,11 @@ void Subject::NotifyBarGraph(){
 
 void Subject::notifyTurn(Observer *observer){
 }
+
+void Subject::notifyConquerAndLoss(){
+    vector<Observer *>::iterator i;
+
+    for (i = observersList->begin(); i != observersList->end(); ++i) {
+        (*i)->showInfo(*i);
+    }
+}

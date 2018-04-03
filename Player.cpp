@@ -7,6 +7,7 @@
 #include "Dice.h"
 #include "regions/MapRegions.h"
 #include "decorator/BasicView.h"
+#include "decorator/DominationView.h"
 
 Player::Player() {
 //    totalTokens = 0;
@@ -70,29 +71,29 @@ void Player::pickRace(ComboList& combo) {
 //            cout<<"Your victory coins are not enough to select the combo. "<<endl;
 //            continue;
 //        }
-            if (orderNum > 0 && orderNum < 7) {                     //====================pick from vector==============
-                cout << "\nChoosing race \"" << combo.raceVector[orderNum - 1].getType()
-                     << "\" and power \"" << combo.powerVector[orderNum - 1].getType()
-                     << "\" from comboList vector" << endl;
-                for (int i = 0; i < orderNum - 1; i++) {            //-----------accumulate combo coins-----------------
-                    combo.coinsVector[i]++;
-                }
+    if (orderNum > 0 && orderNum < 7) {                     //====================pick from vector==============
+        cout << "\nChoosing race \"" << combo.raceVector[orderNum - 1].getType()
+             << "\" and power \"" << combo.powerVector[orderNum - 1].getType()
+             << "\" from comboList vector" << endl;
+        for (int i = 0; i < orderNum - 1; i++) {            //-----------accumulate combo coins-----------------
+            combo.coinsVector[i]++;
+        }
 
-                setActiveRace(combo.raceVector[orderNum - 1]);      //-----------assignment of player's race, power, coins, tokens--------
-                setActivePower(combo.powerVector[orderNum - 1]);
-                setVictoryCoins(getVictoryCoins() + combo.coinsVector[orderNum - 1] - (orderNum-1));
-                setTotalTokens(getActiveRace().getTokens() + getActivePower().getTokens());
-                setHaveActiveCombo(true);
+        setActiveRace(combo.raceVector[orderNum - 1]);      //-----------assignment of player's race, power, coins, tokens--------
+        setActivePower(combo.powerVector[orderNum - 1]);
+        setVictoryCoins(getVictoryCoins() + combo.coinsVector[orderNum - 1] - (orderNum-1));
+        setTotalTokens(getActiveRace().getTokens() + getActivePower().getTokens());
+        setHaveActiveCombo(true);
 
-                combo.raceVector.erase(combo.raceVector.begin() + orderNum - 1);        //-----------delete selected elements----------
-                combo.powerVector.erase(combo.powerVector.begin() + orderNum - 1);
-                combo.coinsVector.erase(combo.coinsVector.begin() + orderNum - 1);
+        combo.raceVector.erase(combo.raceVector.begin() + orderNum - 1);        //-----------delete selected elements----------
+        combo.powerVector.erase(combo.powerVector.begin() + orderNum - 1);
+        combo.coinsVector.erase(combo.coinsVector.begin() + orderNum - 1);
 
-            } else {
-                cout << "Invalid number. " << endl;
-                continue;
-            }
-    }while(orderNum<1 || orderNum>6);
+    } else {
+        cout << "Invalid number. " << endl;
+        continue;
+    }
+}while(orderNum<1 || orderNum>6);
 }
 
 
@@ -720,4 +721,20 @@ void Player::redeployTokensByStrategy(){
 void Player::showInfo(){
     BasicView* basicView = new BasicView();
     basicView->showInfo();
+}
+
+void Player::showInfo(Observer* observer) {
+
+    DominationView* dominationView = new DominationView();
+    dominationView->showInfo(observer);
+
+}
+
+
+
+void Player::showCoins(Observer* observer){
+
+}
+void Player::showHands(Observer* observer){
+
 }

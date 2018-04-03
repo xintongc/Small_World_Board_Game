@@ -11,13 +11,19 @@
 class Observer {
 public:
     ~Observer();
+    Observer();
     virtual void Update(const std::string&) = 0;
     virtual void UpdateStatistics() = 0;
     virtual void UpdateBarGraph() = 0;
 
     virtual void showInfo()= 0;
-protected:
-    Observer();
+
+    virtual void showInfo(Observer* observer)= 0;
+
+
+    virtual void showCoins(Observer* observer)= 0;
+    virtual void showHands(Observer* observer)= 0;
+
 };
 
 

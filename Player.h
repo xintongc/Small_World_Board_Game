@@ -113,6 +113,10 @@ public:
     void redeployTokensByStrategy();
 
     void showInfo();
+    void showInfo(Observer*);
+
+    void showCoins(Observer* observer);
+    void showHands(Observer* observer);
 
 protected:
     int id;

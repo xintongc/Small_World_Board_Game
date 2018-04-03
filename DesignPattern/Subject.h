@@ -20,6 +20,9 @@ public:
     virtual void NotifyBarGraph();
 
     virtual void notifyTurn(Observer *);
+    virtual void notifyConquerAndLoss();
+
+
     Subject();
     ~Subject();
 
