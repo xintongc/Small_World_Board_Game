@@ -8,6 +8,7 @@
 #include "regions/MapRegions.h"
 #include "decorator/BasicView.h"
 #include "decorator/DominationView.h"
+#include "decorator/HandsView.h"
 
 Player::Player() {
 //    totalTokens = 0;
@@ -106,6 +107,7 @@ void Player::picks_race(ComboList& combo) {
     pickRace(combo);
     cout<<"\nplayer"<<getId()<<"\'s current status: "<<endl;
     currentStates();
+    game->notifyHands();
 
 }
 
@@ -133,10 +135,14 @@ void Player::declineCombo(ComboList &combo) {
             haveActiveCombo = false;
             cond = true;
             currentStates();
+            game->notifyHands();
         } else if (str == "n" || str == "N") {
             cond = true;
             reduceTokensToOneInActiveAndResetToken();
             currentStates();
+
+            game->notifyHands();
+
             conquers(playerNum);
         } else
             cout << "invalid input, type again. " << endl;
@@ -741,4 +747,6 @@ void Player::showCoins(Observer* observer){
 }
 void Player::showHands(Observer* observer){
 
+    HandsView *handsView = new HandsView();
+    handsView->showHands(observer);
 }

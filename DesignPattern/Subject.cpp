@@ -47,3 +47,11 @@ void Subject::notifyConquerAndLoss(){
         (*i)->showInfo(*i);
     }
 }
+
+void Subject::notifyHands(){
+    vector<Observer *>::iterator i;
+
+    for (i = observersList->begin(); i != observersList->end(); ++i) {
+        (*i)->showHands(*i);
+    }
+}

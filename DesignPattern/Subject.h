@@ -21,6 +21,7 @@ public:
 
     virtual void notifyTurn(Observer *);
     virtual void notifyConquerAndLoss();
+    virtual void notifyHands();
 
 
     Subject();

@@ -23,10 +23,11 @@ void HandsView::showInfo(Observer* observer) {}
 void HandsView:: showCoins(Observer* observer){}
 
 
-void HandsView:: showHands(Observer* observer){cout<<"==== From Decorator pattern ==== ";
-    cout <<"Player "<< ((Player*)observer)->getId() << ": has"<<endl;
-    cout<<"active race" << ((Player*)observer)->getActiveRace().getType()<<endl;
-    cout<<"active power" << ((Player*)observer)->getActivePower().getType()<<endl;
-    cout<<"decline race" << ((Player*)observer)->getDeclineRace().getType()<<endl;
-    cout<<"decline race" << ((Player*)observer)->getDeclinePower().getType()<<endl;
+void HandsView:: showHands(Observer* observer){
+    cout<<"==== From Decorator pattern ==== ";
+    cout <<"Player "<< ((Player*)observer)->getId() << " has "<<endl;
+    cout<<"active race: " << ((Player*)observer)->getActiveRace().getType()<<endl;
+    cout<<"active power: " << ((Player*)observer)->getActivePower().getType()<<endl;
+    cout<<"decline race: " << ((Player*)observer)->getDeclineRace().getType()<<endl;
+    cout<<"decline race: " << ((Player*)observer)->getDeclinePower().getType()<<endl;
 }
