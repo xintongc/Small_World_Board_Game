@@ -209,6 +209,8 @@ void Player::conqueredRegion(int regionID){
     game->NotifyStatistics();
     game->NotifyBarGraph();
 
+    game->notifyConquerAndLoss();
+
     followingConquest();
 }
 
@@ -217,6 +219,8 @@ void Player::enemyLossesWithdrawals(int regionID, int requiredTokens){
     MapRegions* playerRegions = MapRegions::getMapRegions();
     game->NotifyStatistics();
     game->NotifyBarGraph();
+
+    game->notifyConquerAndLoss();
 
     int enemyPopulation = playerRegions->getRegion(regionID)->getPopulation();
     int enemyID = (int)playerRegions->getRegion(regionID)->getOwner();
