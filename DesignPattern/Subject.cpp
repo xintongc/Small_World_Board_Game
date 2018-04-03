@@ -35,3 +35,7 @@ void Subject::NotifyBarGraph(){
             (*i)->UpdateBarGraph();
         }
 };
+
+
+void Subject::notifyTurn(Observer *observer){
+}

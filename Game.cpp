@@ -219,11 +219,12 @@ void Game::endingGame() {
 void Game::playGame() {
     ComboList combo;
     combo.setupCombo();
-    int firstPlayerIndex;
+    int firstPlayerIndex=1;
 
     do {
         if (getRound() == 1) {                             //---------------round 1--------------------------------
-            cout << "\nTurn " << getRound()<< endl;
+            //cout << "\nTurn " << getRound()<< endl;
+            notifyTurn(&Players[firstPlayerIndex]);
 
             for (int i = 1; i < Players.size(); i++) {
                 Players[i].picks_race(combo);
@@ -240,10 +241,11 @@ void Game::playGame() {
         }
 //----------------------------------------------------------------------------------------------------------------------
         if (getRound() <= getTotalTurns()) {                //--------------round 2-8/9/10 -------------------------
-            cout << "\nTurn " << getRound()<< endl;
-            cout<<"========================================"<<endl;
+            //cout << "\nTurn " << getRound()<< endl;
+            //cout<<"========================================"<<endl;
 
             firstPlayerIndex = getTurnMakerIndex();         //1. redefine each turn's turn maker (create new one each time, avoid reassign issue)------
+            notifyTurn(&Players[firstPlayerIndex]);
 
             if(Players[firstPlayerIndex].isHaveActiveCombo()){     //2. if player has active combo, ask whether to decline
                 Players[firstPlayerIndex].declineCombo(combo);
@@ -287,7 +289,7 @@ void Game::playGame() {
 void Game::playGameByStragegy() {
     ComboList combo;
     combo.setupCombo();
-    int firstPlayerIndex;
+    int firstPlayerIndex=1;
 
     do {
         if (getRound() == 1) {                             //---------------round 1--------------------------------
@@ -310,6 +312,7 @@ void Game::playGameByStragegy() {
         if (getRound() <= getTotalTurns()) {                //--------------round 2-8/9/10 -------------------------
             cout << "\nTurn " << getRound()<< endl;
             cout<<"========================================"<<endl;
+
 
             firstPlayerIndex = getTurnMakerIndex();         //1. redefine each turn's turn maker (create new one each time, avoid reassign issue)------
 
@@ -356,7 +359,9 @@ void Game::Notify(const std::string &str, Observer *player){
     player->Update(str);
 }
 
-
+void Game::notifyTurn(Observer* player) {
+    player->showInfo();
+}
 
 
 //-------------getter and setter --------------------

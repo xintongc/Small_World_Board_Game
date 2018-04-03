@@ -6,6 +6,7 @@
 #include "Game.h"
 #include "Dice.h"
 #include "regions/MapRegions.h"
+#include "decorator/BasicView.h"
 
 Player::Player() {
 //    totalTokens = 0;
@@ -717,5 +718,6 @@ void Player::redeployTokensByStrategy(){
 
 
 void Player::showInfo(){
-
+    BasicView* basicView = new BasicView();
+    basicView->showInfo();
 }

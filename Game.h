@@ -60,6 +60,9 @@ public:
     void selectStrategy();
     void playGameByStragegy();
 
+
+    void notifyTurn(Observer *);
+
 };
 
 

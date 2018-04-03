@@ -10,9 +10,11 @@ int main() {
 
     Game* game = Game::getGame();
     game->initial();
-//    game->initialPlayer();
+    game->initialPlayer();
+    game->playGame();
 
-    game->initialStrategyPlayer();
+//    game->initialStrategyPlayer();
+//    game->playGameByStragegy();
 
 
 //    Player* player = new Player(1);
@@ -25,9 +27,7 @@ int main() {
 
 
 
-//    game->playGame();
 
-    game->playGameByStragegy();
 
 
 

@@ -18,6 +18,8 @@ public:
     virtual void Notify(const std::string &, Observer *);
     virtual void NotifyStatistics();
     virtual void NotifyBarGraph();
+
+    virtual void notifyTurn(Observer *);
     Subject();
     ~Subject();
 
