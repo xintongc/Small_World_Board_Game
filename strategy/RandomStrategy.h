@@ -3,6 +3,8 @@
 #include "../Player.h"
 #include "../Game.h"
 #include "../regions/MapRegions.h"
+
+//A concrete Strategy that implements a random strategy operation
 class RandomStrategy : public PlayerStrategy
 {
 public:
