@@ -48,19 +48,17 @@ public:
     void setTurnMakerIndex(int turnMakerIndex);
 
     vector<Player> Players;
+    
+    //overriding subject method
+    //display a header showing what player and what phase is currently being played
+    void Notify(const std::string &str, Observer *);
 
-//    void Attach(Observer* o);
-//    void Detach(Observer* o);
-//    void NotifyStatistics();
-//    void Notify(const std::string&);
-      void Notify(const std::string &str, Observer *);
-
-
+    //for strategy pattern
     void initialStrategyPlayer();
     void selectStrategy();
     void playGameByStragegy();
 
-
+    //for observer pattern without decorator
     void notifyTurn(Observer *);
 
 };
