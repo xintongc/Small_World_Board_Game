@@ -20,28 +20,7 @@ void AggressiveStrategy::picks_raceByStrategy(Player* player, ComboList &combo) 
     player->picks_race(combo);
 }
 
-//void AggressiveStrategy::pickRace(ComboList& combo){
-//
-////    cout << "The Aggressive Strategy Player always choose the first combo list" << endl;
-////
-////    int orderNum = 1;
-////    cout << "\nChoosing race \"" << combo.raceVector[orderNum - 1].getType()
-////         << "\" and power \"" << combo.powerVector[orderNum - 1].getType()
-////         << "\" from comboList vector" << endl;
-////    for (int i = 0; i < orderNum - 1; i++) {            //-----------accumulate combo coins-----------------
-////        combo.coinsVector[i]++;
-////    }
-////
-////    setActiveRace(combo.raceVector[orderNum - 1]);      //-----------assignment of player's race, power, coins, tokens--------
-////    setActivePower(combo.powerVector[orderNum - 1]);
-////    setVictoryCoins(getVictoryCoins() + combo.coinsVector[orderNum - 1] - (orderNum-1));
-////    setTotalTokens(getActiveRace().getTokens() + getActivePower().getTokens());
-////    setHaveActiveCombo(true);
-////
-////    combo.raceVector.erase(combo.raceVector.begin() + orderNum - 1);        //-----------delete selected elements----------
-////    combo.powerVector.erase(combo.powerVector.begin() + orderNum - 1);
-////    combo.coinsVector.erase(combo.coinsVector.begin() + orderNum - 1);
-//}
+
 
 void AggressiveStrategy::firstConquestByStrategy(Player* player,int i){
 
@@ -62,7 +41,7 @@ void AggressiveStrategy::firstConquestByStrategy(Player* player,int i){
         bool isBorder = playerRegions->getRegion(regionID)->isBorder();
         bool isEnemie = playerRegions->getRegion(regionID)->getPopulation() > 0;
 
-        if(isBorder && !isEnemie && !player->ownedRegion(regionID)){
+        if(isBorder && !isEnemie && !player->ownedRegion(regionID)){  // The priority of AggressiveStrategy player is choosing an unoccupied region to conquer
             cout << "Region[" << i << "] been choosen." << endl;
             conqueredRegion(player, regionID);
             getRegionID = true;
@@ -76,7 +55,7 @@ void AggressiveStrategy::firstConquestByStrategy(Player* player,int i){
             bool isBorder = playerRegions->getRegion(regionID)->isBorder();
             bool isEnemie = playerRegions->getRegion(regionID)->getPopulation() > 0;
 
-            if(isBorder && isEnemie && !player->ownedRegion(regionID)){
+            if(isBorder && isEnemie && !player->ownedRegion(regionID)){ //if all unoccupied regions are not available, the player will conquer enemys' regions
                 cout << "Region[" << i << "] been choosen." << endl;
                 conqueredRegion(player, regionID);
                 break;
@@ -86,7 +65,7 @@ void AggressiveStrategy::firstConquestByStrategy(Player* player,int i){
 
 }
 
-void AggressiveStrategy::conqueredRegion(Player* player, int regionID){
+void AggressiveStrategy::conqueredRegion(Player* player, int regionID){ //conquered this region, mark this region to this player's and put tokens to this region
     Game* game = Game::getGame();
     game->Notify(" conqured a region", player);
 
@@ -101,7 +80,7 @@ void AggressiveStrategy::conqueredRegion(Player* player, int regionID){
     game->NotifyStatistics();
     game->NotifyBarGraph();
 
-    followingConquest(player);
+    followingConquest(player); //After play take this region, the player will continue his/her conquer
 }
 
 void AggressiveStrategy::followingConquest(Player* player){
@@ -142,14 +121,14 @@ void AggressiveStrategy::followingConquest(Player* player){
     int requiredTokes = player->requiredTokensToConquer(regionID);
 
     if(player->enoughTokensToConquer(regionID)){
-        if(playerRegions->getRegion(regionID)->getPopulation() != 0){
+        if(playerRegions->getRegion(regionID)->getPopulation() != 0){  // if the region is owned by enemy and the player have enough tokens conquer this enemy's region, he/she occupied enemy's region
             cout << "You conqured emeny region" << endl;
             enemyLossesWithdrawals(player, regionID, requiredTokes);
         } else {
-            conqueredRegion(player, regionID);
+            conqueredRegion(player, regionID); // if the region is not owned by enemy and player have enough tokes to conquer, the player conqured this region
         }
     } else {
-        finalConquestAttempt(player, regionID);
+        finalConquestAttempt(player, regionID); // if the player do not have enough tokens to conquer, it will do the final conquest attempt
     }
 }
 
@@ -157,14 +136,14 @@ void AggressiveStrategy::finalConquestAttempt(Player* player, int regionID){
     cout << "\nSince your tokens are not enough to conquer this region, this is your final conquest attempt" << endl;
     cout << "Reinforcement Die is rolling...\n";
     int dieNum = player->reinforcementDie();
-    cout << "The number you rolled is: " << dieNum << endl;
+    cout << "The number you rolled is: " << dieNum << endl; // The player rolling the Reinforcement Die to try the final conquest
     int lastAttemptTokens = dieNum + player->getTotalTokens();
     cout << "After adding the die number, you have "<< lastAttemptTokens << " tokens" << endl;
 
-    if (player->enoughTokensToConquerInFinalAttempt(regionID, dieNum)){
+    if (player->enoughTokensToConquerInFinalAttempt(regionID, dieNum)){ // if the player rolled enough number to conquer the region, the region will be occupied by the player
         player->setOwnerAndRegionPopulation(regionID,lastAttemptTokens);
         cout << "You conqued this region" << endl;
-    } else {
+    } else {                                                           // if the player do not have enough number to conquer, the player will not occupy this region
         cout << "Sorry, you don't have enough tokens to conquer this region." << endl;
     }
     player->showRegions();
@@ -189,13 +168,13 @@ void AggressiveStrategy::enemyLossesWithdrawals(Player* player, int regionID, in
 
     playerRegions->display();
 }
-void AggressiveStrategy::conquersByStrategy(Player* player, int playerNum) {
+void AggressiveStrategy::conquersByStrategy(Player* player, int playerNum) {  // do the conquer by strategy
     followingConquest(player);
 }
 
 void AggressiveStrategy::declineComboByStrategy(Player* player,ComboList &combo) {
     Game *game = Game::getGame();
-    game->Notify("Don't decline active combo", player);
+    game->Notify("Don't decline active combo", player);  // AggressiveStrategy player never decline an combo, the player will hold every thing until the game ends
     int playerNum = game->Players.size();
 
     //cout << "Don't decline combo" << endl;
