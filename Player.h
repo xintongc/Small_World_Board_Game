@@ -97,7 +97,7 @@ public:
 //    int getTotalRegionPercentage() const;
 //    void setTotalRegionPercentage(int totalRegionPercentage);
 
-    ////design pattern
+    ////observer pattern
     void Update(const std::string&);
     void UpdateStatistics();
     double calculatePercentage();
@@ -112,9 +112,9 @@ public:
     void declineComboByStrategy(ComboList &combo);
     void redeployTokensByStrategy();
 
+    ///decorator pattern
     void showInfo();
     void showInfo(Observer*);
-
     void showCoins(Observer* observer);
     void showHands(Observer* observer);
 
