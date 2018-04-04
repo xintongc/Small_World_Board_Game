@@ -13,20 +13,22 @@ using namespace std;
 
 class Subject {
 public:
+    Subject();
+    ~Subject();
+    
     virtual void Attach(Observer* o);
     virtual void Detach(Observer* o);
+    
+    //for part 1 & 2 observer pattern
     virtual void Notify(const std::string &, Observer *);
     virtual void NotifyStatistics();
     virtual void NotifyBarGraph();
 
+    //for part 4 decorator patter
     virtual void notifyTurn(Observer *);
     virtual void notifyConquerAndLoss();
     virtual void notifyHands();
     virtual void notifyCoins();
-
-
-    Subject();
-    ~Subject();
 
 protected:
     vector<Observer*> *observersList;

@@ -22,6 +22,7 @@ void Subject::Notify(const std::string &str, Observer *observer){
 //        (*i)->Update(str);
 };
 
+//showing percentage data of each player owned regions. 
 void Subject::NotifyStatistics(){
     vector<Observer *>::iterator i;
 
@@ -29,6 +30,8 @@ void Subject::NotifyStatistics(){
         (*i)->UpdateStatistics();
     }
 }
+
+//shows using some kind of bar graph depicting what percentage of the world is currently being controlled by each player
 void Subject::NotifyBarGraph(){
         vector<Observer *>::iterator i;
         for (i = observersList->begin(); i != observersList->end(); ++i) {
@@ -37,6 +40,7 @@ void Subject::NotifyBarGraph(){
 };
 
 
+//connecting with decorator pattern
 void Subject::notifyTurn(Observer *observer){
 }
 

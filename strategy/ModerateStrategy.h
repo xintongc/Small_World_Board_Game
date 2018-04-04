@@ -9,6 +9,7 @@
 #include "PlayerStrategy.h"
 #include "../Game.h"
 
+//A concrete Strategy that implements an Moderate operation
 class ModerateStrategy : public PlayerStrategy {
 public:
     ModerateStrategy();
