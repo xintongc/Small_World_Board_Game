@@ -45,7 +45,7 @@ void DefensiveStrategy::firstConquestByStrategy(Player* player, int i) {
 
     }
 
-    if(!getRegionID){
+    if(!getRegionID){  //if there is no available enemy's region to conquer, the DefensiveStrategy player will conquer an unoccupied region
         for (int i = 1; i <= totalRegionNum; ++i) {
             regionID = i;
             bool isBorder = playerRegions->getRegion(regionID)->isBorder();
@@ -62,7 +62,7 @@ void DefensiveStrategy::firstConquestByStrategy(Player* player, int i) {
 
 }
 
-void DefensiveStrategy::conqueredRegion(Player* player, int regionID){
+void DefensiveStrategy::conqueredRegion(Player* player, int regionID){ // mark this region as conquered and put tokens
     Game* game = Game::getGame();
     game->Notify(" conqured a region", player);
 
@@ -77,7 +77,7 @@ void DefensiveStrategy::conqueredRegion(Player* player, int regionID){
     game->NotifyStatistics();
     game->NotifyBarGraph();
 
-    followingConquest(player);
+    followingConquest(player);  //continue the conquer
 }
 
 void DefensiveStrategy::followingConquest(Player* player){
