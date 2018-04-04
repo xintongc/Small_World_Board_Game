@@ -111,6 +111,8 @@ void Game::initialPlayer() {
         Attach(player);
     }
 }
+
+
 void Game::initialStrategyPlayer(){
     round=1;
 
@@ -355,9 +357,12 @@ void Game::playGameByStragegy() {
 
 }
 
+//for part 1 observer pattern, display a header showing what player and what phase is currently being played
+//overriding subject method
 void Game::Notify(const std::string &str, Observer *player){
     player->Update(str);
 }
+
 
 void Game::notifyTurn(Observer* player) {
     player->showInfo();
