@@ -481,6 +481,7 @@ bool Player::connectedToConquestRegion(int regionID){
     return false;
 }
 
+
 void Player::showRegions() {
     cout << endl;
     cout << endl;
@@ -490,9 +491,6 @@ void Player::showRegions() {
 }
 
 void Player::scores() {
-
-
-
     Game *game = Game::getGame();
     game->Notify("Scores.", this);
     cout <<"Player"<<getId()<<"\'s total score at this turn is: ";
@@ -669,6 +667,11 @@ void Player::setId(int id) {
     Player::id = id;
 }
 
+int Player::getTotalRegionNumber() const {
+    Game* game = Game::getGame();
+    return game->getRegionNumber();
+}
+
 void Player::showBarGraph(){
     int percentage = calculatePercentage();
     for(int i = 0; i < percentage; i++){
@@ -677,13 +680,25 @@ void Player::showBarGraph(){
 }
 
 
-//design pattern
+
+
+//=====================observer pattern part 1================================
+//overriding method, showing each player's current status
+void Player::Update(const std::string& str)
+{
+    cout<<"\n==== From Player observer pattern ==== ";
+    cout <<"Player "<< getId() << ": " << str << endl;
+}
+
+//=====================observer pattern part 2[================================
+//overriding method, showing percentage of the world is currently being controlled by each player
 void Player::UpdateStatistics() {
     cout<<"==== From Statistic observer pattern ==== ";
     cout <<"Player "<< getId() << ": has " << calculatePercentage() << "% regions."<<endl;
 
 }
 
+//overriding method, showing bar graph depicting what percentage of the world is currently being controlled by each player
 void Player::UpdateBarGraph(){
     cout<<"==== From Statistic observer pattern ==== ";
     cout <<"Player "<< getId() << ": ";
@@ -692,24 +707,13 @@ void Player::UpdateBarGraph(){
 
 }
 
-void Player::Update(const std::string& str)
-{
-    cout<<"\n==== From Player observer pattern ==== ";
-    cout <<"Player "<< getId() << ": " << str << endl;
-}
 
 void Player::setStrategy(PlayerStrategy *strategy) {
     this->strategy = strategy;
 }
 
 
-int Player::getTotalRegionNumber() const {
-    Game* game = Game::getGame();
-    return game->getRegionNumber();
-}
-
-
-////strategy
+//=====================strategy pattern part 3================================
 void Player::firstConquestByStrategy(int playerNum){
     strategy->firstConquestByStrategy(this, playerNum);
 }
@@ -730,7 +734,7 @@ void Player::redeployTokensByStrategy(){
     strategy->redeployTokensByStrategy(this);
 }
 
-
+//=====================decorator pattern part 4================================
 void Player::showInfo(){
     BasicView* basicView = new BasicView();
     basicView->showInfo();
