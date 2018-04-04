@@ -10,6 +10,7 @@
 #include "../Game.h"
 #include "../regions/MapRegions.h"
 
+//A concrete Strategy that implements an aggressive operation
 class AggressiveStrategy : public PlayerStrategy{
 public:
     AggressiveStrategy();
