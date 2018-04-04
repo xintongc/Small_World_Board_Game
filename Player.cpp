@@ -12,10 +12,10 @@
 #include "decorator/CoinsView.h"
 
 Player::Player() {
-//    totalTokens = 0;
-//    victoryCoins = 5;
-//    haveActiveCombo=false;
-//    haveDeclineCombo=false;
+    totalTokens = 0;
+    victoryCoins = 5;
+    haveActiveCombo=false;
+    haveDeclineCombo=false;
 }
 
 //constructor, default 5 coins for player
