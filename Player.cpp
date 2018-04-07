@@ -167,22 +167,26 @@ void Player::firstConquest(int playerNum){
     Game* game = Game::getGame();
     game->Notify("First conquers some regions", this);
 
-    int regionNum = game->getRegionNumber();
+    int totalRegionNum = game->getRegionNumber();
+    int regionID = validateInt("\nPlease select the Region you want to first conquest: ",1,totalRegionNum);
 
-    int n = validateInt("\nPlease select the Region you want to first conquest: ",1,regionNum);
 
+    MapRegions* playerRegions = MapRegions::getMapRegions();
+    bool isBorder = playerRegions->getRegion(regionID)->isBorder();
+    bool isEnemyRegion = playerRegions->getRegion(regionID)->getPopulation() != 0;
+    int requiredTokes = requiredTokensToConquer(regionID);
 
-    MapRegions* twoPlayerRegions = MapRegions::getMapRegions();
-    bool isBorder = twoPlayerRegions->getRegion(n)->isBorder();
-
-    if(isBorder){
-        conqueredRegion(n);
+    if(isBorder && isEnemyRegion){
+        enemyLossesWithdrawals(regionID,requiredTokes);
+    } else if(isBorder){
+        conqueredRegion(regionID);
     } else{
+
         while(!isBorder){
-            n = validateInt("Please choose again,your first conquest region must be a border region",1,regionNum);
-            isBorder = twoPlayerRegions->getRegion(n)->isBorder();
+            regionID = validateInt("Please choose again,your first conquest region must be a border region",1,totalRegionNum);
+            isBorder = playerRegions->getRegion(regionID)->isBorder();
         }
-        conqueredRegion(n);
+        conqueredRegion(regionID);
     }
 }
 
@@ -288,29 +292,29 @@ void Player::redeployTokens(){
 int Player::reduceTokens(){
     MapRegions* playerRegions = MapRegions::getMapRegions();
     playerRegions->display();
-    int regionID;
-    cout << "which region you want to take out tokens?";
-    cin >> regionID;
+
+    int regionSize = playerRegions->getRegionsSize();
+
+//    cout << "regionSize: " << regionSize <<endl;
+
+    int regionID = validateInt("which region you want to take out tokens?",1,regionSize);
 
     while(!ownedRegion(regionID)){
-        cout << "This region is not yours, please select your region again:";
-        cin >> regionID;
+        regionID = validateInt("This region is not yours, please select your region again:",1,regionSize);
     }
 
     int currentPopulation = playerRegions->getRegion(regionID)->getPopulation();
 
     while (currentPopulation <= 1){
-        cout << "Only one tokens in this region, you cannot deploy this region, please choose regionID again:" << endl;
-        cin >> regionID;
+        regionID = validateInt("Only one tokens in this region, you cannot deploy this region, please choose regionID again:\n",1,regionSize);
     }
 
     cout << "How many tokens you want to take from Region[" << regionID << "] ?" << endl;
     int tokens;
-    cin >> tokens;
+    tokens = validateInt("",0,20);
     int leftTokens = playerRegions->getRegion(regionID)->getPopulation() - tokens;
     if(leftTokens < 1){
-        cout << "You need to leave at lease one population to keep the region. Please choose token number again:" << endl;
-        cin >> tokens;
+        tokens = validateInt("You need to leave at lease one population to keep the region. Please choose token number again:\n",0,20);
     }
 
     playerRegions->getRegion(regionID)->setPopulation(currentPopulation - tokens);
@@ -319,12 +323,11 @@ int Player::reduceTokens(){
 
 void Player::increaseTokens(int n){
     MapRegions* playerRegions = MapRegions::getMapRegions();
-    cout << "Please choose regions you want to put tokens:"<< endl;
+    int regionSize = playerRegions->getRegionsSize();
     int regionID;
-    cin >> regionID;
+    regionID = validateInt("Please choose regions you want to put tokens:\n",1,regionSize);
     while (!ownedRegion(regionID)){
-        cout << "This region is not owned by you, please choose RegionID again:" << endl;
-        cin >> regionID;
+        regionID = validateInt("Please choose regions you want to put tokens:\n",1,regionSize);
     }
 
     int currentPopulation = playerRegions->getRegion(regionID)->getPopulation();
@@ -332,32 +335,19 @@ void Player::increaseTokens(int n){
 
 }
 
-void Player::redeployInLoss(int n){
-    int total = n;
-    int left = n;
-    int put;
-    while(left > 0){
-        cout << "How many tokens you want to put this time?" << endl;
-        cin >> put;
-        increaseTokens(put);
-        left = total - put;
-    }
-}
-
 void Player::followingConquest(){
     MapRegions* playerRegions = MapRegions::getMapRegions();
 
-    cout << "Please input the region you want to conquerd:";
+    int regionSize = playerRegions->getRegionsSize();
+
     int regionID;
-    cin >> regionID;
-    //bool isBorder = playerRegions->getRegion(regionID)->isBorder();
+    regionID = validateInt("Please input the region you want to conquerd:",1,regionSize);
+
     while(!connectedToConquestRegion(regionID)){
-        cout << "You unable to conquerd this region, since it is not connected to your owned regions" << endl;
-        cin >> regionID;
+        regionID = validateInt("You unable to conquerd this region, since it is not connected to your owned regions\n",1,regionSize);
     }
     while(ownedRegion(regionID)){
-        cout << "This region is already conquered by you, please choose another region:";
-        cin >> regionID;
+        regionID = validateInt("This region is already conquered by you, please choose another region:",1,regionSize);
     }
 
     int requiredTokes = requiredTokensToConquer(regionID);
@@ -379,10 +369,6 @@ bool Player::ownedRegion(int regionID) {
     return id == (int)playerRegions->getRegion(regionID)->getOwner();
 }
 
-//bool Player::emptyRegion(int regionID){
-//    MapRegions* playerRegions = MapRegions::getMapRegions();
-//    return playerRegions->getRegion(regionID)->getPopulation();
-//}
 
 void Player::finalConquestAttempt(int regionID){
     cout << "\nSince your tokens are not enough to conquer this region, this is your final conquest attempt" << endl;
@@ -677,7 +663,7 @@ int Player::validateInt(string str, int from, int to){
                 cin.ignore();   //This skips the left over stream data.
                 throw domain_error("wrong type");
             }
-            if(n > to || n < from){  //if the input is not between 2-5, throw exception
+            if(n > to || n < from){  //if the input is not between to-from, throw exception
                 throw domain_error("Invaild input. Please input again.");
             }
 
@@ -687,6 +673,8 @@ int Player::validateInt(string str, int from, int to){
         }
 
     }
+
+    return n;
 
 }
 
