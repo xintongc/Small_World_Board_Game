@@ -90,7 +90,7 @@ void Player::pickRace(ComboList& combo) {
 
 void Player::picks_race(ComboList& combo) {
     Game* game = Game::getGame();
-    game->Notify("Picks race", this);
+    game->Notify("Picks race", this);   //update player is picking race
     //cout<<"========================================"<<endl;
     combo.print();
     //cout<<"\nplayer"<<getId()<<" is picking race now: "<<endl;
@@ -142,7 +142,7 @@ void Player::declineCombo(ComboList &combo) {
 
 void Player::conquers(int playerNum){
     Game* game = Game::getGame();
-    game->Notify("Conquers some regions", this);
+    game->Notify("Conquers some regions", this);    //update player is conquering region
     followingConquest();
 }
 
@@ -165,7 +165,7 @@ Map* Player::chooseMap(int playerNum){
 
 void Player::firstConquest(int playerNum){
     Game* game = Game::getGame();
-    game->Notify("First conquers some regions", this);
+    game->Notify("First conquers some regions", this);  ////update player is first conquering region
 
     int totalRegionNum = game->getRegionNumber();
     int regionID = validateInt("\nPlease select the Region you want to first conquest: ",1,totalRegionNum);
@@ -193,7 +193,7 @@ void Player::firstConquest(int playerNum){
 
 void Player::conqueredRegion(int regionID){
     Game* game = Game::getGame();
-    game->Notify(" conqured a region", this);
+    game->Notify(" conqured a region", this);   //update player is conquering region
 
     int requiredTokens = basicRequiredTokens(regionID);
     MapRegions* playerRegions = MapRegions::getMapRegions();
@@ -202,10 +202,10 @@ void Player::conqueredRegion(int regionID){
     playerRegions->getRegion(regionID)->setPopulation(requiredTokens);
     totalTokens = totalTokens - requiredTokens;
 
-    game->NotifyStatistics();
-    game->NotifyBarGraph();
+    game->NotifyStatistics();       //update player's percentage of owned regions
+    game->NotifyBarGraph();         //update player's bar graph
 
-    game->notifyConquerAndLoss();
+    game->notifyConquerAndLoss();   //Display the percentage of regions owned/lost for each player
 
     followingConquest();
 }
@@ -213,10 +213,10 @@ void Player::conqueredRegion(int regionID){
 void Player::enemyLossesWithdrawals(int regionID, int requiredTokens){
     Game* game = Game::getGame();
     MapRegions* playerRegions = MapRegions::getMapRegions();
-    game->NotifyStatistics();
-    game->NotifyBarGraph();
+    game->NotifyStatistics();   //update player's percentage of owned regions
+    game->NotifyBarGraph();     //update player's bar graph
 
-    game->notifyConquerAndLoss();
+    game->notifyConquerAndLoss();   //Display the percentage of regions owned/lost for each player
 
     int enemyPopulation = playerRegions->getRegion(regionID)->getPopulation();
     int enemyID = (int)playerRegions->getRegion(regionID)->getOwner();
@@ -264,7 +264,7 @@ void Player::redeployTokens(){
     int redeployAgain = false;
     char word;
     Game* game = Game::getGame();
-    game->Notify("it's your turn to redeploy.Do you want to redeploy? If yes, please input y", this);
+    game->Notify("it's your turn to redeploy.Do you want to redeploy? If yes, please input y", this);   //update player is redeploying 
     cin >> word;
     if(word == 'y'){
         redeployAgain = true;
@@ -463,7 +463,7 @@ void Player::showRegions() {
 
 void Player::scores() {
     Game *game = Game::getGame();
-    game->Notify("Scores.", this);
+    game->Notify("Scores.", this);      //update player's score
     cout <<"Player"<<getId()<<"\'s total score at this turn is: ";
     int i=getId();
     iterateMapRegions(i);                   //------player receives 1 coin from each Region his occupy on the map--------
@@ -493,7 +493,7 @@ void Player::scores() {
     }
     cout<<game->Players[i].getVictoryCoins()<<endl;
 
-    game->notifyCoins();
+    game->notifyCoins();    
 
     setPlayed(true);                //----------finish play----------------------------
 }
