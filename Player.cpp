@@ -162,18 +162,15 @@ Map* Player::chooseMap(int playerNum){
     }
 }
 
-//bool Player::isBorder(MapRegions* regions,int regionID){
-//    return regions->getRegion(regionID)->isBorder();
-//}  not working (functin pointer)
-
 
 void Player::firstConquest(int playerNum){
     Game* game = Game::getGame();
     game->Notify("First conquers some regions", this);
 
-    cout << "\nPlease select the Region you want to first conquest: ";
-    int n;
-    cin >> n;
+    int regionNum = game->getRegionNumber();
+
+    int n = validateInt("\nPlease select the Region you want to first conquest: ",1,regionNum);
+
 
     MapRegions* twoPlayerRegions = MapRegions::getMapRegions();
     bool isBorder = twoPlayerRegions->getRegion(n)->isBorder();
@@ -182,8 +179,7 @@ void Player::firstConquest(int playerNum){
         conqueredRegion(n);
     } else{
         while(!isBorder){
-            cout << "Please choose again,your first conquest region must be a border region" << endl;
-            cin >> n;
+            n = validateInt("Please choose again,your first conquest region must be a border region",1,regionNum);
             isBorder = twoPlayerRegions->getRegion(n)->isBorder();
         }
         conqueredRegion(n);
