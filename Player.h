@@ -31,13 +31,11 @@ public:
     void conquers(int);
 
 
-//    bool isBorder(MapRegions* regions,int regionID); //need improve later
     void conqueredRegion(int regionID);
     void firstConquest(int playerNum);
     Map* chooseMap(int playerNum); //return map according to player number
     void enemyLossesWithdrawals(int regionID, int requiredTokens);
     void redeployTokens();
-    void redeployInLoss(int n);
     int reduceTokens();
     void increaseTokens(int n);
 
@@ -51,8 +49,6 @@ public:
 
     void finalConquestAttempt(int regionID);
     bool ownedRegion(int regionID);
-//    bool emptyRegion(int regionID);
-//    void firstConqueredRegion(int regionID);
     void setOwnerAndRegionPopulation(int regionID, int population);
     void showRegions();
 
@@ -93,9 +89,6 @@ public:
     void setHaveDeclineCombo(bool haveDeclineCombo);
     void setHaveActiveCombo(bool haveActiveCombo);
     void setId(int id);
-
-//    int getTotalRegionPercentage() const;
-//    void setTotalRegionPercentage(int totalRegionPercentage);
 
     ////observer pattern
     void Update(const std::string&);
