@@ -118,6 +118,8 @@ public:
     void showCoins(Observer* observer);
     void showHands(Observer* observer);
 
+    int validateInt(string str, int from, int to);
+
 protected:
     int id;
     int victoryCoins;

@@ -37,11 +37,26 @@ Game::~Game() {
 void Game::initial() {
     int playerNumber = 0;
 
-    cout << "How many playes in this game? Please enter a number between 2-5." << endl;
-    cin >> playerNumber;
-    while(playerNumber > 5 || playerNumber < 2){
+    bool done = false;
+    while(!done){
         cout << "How many playes in this game? Please enter a number between 2-5." << endl;
-        cin >> playerNumber;
+
+        try{
+            cin >> playerNumber;
+            if(cin.fail()){      //if the input is not a interger, throw exception
+                cin.clear();    //This corrects the stream.
+                cin.ignore();   //This skips the left over stream data.
+                throw domain_error("wrong type");
+            }
+            if(playerNumber > 5 || playerNumber < 2){  //if the input is not between 2-5, throw exception
+                throw domain_error("Invaild input. Please input again.");
+            }
+
+            done = true;
+        }catch (exception& e){
+            cout << "Standard exception: " << e.what() << endl;
+        }
+
     }
     NumOfPlayers = playerNumber;
 
@@ -150,11 +165,31 @@ void Game::initialStrategyPlayer(){
 }
 
 void Game::selectStrategy(){
+
+
     for(int i=1;i <= NumOfPlayers;i++){
-        cout << "which strategy for player " << i << " ? 1.Aggressive 2.Defensive 3.Moderate 4.Random" << endl;
+        bool done = false; 
         int n;
+        while(!done){
+            cout << "which strategy for player " << i << " ? 1.Aggressive 2.Defensive 3.Moderate 4.Random" << endl;
+            try{
+                cin >> n;
+                if(cin.fail()){      //if the input is not a interger, throw exception
+                    cin.clear();    //This corrects the stream.
+                    cin.ignore();   //This skips the left over stream data.
+                    throw domain_error("wrong type");
+                }
+                if(n > 4 || n < 1){  //if the input is not between 2-5, throw exception
+                    throw domain_error("Invaild input. Please input again.");
+                }
+
+                done = true;
+            }catch (exception& e){
+                cout << "Standard exception: " << e.what() << endl;
+            }
+
+        }
         PlayerStrategy* playerStrategy;
-        cin >> n;
         switch(n){
             case 1:
                 playerStrategy = new AggressiveStrategy();

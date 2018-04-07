@@ -12,10 +12,10 @@
 #include "decorator/CoinsView.h"
 
 Player::Player() {
-//    totalTokens = 0;
-//    victoryCoins = 5;
-//    haveActiveCombo=false;
-//    haveDeclineCombo=false;
+    totalTokens = 0;
+    victoryCoins = 5;
+    haveActiveCombo=false;
+    haveDeclineCombo=false;
 }
 
 //constructor, default 5 coins for player
@@ -64,15 +64,8 @@ void Player::currentStates() {
 //============so far, pick race and for each turn coins change done================================
 void Player::pickRace(ComboList& combo) {
     int orderNum;
-    do{
-        cout<<"Please select the orderNum of combo: ";
-        cin>>orderNum;
+    orderNum = validateInt("Please select the orderNum of combo: ",1,6);
 
-        //----------check whether have enough coins to select combo----------
-//        if(victoryCoins < orderNum){
-//            cout<<"Your victory coins are not enough to select the combo. "<<endl;
-//            continue;
-//        }
     if (orderNum > 0 && orderNum < 7) {                     //====================pick from vector==============
         cout << "\nChoosing race \"" << combo.raceVector[orderNum - 1].getType()
              << "\" and power \"" << combo.powerVector[orderNum - 1].getType()
@@ -91,11 +84,7 @@ void Player::pickRace(ComboList& combo) {
         combo.powerVector.erase(combo.powerVector.begin() + orderNum - 1);
         combo.coinsVector.erase(combo.coinsVector.begin() + orderNum - 1);
 
-    } else {
-        cout << "Invalid number. " << endl;
-        continue;
     }
-}while(orderNum<1 || orderNum>6);
 }
 
 
@@ -173,18 +162,15 @@ Map* Player::chooseMap(int playerNum){
     }
 }
 
-//bool Player::isBorder(MapRegions* regions,int regionID){
-//    return regions->getRegion(regionID)->isBorder();
-//}  not working (functin pointer)
-
 
 void Player::firstConquest(int playerNum){
     Game* game = Game::getGame();
     game->Notify("First conquers some regions", this);  ////update player is first conquering region
 
-    cout << "\nPlease select the Region you want to first conquest: ";
-    int n;
-    cin >> n;
+    int regionNum = game->getRegionNumber();
+
+    int n = validateInt("\nPlease select the Region you want to first conquest: ",1,regionNum);
+
 
     MapRegions* twoPlayerRegions = MapRegions::getMapRegions();
     bool isBorder = twoPlayerRegions->getRegion(n)->isBorder();
@@ -193,8 +179,7 @@ void Player::firstConquest(int playerNum){
         conqueredRegion(n);
     } else{
         while(!isBorder){
-            cout << "Please choose again,your first conquest region must be a border region" << endl;
-            cin >> n;
+            n = validateInt("Please choose again,your first conquest region must be a border region",1,regionNum);
             isBorder = twoPlayerRegions->getRegion(n)->isBorder();
         }
         conqueredRegion(n);
@@ -679,6 +664,31 @@ void Player::showBarGraph(){
     }
 }
 
+int Player::validateInt(string str, int from, int to){
+
+    bool done = false; 
+    int n;
+    while(!done){
+        cout << str;
+        try{
+            cin >> n;
+            if(cin.fail()){      //if the input is not a interger, throw exception
+                cin.clear();    //This corrects the stream.
+                cin.ignore();   //This skips the left over stream data.
+                throw domain_error("wrong type");
+            }
+            if(n > to || n < from){  //if the input is not between 2-5, throw exception
+                throw domain_error("Invaild input. Please input again.");
+            }
+
+            done = true;
+        }catch (exception& e){
+            cout << "Standard exception: " << e.what() << endl;
+        }
+
+    }
+
+}
 
 
 
