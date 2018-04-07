@@ -64,15 +64,8 @@ void Player::currentStates() {
 //============so far, pick race and for each turn coins change done================================
 void Player::pickRace(ComboList& combo) {
     int orderNum;
-    do{
-        cout<<"Please select the orderNum of combo: ";
-        cin>>orderNum;
+    orderNum = validateInt("Please select the orderNum of combo: ",1,6);
 
-        //----------check whether have enough coins to select combo----------
-//        if(victoryCoins < orderNum){
-//            cout<<"Your victory coins are not enough to select the combo. "<<endl;
-//            continue;
-//        }
     if (orderNum > 0 && orderNum < 7) {                     //====================pick from vector==============
         cout << "\nChoosing race \"" << combo.raceVector[orderNum - 1].getType()
              << "\" and power \"" << combo.powerVector[orderNum - 1].getType()
@@ -91,11 +84,7 @@ void Player::pickRace(ComboList& combo) {
         combo.powerVector.erase(combo.powerVector.begin() + orderNum - 1);
         combo.coinsVector.erase(combo.coinsVector.begin() + orderNum - 1);
 
-    } else {
-        cout << "Invalid number. " << endl;
-        continue;
     }
-}while(orderNum<1 || orderNum>6);
 }
 
 
@@ -679,6 +668,31 @@ void Player::showBarGraph(){
     }
 }
 
+int Player::validateInt(string str, int from, int to){
+
+    bool done = false; 
+    int n;
+    while(!done){
+        cout << str;
+        try{
+            cin >> n;
+            if(cin.fail()){      //if the input is not a interger, throw exception
+                cin.clear();    //This corrects the stream.
+                cin.ignore();   //This skips the left over stream data.
+                throw domain_error("wrong type");
+            }
+            if(n > to || n < from){  //if the input is not between 2-5, throw exception
+                throw domain_error("Invaild input. Please input again.");
+            }
+
+            done = true;
+        }catch (exception& e){
+            cout << "Standard exception: " << e.what() << endl;
+        }
+
+    }
+
+}
 
 
 
