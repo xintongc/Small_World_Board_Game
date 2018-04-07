@@ -37,11 +37,26 @@ Game::~Game() {
 void Game::initial() {
     int playerNumber = 0;
 
-    cout << "How many playes in this game? Please enter a number between 2-5." << endl;
-    cin >> playerNumber;
-    while(playerNumber > 5 || playerNumber < 2){
+    bool done = false;
+    while(!done){
         cout << "How many playes in this game? Please enter a number between 2-5." << endl;
-        cin >> playerNumber;
+
+        try{
+            cin >> playerNumber;
+            if(cin.fail()){      //if the input is not a interger, throw exception
+                cin.clear();    //This corrects the stream.
+                cin.ignore();   //This skips the left over stream data.
+                throw domain_error("wrong type");
+            }
+            if(playerNumber > 5 || playerNumber < 2){  //if the input is not between 2-5, throw exception
+                throw domain_error("Invaild input. Please input again.");
+            }
+
+            done = true;
+        }catch (exception& e){
+            cout << "Standard exception: " << e.what() << endl;
+        }
+
     }
     NumOfPlayers = playerNumber;
 
