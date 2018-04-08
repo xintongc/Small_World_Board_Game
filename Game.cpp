@@ -85,7 +85,7 @@ void Game::initial() {
             regionNumber = 39;
             break;
         case 5:
-            mapLoader.openFile("D:/CLion-workspace/small_world/fivePlayer.map");
+            mapLoader.openFile("/Users/zncu/CLionProjects/small_world/fivePlayer.map");
             playerRegions->createFivePlayerRegions();
             regionNumber = 47;
             break;
@@ -168,12 +168,14 @@ void Game::initialStrategyPlayer(){
     selectStrategy();
 }
 
+
 void Game::selectStrategy(){
 
 
     for(int i=1;i <= NumOfPlayers;i++){
         bool done = false; 
         int n;
+        cout<<endl;
         while(!done){
             cout << "which strategy for player " << i << " ? 1.Aggressive 2.Defensive 3.Moderate 4.Random" << endl;
             try{
@@ -425,6 +427,32 @@ void Game::notifyTurn(Observer* player) {
 
 
 
+
+
+//--------------assignment 4-------------------
+void Game::twoPlayersTournaments(){
+    initial(2);
+    initialStrategyPlayer(2);
+}
+
+
+void Game::threePlayersTournaments(){
+    initial(3);
+    initialStrategyPlayer(3);
+}
+
+void Game::fourPlayersTournaments(){
+    initial(4);
+    initialStrategyPlayer(4);
+}
+
+void Game::fivePlayersTournaments(){
+    initial(5);
+    initialStrategyPlayer(5);
+}
+
+
+
 //-------------getter and setter --------------------
 int Game::getRound() const {
     return round;
@@ -460,4 +488,109 @@ void Game::setTurnMakerIndex(int turnMakerIndex) {
 
 int Game::getRegionNumber() const {
     return regionNumber;
+}
+
+
+
+
+
+
+
+//--------------for assignment 4------------------------
+//some hepler method
+void Game::initial(int playerNumber) {
+
+
+    bool done = false;
+    while(!done){
+        cout << "How many playes in this game? Please enter a number between 2-5." << endl;
+
+        try{
+            cin >> playerNumber;
+            if(cin.fail()){      //if the input is not a interger, throw exception
+                cin.clear();    //This corrects the stream.
+                cin.ignore();   //This skips the left over stream data.
+                throw domain_error("wrong type");
+            }
+            if(playerNumber > 5 || playerNumber < 2){  //if the input is not between 2-5, throw exception
+                throw domain_error("Invaild input. Please input again.");
+            }
+
+            done = true;
+        }catch (exception& e){
+            cout << "Standard exception: " << e.what() << endl;
+        }
+
+    }
+
+    MapLoader mapLoader;
+    MapRegions* playerRegions = MapRegions::getMapRegions();
+    playerRegions->info();
+
+    switch (playerNumber){
+        case 2:
+            mapLoader.openFile("/Users/zncu/CLionProjects/small_world/twoPlayer.map");
+            playerRegions->createTwoPlayerRegions();
+            regionNumber = 23;
+            break;
+        case 3:
+            mapLoader.openFile("/Users/zncu/CLionProjects/small_world/threePlayer.map");
+            playerRegions->createThreePlayerRegions();
+            regionNumber = 30;
+            break;
+        case 4:
+            mapLoader.openFile("/Users/zncu/CLionProjects/small_world/fourPlayer.map");
+            playerRegions->createFourPlayerRegions();
+            regionNumber = 39;
+            break;
+        case 5:
+            mapLoader.openFile("/Users/zncu/CLionProjects/small_world/fivePlayer.map");
+            playerRegions->createFivePlayerRegions();
+            regionNumber = 47;
+            break;
+    }
+    playerRegions->display();
+    mapLoader.readFile();
+    mapLoader.closeInput();
+    mapLoader.buildMap();
+}
+
+
+
+
+void Game::initialStrategyPlayer(int n){
+    round=1;
+    NumOfPlayers = n;
+    Players.push_back(Player(0));
+    Players.push_back(Player(1));
+    Players.push_back(Player(2));
+
+    switch (NumOfPlayers){
+        case 2:
+            totalTurns=10;
+            break;
+        case 3:
+            totalTurns=10;
+            Players.push_back(Player(3));
+            break;
+        case 4:
+            totalTurns=9;
+            Players.push_back(Player(3));
+            Players.push_back(Player(4));
+            break;
+        case 5:
+            totalTurns=8;
+            Players.push_back(Player(3));
+            Players.push_back(Player(4));
+            Players.push_back(Player(5));
+            break;
+    }
+
+    for(int i=1;i <= NumOfPlayers;i++){
+        Player* player = &Players[i];
+        Attach(player);
+    }
+
+    cout<<endl<<n<<" players starts playing game."<<endl;
+    selectStrategy();
 }
