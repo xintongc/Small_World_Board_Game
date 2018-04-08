@@ -1,0 +1,480 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ComboList" Collapsed="true">
+    <Position X="47.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAgAAQAAAoAEoAAAACAAAAECAEAAABIACAAAAAFAI=</HashCode>
+      <FileName>ComboList.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BasicView" Collapsed="true">
+    <Position X="10.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAUAAAAAAAAAIABAAAAQAAAAAAAIAAAAAAAAAEAA=</HashCode>
+      <FileName>decorator\BasicView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoinsView" Collapsed="true">
+    <Position X="15.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCQAAUAAAAAAAAAAAAAAAAQAAAAAAAABAAAAAAAAEAA=</HashCode>
+      <FileName>decorator\CoinsView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DominationView" Collapsed="true">
+    <Position X="17.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAUAAAAAAAAAAAAAAAAQAAAAQAAAAACAAAAAAEAA=</HashCode>
+      <FileName>decorator\DominationView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HandsView" Collapsed="true">
+    <Position X="19.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAUAAAAAAAAAAAAAAAAQAAABAEAAAAAAAAAAAEAA=</HashCode>
+      <FileName>decorator\HandsView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ViewDecorator" Collapsed="true">
+    <Position X="17.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QARIAUAAAAAAAAAAAAAAAAQAAgAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>decorator\ViewDecorator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Observer" Collapsed="true">
+    <Position X="15.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAUAAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAAAGAA=</HashCode>
+      <FileName>designpattern\Observer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Subject" Collapsed="true">
+    <Position X="0.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAQAAAAAAAAAIAAIAAIBAEAIECCABAAAAAAAAAAAA=</HashCode>
+      <FileName>designpattern\Subject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dice" Collapsed="true">
+    <Position X="49.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAADAAAAEAAgA=</HashCode>
+      <FileName>Dice.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game" Collapsed="true">
+    <Position X="0.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAgAwAAAAAEAAABEQAAAAAABUAilClBIggAIAEAAAAw=</HashCode>
+      <FileName>Game.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dragon" Collapsed="true">
+    <Position X="1" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>gamepieces\Dragon.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Encampments" Collapsed="true">
+    <Position X="3.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>gamepieces\Encampments.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fortresses" Collapsed="true">
+    <Position X="5.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>gamepieces\Fortresses.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamePieces" Collapsed="true">
+    <Position X="7.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAARABAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>gamepieces\GamePieces.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Heroes" Collapsed="true">
+    <Position X="7.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAg=</HashCode>
+      <FileName>gamepieces\Heroes.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Holes_inthe_Ground" Collapsed="true">
+    <Position X="10" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>gamepieces\Holes_inthe_Ground.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mountains" Collapsed="true">
+    <Position X="12.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAICAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>gamepieces\Mountains.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrollLairs" Collapsed="true">
+    <Position X="14.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>gamepieces\TrollLairs.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Map" Collapsed="true">
+    <Position X="51.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEABQAJAIAAAAAAAAAAAAAAEgAAAAEAAIAAAAAAA=</HashCode>
+      <FileName>Map.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapLoader" Collapsed="true">
+    <Position X="47.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEBACAAEAQAAAAAAIAAAQAAAAAAAAAAAASQAAAA=</HashCode>
+      <FileName>MapLoader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player" Collapsed="true">
+    <Position X="13" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>0qysEUAaECEgiIAACmQskJQACASBIAKhAyQoBYkCErg=</HashCode>
+      <FileName>Player.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alchemist" Collapsed="true">
+    <Position X="16" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>power\Alchemist.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Berserk" Collapsed="true">
+    <Position X="22.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>power\Berserk.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bivouacking" Collapsed="true">
+    <Position X="29.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>power\Bivouacking.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Commando" Collapsed="true">
+    <Position X="36.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAACA=</HashCode>
+      <FileName>power\Commando.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diplomat" Collapsed="true">
+    <Position X="40.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>power\Diplomat.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DragonMaster" Collapsed="true">
+    <Position X="45.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>power\DragonMaster.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Flying" Collapsed="true">
+    <Position X="2.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>power\Flying.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Forest" Collapsed="true">
+    <Position X="7" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>power\Forest.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fortified" Collapsed="true">
+    <Position X="11.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>power\Fortified.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Heroic" Collapsed="true">
+    <Position X="18.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>power\Heroic.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hill" Collapsed="true">
+    <Position X="25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAgABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>power\Hill.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Merchant" Collapsed="true">
+    <Position X="31.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAgAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>power\Merchant.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mounted" Collapsed="true">
+    <Position X="38.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>power\Mounted.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pillaging" Collapsed="true">
+    <Position X="43" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>power\Pillaging.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Power" Collapsed="true">
+    <Position X="24" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAQAAEAAAAAABAAAAAAAREBABABAAEAAAAAABA=</HashCode>
+      <FileName>power\Power.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Seafaring" Collapsed="true">
+    <Position X="4.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>power\Seafaring.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Spirit" Collapsed="true">
+    <Position X="9.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>power\Spirit.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Stout" Collapsed="true">
+    <Position X="13.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>power\Stout.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Swamp" Collapsed="true">
+    <Position X="20.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAACAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>power\Swamp.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Underworld" Collapsed="true">
+    <Position X="27.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>power\Underworld.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wealthy" Collapsed="true">
+    <Position X="34" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABgAAAAAIAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>power\Wealthy.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Amazons" Collapsed="true">
+    <Position X="19.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAEAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>race\Amazons.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dwarves" Collapsed="true">
+    <Position X="24.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAIQAAA=</HashCode>
+      <FileName>race\Dwarves.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Elves" Collapsed="true">
+    <Position X="28.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAACQAAAAAAAAAA=</HashCode>
+      <FileName>race\Elves.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ghouls" Collapsed="true">
+    <Position X="1.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>race\Ghouls.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Giants" Collapsed="true">
+    <Position X="6.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAEAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>race\Giants.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Halflings" Collapsed="true">
+    <Position X="10.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAEAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>race\Halflings.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Humans" Collapsed="true">
+    <Position X="15.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAEAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>race\Humans.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Orcs" Collapsed="true">
+    <Position X="17.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAIAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>race\Orcs.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Race" Collapsed="true">
+    <Position X="16.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAEAABAQAAEBABAAAAAAAAAABRAFAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>race\Race.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ratmen" Collapsed="true">
+    <Position X="22" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>race\Ratmen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Skeletons" Collapsed="true">
+    <Position X="26.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BEAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>race\Skeletons.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sorcerers" Collapsed="true">
+    <Position X="31" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAEAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>race\Sorcerers.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tritons" Collapsed="true">
+    <Position X="4" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAEQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>race\Tritons.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trolls" Collapsed="true">
+    <Position X="8.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAABAAAAE=</HashCode>
+      <FileName>race\Trolls.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wizards" Collapsed="true">
+    <Position X="13" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAEAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>race\Wizards.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapRegions" Collapsed="true">
+    <Position X="49.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAIAAAAABAgAAAAEAAAAFAAQAQYAAAAAAIQAE=</HashCode>
+      <FileName>regions\MapRegions.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Region" Collapsed="true">
+    <Position X="51.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KogCgCAwgBgFgABBBDKAADTACBAAAEAA6ABAAAAAAkE=</HashCode>
+      <FileName>regions\Region.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegionBuilder" Collapsed="true">
+    <Position X="47.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIiCAAAAAAAAAQAABCAAAASBAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>regions\RegionBuilder.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AggressiveStrategy" Collapsed="true">
+    <Position X="0.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAgAAAAAAEAAAhAAEAAEAAAAASBIAAAAAAAAAACAAA=</HashCode>
+      <FileName>strategy\AggressiveStrategy.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DefensiveStrategy" Collapsed="true">
+    <Position X="3" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAgAAAAAAEAAAAAAEAAEAAAAASBIAAAABAAAAgCAAA=</HashCode>
+      <FileName>strategy\DefensiveStrategy.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ModerateStrategy" Collapsed="true">
+    <Position X="5.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAEAAAAAAAAAEAAAAASAIAAAAEAAAAAIAAA=</HashCode>
+      <FileName>strategy\ModerateStrategy.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerStrategy" Collapsed="true">
+    <Position X="4" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAgAAAAAAEAAAAAAAAAEAAAAASAIAAAAAAAEAAAAAA=</HashCode>
+      <FileName>strategy\PlayerStrategy.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RandomStrategy" Collapsed="true">
+    <Position X="7.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAEAAAEAIAAAAEAAEAAAAASBIAAAAAAAAAACAAA=</HashCode>
+      <FileName>strategy\RandomStrategy.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Landform" Collapsed="true">
+    <Position X="47.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAACBAAgAAAACAAAAAAAAAAAAQAAABAAAAA=</HashCode>
+      <FileName>regions\Region.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="LandMark" Collapsed="true">
+    <Position X="49.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAICEAAAAAAAAAAAAAAAAAAAACAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>regions\Region.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Owner" Collapsed="true">
+    <Position X="51.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAA4BgAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>regions\Region.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
