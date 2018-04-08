@@ -61,6 +61,15 @@ public:
     //for observer pattern without decorator
     void notifyTurn(Observer *);
 
+
+    void twoPlayersTournaments();
+    void threePlayersTournaments();
+    void fourPlayersTournaments();
+    void fivePlayersTournaments();
+
+    void initial(int);
+    void initialStrategyPlayer(int);
+
 };
 
 

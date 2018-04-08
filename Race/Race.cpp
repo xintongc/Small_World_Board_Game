@@ -5,7 +5,7 @@
 #include "Race.h"
 Race::Race() {
     tokens=0;
-    type="Race";
+    type="";
     skill="";
 }
 Race::~Race() {}

@@ -37,7 +37,6 @@ Player::Player(int id, PlayerStrategy* strategy){
 }
 
 Player::~Player() {
-    delete strategy;
 }
 
 void Player::currentStates() {
@@ -227,6 +226,7 @@ void Player::enemyLossesWithdrawals(int regionID, int requiredTokens){
 
     int enemyWithdrawalTokens = enemyPopulation/2;
 
+    playerRegions->display();
     cout << "Player[" << enemyID <<"] your region [" << regionID << "] has been conqured by enemy, please redeploy" << endl;
     game->Players[enemyID].increaseTokens(enemyWithdrawalTokens);             //enemy put the withdrawed tokens to one region
 
