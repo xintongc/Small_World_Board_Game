@@ -20,7 +20,11 @@ using namespace std;
 Game* Game::game = 0;
 Game* Game::getGame(){
     if(game == 0){
-        game = new Game;
+        try {
+            game = new Game;
+        }catch (std::bad_alloc& ba){
+            std::cerr << "bad alloc caught" << ba.what()<< endl;
+        }
     }
     return game;
 }
@@ -192,16 +196,32 @@ void Game::selectStrategy(){
         PlayerStrategy* playerStrategy;
         switch(n){
             case 1:
-                playerStrategy = new AggressiveStrategy();
+                try {
+                    playerStrategy = new AggressiveStrategy();
+                }catch (std::bad_alloc& ba){
+                    std::cerr << "bad alloc caught" << ba.what()<< endl;
+                }
                 break;
             case 2:
-                playerStrategy = new DefensiveStrategy();
+                try {
+                    playerStrategy = new DefensiveStrategy();
+                }catch (std::bad_alloc& ba){
+                    std::cerr << "bad alloc caught" << ba.what()<< endl;
+                }
                 break;
             case 3:
-                playerStrategy = new ModerateStrategy();
+                try {
+                    playerStrategy = new ModerateStrategy();
+                }catch (std::bad_alloc& ba){
+                    std::cerr << "bad alloc caught" << ba.what()<< endl;
+                }
                 break;
             case 4:
-                playerStrategy = new RandomStrategy();
+                try {
+                    playerStrategy = new RandomStrategy();
+                }catch (std::bad_alloc& ba){
+                    std::cerr << "bad alloc caught" << ba.what()<< endl;
+                }
                 break;
         }
         Players[i].setStrategy(playerStrategy);
@@ -402,6 +422,7 @@ void Game::Notify(const std::string &str, Observer *player){
 void Game::notifyTurn(Observer* player) {
     player->showInfo();
 }
+
 
 
 //-------------getter and setter --------------------

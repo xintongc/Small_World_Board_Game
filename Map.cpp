@@ -10,7 +10,11 @@ Map* Map::getMap(int n)
 {
     if (map == 0)
     {
-        map = new Map(n);
+        try {
+            map = new Map(n);
+        }catch (std::bad_alloc& ba){
+            std::cerr << "bad alloc caught" << ba.what()<< endl;
+        }
     }
 
     return map;
@@ -36,7 +40,10 @@ Map::Map(int n) {
 }
 
 Map::~Map() {
-    delete adjacencyMatrix;
+    for (int i = 0; i < n; ++i) {
+        delete [] adjacencyMatrix[i];
+    }
+    delete [] adjacencyMatrix;
 }
 
 
