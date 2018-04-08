@@ -37,6 +37,7 @@ Player::Player(int id, PlayerStrategy* strategy){
 }
 
 Player::~Player() {
+    delete strategy;
 }
 
 void Player::currentStates() {

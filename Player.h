@@ -24,8 +24,6 @@ public:
     Player(int id, PlayerStrategy* strategy);
     ~Player();
 
-    vector<Region> occupiedRegions;
-
     void pickRace(ComboList&);
     void picks_race(ComboList&);
     void conquers(int);
