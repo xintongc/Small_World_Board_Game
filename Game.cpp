@@ -175,6 +175,7 @@ void Game::selectStrategy(){
     for(int i=1;i <= NumOfPlayers;i++){
         bool done = false; 
         int n;
+        cout<<endl;
         while(!done){
             cout << "which strategy for player " << i << " ? 1.Aggressive 2.Defensive 3.Moderate 4.Random" << endl;
             try{
@@ -590,5 +591,6 @@ void Game::initialStrategyPlayer(int n){
         Attach(player);
     }
 
+    cout<<endl<<n<<" players starts playing game."<<endl;
     selectStrategy();
 }

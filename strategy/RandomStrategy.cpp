@@ -73,23 +73,27 @@ void RandomStrategy::firstConquestByStrategy(Player *player, int i) {
     regionID = (rand() % regionNum) + 1;
     cout<<"Random number is "<<regionID<<endl;
 
-    MapRegions* twoPlayerRegions = MapRegions::getMapRegions();
-    bool isBorder = twoPlayerRegions->getRegion(regionID)->isBorder();
+    MapRegions* playerRegions = MapRegions::getMapRegions();
+    bool isBorder = playerRegions->getRegion(regionID)->isBorder();
+    bool isEnemyRegion = playerRegions->getRegion(regionID)->getPopulation() != 0;
+    int requiredTokes = player->requiredTokensToConquer(regionID);
 
-    if(isBorder){
+    if(isBorder && isEnemyRegion){
+        enemyLossesWithdrawals(player, regionID,requiredTokes);
+    } else if(isBorder){
         conqueredRegion(player, regionID);
     } else {
         while(!isBorder){
             cout << "Random again" << endl;
             regionID = (rand() % regionNum) + 1;
-            isBorder = twoPlayerRegions->getRegion(regionID)->isBorder();
+            isBorder = playerRegions->getRegion(regionID)->isBorder();
         }
         conqueredRegion(player, regionID);
     }
 
 }
 
-//heloing method for firstConquestByStrategy
+//helping method for firstConquestByStrategy
 void RandomStrategy::conqueredRegion(Player* player, int regionID){
     cout<<"Random number to conquer a region:"<< regionID <<endl;
     Game* game = Game::getGame();
@@ -111,12 +115,12 @@ void RandomStrategy::conqueredRegion(Player* player, int regionID){
 //helping method for conqueredRegion
 //it will generate random number to conquer a region
 void RandomStrategy::followingConquest(Player* player){
-    Game* game = Game::getGame();
+
     MapRegions* playerRegions = MapRegions::getMapRegions();
 
     cout << "\nRandomly choosing the region to conquerd:";
     int regionID;
-    int regionNum = game->getRegionNumber();
+    int regionNum = playerRegions->getRegionsSize();
     std::srand(time(0));
     regionID = (rand() % regionNum) + 1;
     cout<<regionID<<endl;
@@ -171,9 +175,9 @@ void RandomStrategy::enemyLossesWithdrawals(Player* player, int regionID, int re
 
     int enemyWithdrawalTokens = enemyPopulation/2;
 
-    cout << "Player[" << enemyID <<"] your region [" << regionID << "] has been conqured by enemy, please redeploy" << endl;
-
-    game->Players[enemyID].increaseTokens(enemyWithdrawalTokens);             //enemy put the withdrawed tokens to one region
     playerRegions->display();
+    cout << "Player[" << enemyID <<"] your region [" << regionID << "] has been conqured by enemy, please redeploy" << endl;
+    game->Players[enemyID].increaseTokens(enemyWithdrawalTokens);             //enemy put the withdrawed tokens to one region
+
     followingConquest(player);
 }

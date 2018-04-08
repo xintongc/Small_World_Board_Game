@@ -465,7 +465,7 @@ void Player::showRegions() {
 void Player::scores() {
     Game *game = Game::getGame();
     game->Notify("Scores.", this);      //update player's score
-    cout <<"Player"<<getId()<<"\'s total score at this turn is: ";
+    //cout <<"====Player"<<getId()<<"\'s total score at this turn is: ";
     int i=getId();
     iterateMapRegions(i);                   //------player receives 1 coin from each Region his occupy on the map--------
 
@@ -492,7 +492,7 @@ void Player::scores() {
             game->Players[i].setVictoryCoins(game->Players[i].getVictoryCoins() + 7);
         }
     }
-    cout<<game->Players[i].getVictoryCoins()<<endl;
+    //cout<<game->Players[i].getVictoryCoins()<<endl<<endl;
 
     game->notifyCoins();    
 
