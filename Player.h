@@ -110,6 +110,12 @@ public:
     void showHands(Observer* observer);
 
     int validateInt(string str, int from, int to);
+    bool isShowDominationView() const;
+    void setShowDominationView(bool showDominationView);
+    bool isShowHandsView() const;
+    void setShowHandsView(bool showHandsView);
+    bool isShowCoinsView() const;
+    void setShowCoinsView(bool showCoinsView);
 
 protected:
     int id;
@@ -122,6 +128,9 @@ protected:
     bool played;
     bool haveDeclineCombo;
     bool haveActiveCombo;
+    bool showDominationView;
+    bool showHandsView;
+    bool showCoinsView;
     PlayerStrategy * strategy;
 
 

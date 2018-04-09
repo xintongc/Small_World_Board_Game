@@ -285,6 +285,9 @@ void Game::playGame() {
             //cout << "\nTurn " << getRound()<< endl;
             notifyTurn(&Players[firstPlayerIndex]);
 
+            selectDecorator();
+            deleteDecorator();
+
             for (int i = 1; i < Players.size(); i++) {
                 Players[i].picks_race(combo);
                 Players[i].firstConquest(Players.size());
@@ -305,6 +308,9 @@ void Game::playGame() {
 
             firstPlayerIndex = getTurnMakerIndex();         //1. redefine each turn's turn maker (create new one each time, avoid reassign issue)------
             notifyTurn(&Players[firstPlayerIndex]);
+
+            selectDecorator();
+            deleteDecorator();
 
             if(Players[firstPlayerIndex].isHaveActiveCombo()){     //2. if player has active combo, ask whether to decline
                 Players[firstPlayerIndex].declineCombo(combo);
@@ -555,7 +561,75 @@ void Game::initial(int playerNumber) {
     mapLoader.buildMap();
 }
 
+void Game::selectDecorator(){
+    char input;
+    if(!Players[1].isShowDominationView()){
+        cout << "Do you want to add Domination View? If yes please input 'Y', otherwise is no." << endl;
+        cin >> input;
+        if(input == 'Y'){
+            for (int i = 1; i < Players.size(); ++i) {
+                Players[i].setShowDominationView(true);
+            }
+        }
+    }
 
+    if(!Players[1].isShowHandsView()){
+        cout << "Do you want to add Hands View? If yes please input 'Y', otherwise is no." << endl;
+        cin >> input;
+        if(input == 'Y'){
+            for (int i = 1; i < Players.size(); ++i) {
+                Players[i].setShowHandsView(true);
+            }
+        }
+    }
+
+    if(!Players[1].isShowCoinsView()){
+        cout << "Do you want to add Coins View? If yes please input 'Y', otherwise is no." << endl;
+        cin >> input;
+        if(input == 'Y'){
+            for (int i = 1; i < Players.size(); ++i) {
+                Players[i].setShowCoinsView(true);
+            }
+        }
+    }
+
+}
+
+void Game::deleteDecorator(){
+    char input;
+    if(Players[1].isShowDominationView()){
+        cout << "Do you want to delete Domination View? If yes please input 'Y', otherwise is no." << endl;
+        cin >> input;
+
+        if(input == 'Y'){
+            for (int i = 1; i < Players.size(); ++i) {
+                Players[i].setShowDominationView(false);
+            }
+        }
+
+    }
+
+    if(Players[1].isShowHandsView()){
+        cout << "Do you want to delete Hands View? If yes please input 'Y', otherwise is no." << endl;
+        cin >> input;
+        if(input == 'Y'){
+            for (int i = 1; i < Players.size(); ++i) {
+                Players[i].setShowHandsView(false);
+            }
+        }
+    }
+
+    if(Players[1].isShowCoinsView()){
+        cout << "Do you want to delete Domination View? If yes please input 'Y', otherwise is no." << endl;
+        cin >> input;
+        if(input == 'Y'){
+            for (int i = 1; i < Players.size(); ++i) {
+                Players[i].setShowCoinsView(false);
+            }
+        }
+    }
+
+}
 
 
 void Game::initialStrategyPlayer(int n){
