@@ -16,6 +16,9 @@ Player::Player() {
     victoryCoins = 5;
     haveActiveCombo=false;
     haveDeclineCombo=false;
+    showDominationView = false;
+    showCoinsView = false;
+    showHandsView = false;
 }
 
 //constructor, default 5 coins for player
@@ -25,6 +28,9 @@ Player::Player(int id) {
     victoryCoins = 5;
     haveActiveCombo=false;
     haveDeclineCombo=false;
+    showDominationView = false;
+    showCoinsView = false;
+    showHandsView = false;
 }
 
 Player::Player(int id, PlayerStrategy* strategy){
@@ -33,6 +39,9 @@ Player::Player(int id, PlayerStrategy* strategy){
     victoryCoins = 5;
     haveActiveCombo=false;
     haveDeclineCombo=false;
+    showDominationView = false;
+    showCoinsView = false;
+    showHandsView = false;
     this->strategy = strategy;
 }
 
@@ -741,16 +750,46 @@ void Player::showInfo(){
 
 void Player::showInfo(Observer* observer) {
     DominationView *dominationView = new DominationView();
-    dominationView->showInfo(observer);
+    if(isShowDominationView()){
+        dominationView->showInfo(observer);
+    }
 }
-
 
 void Player::showCoins(Observer* observer){
     CoinsView* coinsView = new CoinsView();
-    coinsView->showCoins(observer);
+    if(isShowCoinsView()){
+        coinsView->showCoins(observer);
+    }
 }
 void Player::showHands(Observer* observer){
 
     HandsView *handsView = new HandsView();
-    handsView->showHands(observer);
+    if(isShowHandsView()){
+        handsView->showHands(observer);
+    }
 }
+
+bool Player::isShowDominationView() const {
+    return showDominationView;
+}
+
+void Player::setShowDominationView(bool showDominationView) {
+    Player::showDominationView = showDominationView;
+}
+
+bool Player::isShowHandsView() const {
+    return showHandsView;
+}
+
+void Player::setShowHandsView(bool showHandsView) {
+    Player::showHandsView = showHandsView;
+}
+
+bool Player::isShowCoinsView() const {
+    return showCoinsView;
+}
+
+void Player::setShowCoinsView(bool showCoinsView) {
+    Player::showCoinsView = showCoinsView;
+}
+

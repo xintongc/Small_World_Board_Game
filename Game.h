@@ -52,6 +52,8 @@ public:
     //overriding subject method
     //display a header showing what player and what phase is currently being played
     void Notify(const std::string &str, Observer *);
+    void selectDecorator();
+    void deleteDecorator();
 
     //for strategy pattern
     void initialStrategyPlayer();

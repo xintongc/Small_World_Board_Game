@@ -17,10 +17,10 @@ int main() {
 
 
 //    //playing game (will show observer pattern)
-//    Game* game = Game::getGame();
-//    game->initial();
-//    game->initialPlayer();
-//    game->playGame();
+    Game* game = Game::getGame();
+    game->initial();
+    game->initialPlayer();
+    game->playGame();
 
 //    //playing game with strategy pattern
 //    Game* game = Game::getGame();
@@ -30,9 +30,9 @@ int main() {
 
 
     //two players play game
-    Game* game = Game::getGame();
-    game->twoPlayersTournaments();
-    game->playGameByStragegy();
+//    Game* game = Game::getGame();
+//    game->twoPlayersTournaments();
+//    game->playGameByStragegy();
 
 //    //three players play game
 //    Game* game = Game::getGame();
